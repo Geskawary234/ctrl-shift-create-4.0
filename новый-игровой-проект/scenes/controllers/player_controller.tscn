@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://b55rysp664v8q"]
+
+[ext_resource type="PackedScene" uid="uid://fblpaaym6qqs" path="res://Basic/scenes/controllers/camera_controller_base.tscn" id="1_k4343"]
+[ext_resource type="PackedScene" uid="uid://21kf7bum6fey" path="res://scenes/ui/pause_menu.tscn" id="2_4hcn1"]
+[ext_resource type="Script" uid="uid://qxm68t1u3y8g" path="res://src/controllers/game_controller.gd" id="2_sr3m7"]
+[ext_resource type="Script" uid="uid://dwtqctb10xwql" path="res://src/player/pause_manager.gd" id="3_deed6"]
+[ext_resource type="PackedScene" uid="uid://bb4d3qmq28qes" path="res://scenes/ui/settings.tscn" id="3_ub4dc"]
+
+[node name="PlayerController" unique_id=458364125 node_paths=PackedStringArray("rc") instance=ExtResource("1_k4343")]
+script = ExtResource("2_sr3m7")
+rc = NodePath("SpringArm3D/CameraPivot/Camera3D/RayCast3D")
+camera_mode = 0
+allow_mode_change = false
+
+[node name="GameUI" type="Control" parent="SpringArm3D/CameraPivot/Camera3D" parent_id_path=PackedInt32Array(1714195361) index="0" unique_id=1244215861]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseMenu" parent="SpringArm3D/CameraPivot/Camera3D" parent_id_path=PackedInt32Array(1714195361) index="1" unique_id=118265961 node_paths=PackedStringArray("pause_manager", "settings_ui") instance=ExtResource("2_4hcn1")]
+process_mode = 2
+visible = false
+pause_manager = NodePath("../../../../PauseManager")
+settings_ui = NodePath("../Settings")
+
+[node name="Settings" parent="SpringArm3D/CameraPivot/Camera3D" parent_id_path=PackedInt32Array(1714195361) index="2" unique_id=111502333 node_paths=PackedStringArray("pause_menu") instance=ExtResource("3_ub4dc")]
+process_mode = 2
+visible = false
+pause_menu = NodePath("../PauseMenu")
+
+[node name="RayCast3D" type="RayCast3D" parent="SpringArm3D/CameraPivot/Camera3D" parent_id_path=PackedInt32Array(1714195361) index="3" unique_id=1699724941]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+target_position = Vector3(0, -2.5, 0)
+
+[node name="PauseManager" type="Node" parent="." index="1" unique_id=612787171]
+process_mode = 3
+script = ExtResource("3_deed6")

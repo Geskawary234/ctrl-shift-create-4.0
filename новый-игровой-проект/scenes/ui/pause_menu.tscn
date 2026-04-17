@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://21kf7bum6fey"]
+
+[ext_resource type="Theme" uid="uid://dclvd56sbfv6j" path="res://assets/ui_theme.tres" id="1_6tw0m"]
+[ext_resource type="Script" uid="uid://ccyxctoxx32pc" path="res://src/ui/pause_menu.gd" id="2_0lmf7"]
+
+[node name="PauseMenu" type="Control" unique_id=118265961]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_6tw0m")
+script = ExtResource("2_0lmf7")
+
+[node name="Panel" type="Panel" parent="." unique_id=668569277]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_6tw0m")
+
+[node name="Label" type="Label" parent="." unique_id=780862017]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("1_6tw0m")
+theme_override_font_sizes/font_size = 85
+text = "Пауза"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1600484311]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -266.0
+offset_top = -164.0
+offset_right = 266.0
+offset_bottom = 164.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_6tw0m")
+
+[node name="Play" type="Button" parent="VBoxContainer" unique_id=873419293]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme = ExtResource("1_6tw0m")
+text = "Продолжить"
+
+[node name="Settings" type="Button" parent="VBoxContainer" unique_id=1308804086]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme = ExtResource("1_6tw0m")
+text = "Настройки"
+
+[node name="Quit" type="Button" parent="VBoxContainer" unique_id=929116634]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme = ExtResource("1_6tw0m")
+text = "Главное меню"

@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://b8pdv4o26j1uj"]
+
+[ext_resource type="Script" uid="uid://c7d431onisa8u" path="res://Basic/src/Pawn.gd" id="1_buf06"]
+[ext_resource type="PackedScene" uid="uid://fblpaaym6qqs" path="res://Basic/scenes/controllers/camera_controller_base.tscn" id="2_yoog8"]
+[ext_resource type="Script" uid="uid://dunoth5lbl4c4" path="res://Basic/src/controllers/player_controller.gd" id="3_abmpg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yoog8"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_abmpg"]
+sky_material = SubResource("ProceduralSkyMaterial_yoog8")
+
+[sub_resource type="Environment" id="Environment_5ydet"]
+background_mode = 2
+sky = SubResource("Sky_abmpg")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yoog8"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_abmpg"]
+
+[node name="Node3D" type="Node3D" unique_id=327759704]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2040257459]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=12983445]
+environment = SubResource("Environment_5ydet")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=297832459]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(5.890869, 1, 9.46582)
+
+[node name="Pawn" type="RigidBody3D" parent="." unique_id=951397247]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+max_contacts_reported = 1
+script = ExtResource("1_buf06")
+metadata/_custom_type_script = "uid://c7d431onisa8u"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pawn" unique_id=991080552]
+shape = SubResource("CapsuleShape3D_yoog8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pawn" unique_id=824435514]
+mesh = SubResource("CapsuleMesh_abmpg")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pawn" unique_id=70397778]
+transform = Transform3D(6.591865e-16, -1.508043e-08, 0.345, -0.345, -1.508043e-08, 0, 1.508043e-08, -0.345, -1.508043e-08, -0.021810472, 0.5359608, -0.5836717)
+mesh = SubResource("CapsuleMesh_abmpg")
+
+[node name="CameraController" parent="." unique_id=458364125 node_paths=PackedStringArray("pawn") instance=ExtResource("2_yoog8")]
+script = ExtResource("3_abmpg")
+camera_mode = 0
+pawn = NodePath("../Pawn")

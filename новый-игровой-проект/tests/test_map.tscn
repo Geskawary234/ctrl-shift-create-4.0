@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://b3d3225npkml2"]
+
+[ext_resource type="Script" uid="uid://c7d431onisa8u" path="res://Basic/src/Pawn.gd" id="1_o6a32"]
+[ext_resource type="PackedScene" uid="uid://b55rysp664v8q" path="res://scenes/controllers/player_controller.tscn" id="2_rn4ej"]
+[ext_resource type="Script" uid="uid://cbw2quvldnfjm" path="res://src/debug/spawner_Testetr.gd" id="3_rn4ej"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ke76d"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_omv1y"]
+
+[node name="Node3D" type="Node3D" unique_id=744744297]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=491288852]
+transform = Transform3D(-0.8660254, -0.43301278, 0.24999999, 0.12940957, 0.28884858, 0.94858825, -0.48296297, 0.8538539, -0.19411422, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1788136093]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1237331855]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6124878, 0.45996094)
+size = Vector3(10, 5.2249756, 9.080078)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=701094137]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4632719, 0)
+operation = 2
+size = Vector3(8, 4.6508484, 8)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=490328357]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4975657, 0.6779186, -4.658)
+operation = 2
+size = Vector3(1.7888184, 1.5551758, 1.71875)
+
+[node name="Pawn" type="RigidBody3D" parent="." unique_id=1941038437]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 2
+axis_lock_angular_y = true
+mass = 70.0
+script = ExtResource("1_o6a32")
+metadata/_custom_type_script = "uid://c7d431onisa8u"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pawn" unique_id=1220170679]
+shape = SubResource("CapsuleShape3D_ke76d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pawn" unique_id=605956913]
+mesh = SubResource("CapsuleMesh_omv1y")
+
+[node name="PlayerController" parent="." unique_id=458364125 node_paths=PackedStringArray("pawn") instance=ExtResource("2_rn4ej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8379469, 0, -0.71716845)
+pawn = NodePath("../Pawn")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=30857939]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1098065, 0)
+omni_range = 29.570816
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1612817731]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.43991798, 0)
+script = ExtResource("3_rn4ej")

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://fblpaaym6qqs"]
+
+[ext_resource type="Script" uid="uid://dwt6mnpopov86" path="res://Basic/src/controllers/Base/camera_controller.gd" id="1_7kd4j"]
+
+[node name="CameraController" type="Node3D" unique_id=458364125 node_paths=PackedStringArray("camera", "camera_pivot", "spring_arm")]
+top_level = true
+script = ExtResource("1_7kd4j")
+camera = NodePath("SpringArm3D/CameraPivot/Camera3D")
+camera_pivot = NodePath("SpringArm3D/CameraPivot")
+spring_arm = NodePath("SpringArm3D")
+metadata/_custom_type_script = "uid://dwt6mnpopov86"
+
+[node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=1798102210]
+spring_length = 5.0
+
+[node name="CameraPivot" type="Node3D" parent="SpringArm3D" unique_id=482518540]
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D/CameraPivot" unique_id=1714195361]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://cdrwegb4kspn"]
+
+[ext_resource type="Script" uid="uid://c7d431onisa8u" path="res://Basic/src/Pawn.gd" id="1_yggfj"]
+[ext_resource type="PackedScene" uid="uid://b55rysp664v8q" path="res://scenes/controllers/player_controller.tscn" id="2_eig8f"]
+[ext_resource type="Script" uid="uid://d3u0tcpmpbqng" path="res://Basic/src/item/item.gd" id="4_ry45r"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eig8f"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_7517i"]
+sky_material = SubResource("ProceduralSkyMaterial_eig8f")
+
+[sub_resource type="Environment" id="Environment_ry45r"]
+background_mode = 2
+sky = SubResource("Sky_7517i")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dsb46"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7517i"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_eig8f"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7517i"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ry45r"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ry45r"]
+points = PackedVector3Array(-0.25, -0.25, -0.25, 0.25, 0.25, 0.25, 0.25, -0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.25, 0.25, 0.25, -0.25, -0.25, -0.25, -0.25, 0.25, -0.25, 0.25, -0.25)
+
+[node name="Node3D" type="Node3D" unique_id=592294767]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1200151711]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=706430453]
+environment = SubResource("Environment_ry45r")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1083037514]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(10, 1, 10)
+
+[node name="Pawn" type="RigidBody3D" parent="." unique_id=571182842]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 2
+mass = 70.0
+script = ExtResource("1_yggfj")
+metadata/_custom_type_script = "uid://c7d431onisa8u"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pawn" unique_id=1534702876]
+shape = SubResource("CapsuleShape3D_dsb46")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pawn" unique_id=1464491911]
+mesh = SubResource("CapsuleMesh_7517i")
+
+[node name="PlayerController" parent="." unique_id=458364125 node_paths=PackedStringArray("pawn") instance=ExtResource("2_eig8f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8379469, 0, -0.71716845)
+pawn = NodePath("../Pawn")
+
+[node name="Tarakan" type="RigidBody3D" parent="." unique_id=651035833]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5318553, 0.18030053, 0)
+script = ExtResource("1_yggfj")
+metadata/_custom_type_script = "uid://c7d431onisa8u"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tarakan" unique_id=754036717]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("BoxMesh_eig8f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tarakan" unique_id=1937212441]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_7517i")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1514972199]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54750896, -3.3579507)
+script = ExtResource("4_ry45r")
+metadata/_custom_type_script = "uid://d3u0tcpmpbqng"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=329606935]
+transform = Transform3D(1, 0, 0, 0, 7.055, 0, 0, 0, 1, 0, 1.5367293, 0)
+mesh = SubResource("BoxMesh_ry45r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=139823788]
+transform = Transform3D(1, 0, 0, 0, 7.055, 0, 0, 0, 1, 0, 1.5367293, 0)
+shape = SubResource("ConvexPolygonShape3D_ry45r")
