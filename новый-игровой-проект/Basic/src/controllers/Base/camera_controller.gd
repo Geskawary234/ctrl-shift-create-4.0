@@ -4,8 +4,6 @@ class_name CameraController
 @export_enum('1st person','3rd person') var camera_mode = 1 :
 	set(v):
 		
-		if !allow_mode_change: return
-		
 		camera_mode = v
 		update_camera_mode(v)
 		
@@ -68,7 +66,7 @@ func pawn_process(delta: float) -> void:
 	mouse_input = Vector2.ZERO
 	
 	
-	if Input.is_action_just_pressed('change_view'):
+	if Input.is_action_just_pressed('change_view') and allow_mode_change:
 		camera_mode = int(!bool(camera_mode))
 
 

@@ -2,13 +2,11 @@ extends PlayerController
 
 @export var rc : RayCast3D
 
-@onready var tarakan := $"../Tarakan"
-@onready var player_pawn := $"../Pawn"
-
 
 func _process(delta: float) -> void:
 	super(delta)
-	
+
+	'''
 	if Input.is_action_just_pressed('e'):
 		
 		allow_mode_change = true
@@ -23,7 +21,7 @@ func _process(delta: float) -> void:
 			camera.position = Vector3(0,0.5,0)
 			camera_mode = 0
 			
-		allow_mode_change = false
+		allow_mode_change = false'''
 
 var heavy_item : Item
 var item_held_pos : Vector3

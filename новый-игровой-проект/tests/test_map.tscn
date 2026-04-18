@@ -54,5 +54,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1098065, 0)
 omni_range = 29.570816
 
 [node name="Node3D" type="Node3D" parent="." unique_id=1612817731]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.43991798, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.81581956, 0)
 script = ExtResource("3_rn4ej")

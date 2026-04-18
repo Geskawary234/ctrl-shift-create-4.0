@@ -61,6 +61,7 @@ mesh = SubResource("CapsuleMesh_7517i")
 
 [node name="PlayerController" parent="." unique_id=458364125 node_paths=PackedStringArray("pawn") instance=ExtResource("2_eig8f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8379469, 0, -0.71716845)
+camera_mode = 1
 pawn = NodePath("../Pawn")
 
 [node name="Tarakan" type="RigidBody3D" parent="." unique_id=651035833]

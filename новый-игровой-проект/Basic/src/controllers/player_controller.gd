@@ -1,6 +1,8 @@
 extends CameraController
 class_name PlayerController
 
+@export var speed : float = 5
+
 func _ready() -> void:
 	super()
 
@@ -14,8 +16,8 @@ func control_pawn(delta : float):
 		1:
 			dir = third_person_move()
 
-	pawn.linear_velocity.x = dir.x * 5
-	pawn.linear_velocity.z = dir.z * 5
+	pawn.linear_velocity.x = dir.x * speed
+	pawn.linear_velocity.z = dir.z * speed
 
 func first_person_move():
 	var dir : Vector3 = pawn.global_basis * Vector3(input.x,0,input.y)
@@ -33,8 +35,8 @@ func third_person_move():
 	var c_basis : Basis = Basis.from_euler(e_basis)
 	var dir : Vector3 = c_basis * Vector3(input.x,0,input.y)
 	
-	pawn.linear_velocity.x = dir.x * 5
-	pawn.linear_velocity.z = dir.z * 5
+	#pawn.linear_velocity.x = dir.x * speed
+	#pawn.linear_velocity.z = dir.z * speed
 	
 	var dot : float = GameServer.interpolated_look_at(pawn,pawn.global_position + dir)
 	

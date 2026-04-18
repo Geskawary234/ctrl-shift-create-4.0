@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://c3ujlv30r8egx"]
+
+[ext_resource type="Script" uid="uid://dkvt360m1ut8t" path="res://src/entities/pawns/tarakan_pawn.gd" id="1_fsfg4"]
+[ext_resource type="Texture2D" uid="uid://ihx83ehut38s" path="res://assets/cockroach.png" id="2_whr1p"]
+[ext_resource type="Script" uid="uid://5kxmhexva6rp" path="res://src/entities/ai controllers/ai_controller_tarakan.gd" id="3_388hn"]
+[ext_resource type="Texture2D" uid="uid://1ct17ufk8t6s" path="res://assets/textures/lamp bg.png" id="4_x37ky"]
+[ext_resource type="Texture2D" uid="uid://bungnb5ysbywl" path="res://assets/textures/lamp front.png" id="5_y8f67"]
+[ext_resource type="Texture2D" uid="uid://bpo4c1bk10xfp" path="res://assets/textures/alerted.png" id="6_whr1p"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cmv3r"]
+friction = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_082oi"]
+size = Vector3(0.17272949, 0.1685791, 0.18652344)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fsfg4"]
+viewport_path = NodePath("ProgBarView/SubViewport")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fsfg4"]
+radius = 7.0477366
+
+[node name="Tarakan" type="RigidBody3D" unique_id=174570234]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+collision_layer = 4
+collision_mask = 7
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 0.002
+physics_material_override = SubResource("PhysicsMaterial_cmv3r")
+continuous_cd = true
+script = ExtResource("1_fsfg4")
+metadata/_custom_type_script = "uid://c7d431onisa8u"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1456903613]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0034789443, 0.08302921, 0)
+shape = SubResource("BoxShape3D_082oi")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=829318674]
+transform = Transform3D(0.025, 0, 0, 0, -1.0927848e-09, 0.025, 0, -0.025, -1.0927848e-09, 0, 0, 0)
+modulate = Color(1, 0.28627452, 0.30980393, 1)
+texture = ExtResource("2_whr1p")
+
+[node name="AiController" type="Node3D" parent="." unique_id=128399844 node_paths=PackedStringArray("pawn")]
+script = ExtResource("3_388hn")
+pawn = NodePath("..")
+metadata/_custom_type_script = "uid://c2u11awj85p74"
+
+[node name="ProgBarView" type="Sprite3D" parent="." unique_id=822148224]
+transform = Transform3D(0.040000003, 0, 0, 0, 0.04, 0, 0, 0, 0.040000003, 0, 0.17777151, 0)
+visible = false
+billboard = 1
+texture = SubResource("ViewportTexture_fsfg4")
+
+[node name="SubViewport" type="SubViewport" parent="ProgBarView" unique_id=1751032396]
+transparent_bg = true
+
+[node name="Control" type="Control" parent="ProgBarView/SubViewport" unique_id=83293327]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LampProgress" type="TextureProgressBar" parent="ProgBarView/SubViewport/Control" unique_id=1386719097]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -129.0
+offset_right = 100.0
+offset_bottom = 129.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 3
+texture_under = ExtResource("4_x37ky")
+texture_progress = ExtResource("5_y8f67")
+
+[node name="ColorRect" type="ColorRect" parent="ProgBarView/SubViewport/Control/LampProgress" unique_id=437607873]
+z_index = -1
+layout_mode = 0
+offset_left = 47.0
+offset_top = 176.0
+offset_right = 153.0
+offset_bottom = 394.0
+color = Color(0.16780996, 0.16780996, 0.16780993, 1)
+
+[node name="AlertOthersArea" type="Area3D" parent="." unique_id=1933309304]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AlertOthersArea" unique_id=1500986805]
+shape = SubResource("SphereShape3D_fsfg4")
+
+[node name="AlertedSprite" type="Sprite3D" parent="." unique_id=74219631]
+transform = Transform3D(0.095, 0, 0, 0, 0.095, 0, 0, 0, 0.095, 0, 0.38388032, 0)
+visible = false
+billboard = 1
+texture = ExtResource("6_whr1p")
