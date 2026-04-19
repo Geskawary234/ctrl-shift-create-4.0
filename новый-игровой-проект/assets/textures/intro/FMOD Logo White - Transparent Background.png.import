@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c3ftvudy3dyy6"
-path="res://.godot/imported/FMOD Logo White - Transparent Background.png-8727e0282b59dd9b6ee14875d6e13ace.ctex"
+path="res://.godot/imported/FMOD Logo White - Transparent Background.png-2652c63bff062d9f910224c93fddd3e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/FMOD Logo White - Transparent Background.png"
-dest_files=["res://.godot/imported/FMOD Logo White - Transparent Background.png-8727e0282b59dd9b6ee14875d6e13ace.ctex"]
+source_file="res://assets/textures/intro/FMOD Logo White - Transparent Background.png"
+dest_files=["res://.godot/imported/FMOD Logo White - Transparent Background.png-2652c63bff062d9f910224c93fddd3e6.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boqi0av2b1xcd"
-path="res://.godot/imported/intro text.png-cdbcb92b910bf42ae46fbad7cc1d76bd.ctex"
+uid="uid://5gge4b5jjyuk"
+path="res://.godot/imported/slop and shovel spritesheet.png-ccf0bc601827e742979cb08c665a0c99.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/intro text.png"
-dest_files=["res://.godot/imported/intro text.png-cdbcb92b910bf42ae46fbad7cc1d76bd.ctex"]
+source_file="res://assets/textures/intro/slop and shovel spritesheet.png"
+dest_files=["res://.godot/imported/slop and shovel spritesheet.png-ccf0bc601827e742979cb08c665a0c99.ctex"]
 
 [params]
 

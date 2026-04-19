@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://5b5ngrg31r5n"]
 
 [ext_resource type="PackedScene" uid="uid://b4xfkcwd8u42x" path="res://Basic/scenes/Item/PickableItem/pickable_item_base.tscn" id="1_dfujh"]
-[ext_resource type="Texture2D" uid="uid://cl7gl57b7ccm8" path="res://assets/textures/dzyn dzyn dzyn.png" id="2_2j4xc"]
+[ext_resource type="Texture2D" uid="uid://cl7gl57b7ccm8" path="res://assets/textures/effects/dzyn dzyn dzyn.png" id="2_2j4xc"]
 [ext_resource type="Script" uid="uid://b24h51243bg75" path="res://src/items/pickable/Castrylebuben.gd" id="2_ewkbg"]
 [ext_resource type="Texture2D" uid="uid://bdxqr8pumh342" path="res://assets/textures/ui/items/castrulebuben.png" id="3_ewkbg"]
 [ext_resource type="Script" uid="uid://bafpw1lj87nk8" path="res://Basic/src/inventory/InventoryItem.gd" id="4_314t6"]

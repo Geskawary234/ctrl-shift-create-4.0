@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://bgq880x5od6pd"]
 
-[ext_resource type="Texture2D" uid="uid://boqi0av2b1xcd" path="res://assets/textures/intro text.png" id="1_i8df0"]
-[ext_resource type="Texture2D" uid="uid://dn1ei5x08v6bm" path="res://assets/textures/slop and shovel.png" id="2_i2slu"]
+[ext_resource type="Texture2D" uid="uid://boqi0av2b1xcd" path="res://assets/textures/intro/intro text.png" id="1_i8df0"]
+[ext_resource type="Texture2D" uid="uid://5gge4b5jjyuk" path="res://assets/textures/intro/slop and shovel spritesheet.png" id="2_v38ad"]
 [ext_resource type="AudioStream" uid="uid://dckpbbv0unlym" path="res://assets/sfx/intro sound.mp3" id="3_j6b1i"]
-[ext_resource type="Texture2D" uid="uid://c3ftvudy3dyy6" path="res://assets/textures/FMOD Logo White - Transparent Background.png" id="3_v38ad"]
-[ext_resource type="Texture2D" uid="uid://bwoet7irjpqiy" path="res://assets/textures/godot logo.png" id="4_h1om3"]
+[ext_resource type="Texture2D" uid="uid://c3ftvudy3dyy6" path="res://assets/textures/intro/FMOD Logo White - Transparent Background.png" id="3_v38ad"]
+[ext_resource type="Texture2D" uid="uid://bwoet7irjpqiy" path="res://assets/textures/intro/godot logo.png" id="4_h1om3"]
 
 [sub_resource type="Animation" id="Animation_i2slu"]
 resource_name = "Intro"
-length = 7.0
+length = 9.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -16,10 +16,10 @@ tracks/0/path = NodePath("SlopAndShovel:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.36666667, 0.8666667, 2.5, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(5.6, 6.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -28,95 +28,95 @@ tracks/1/path = NodePath("SlopAndShovel:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.36666667, 0.9666667, 1.3666667),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1.8),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(980, 514), Vector2(980, 514), Vector2(980, 319.41)]
+"values": [Vector2(-100, -300), Vector2(960, 340)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SlopAndShovel:scale")
+tracks/2/path = NodePath("IntroText:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.33333334, 0.9666667, 1.3666667),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.033333335, 1.1666666, 1.7, 1.7666667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1.3, 1.3), Vector2(1.3, 1.3), Vector2(0.8, 0.8)]
+"values": [Vector2(-385, 809), Vector2(-385, 809), Vector2(986, 809), Vector2(1276.645, 809), Vector2(986, 809)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("IntroText:position")
+tracks/3/path = NodePath("IntroText:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1.1, 1.3666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(982, 1318), Vector2(982, 772.7)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("IntroText:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(2.5, 3),
+"times": PackedFloat32Array(5.6, 6.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("AudioStreamPlayer")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.4),
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.7),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [0.0],
 "method": &"play"
 }]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("ColorRect:modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(6.266667, 6.766667),
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ColorRect:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(8.5, 9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath(".")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(6.766667),
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(9),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"queue_free"
 }]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("FmodLogoWhiteTransparentBackground:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(6.1666665, 6.6666665, 7.6666665, 8.166666),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("FmodLogoWhiteTransparentBackground:modulate")
+tracks/8/path = NodePath("GodotLogo:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(3.5, 4, 5, 5.5),
+"times": PackedFloat32Array(6.1666665, 6.6666665, 7.6666665, 8.166666),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -124,14 +124,38 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("GodotLogo:modulate")
+tracks/9/path = NodePath("IntroText:scale")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(3.5, 4, 5, 5.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(1.1333333, 1.164629, 1.6979624, 1.7666667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Vector2(1.34, 1.34), Vector2(1.5, 1.34), Vector2(1.5, 1.34), Vector2(0.9, 1.34), Vector2(1.34, 1.34)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SlopAndShovel:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1.8, 2.2333333, 2.3333333, 2.4333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 37.69911184307752, 44.39642, 43.975735, 44.39642]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SlopAndShovel:frame")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.23333333, 1.0666667, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 1, 0]
 }
 
 [sub_resource type="Animation" id="Animation_j6b1i"]
@@ -163,31 +187,31 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SlopAndShovel:scale")
+tracks/2/path = NodePath("IntroText:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.625, 0.625)]
+"values": [Vector2(982, 1318)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("IntroText:position")
+tracks/3/path = NodePath("IntroText:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(982, 1318)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("IntroText:modulate")
+tracks/4/path = NodePath("ColorRect:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -199,7 +223,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("ColorRect:modulate")
+tracks/5/path = NodePath("FmodLogoWhiteTransparentBackground:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -211,7 +235,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("FmodLogoWhiteTransparentBackground:modulate")
+tracks/6/path = NodePath("GodotLogo:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -223,14 +247,38 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("GodotLogo:modulate")
+tracks/7/path = NodePath("IntroText:scale")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector2(1.34, 1.34)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SlopAndShovel:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SlopAndShovel:frame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i5xbi"]
@@ -264,7 +312,9 @@ texture = ExtResource("1_i8df0")
 [node name="SlopAndShovel" type="Sprite2D" parent="." unique_id=1522194174]
 position = Vector2(980, 514)
 scale = Vector2(0.625, 0.625)
-texture = ExtResource("2_i2slu")
+texture = ExtResource("2_v38ad")
+hframes = 3
+frame = 2
 
 [node name="FmodLogoWhiteTransparentBackground" type="Sprite2D" parent="." unique_id=855249045]
 position = Vector2(1342, 529)

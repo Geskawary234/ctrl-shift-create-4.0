@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://h4kseaa5acjh"]
 
-[ext_resource type="Texture2D" uid="uid://bc5xarlps746k" path="res://assets/textures/hole.png" id="1_lhvvt"]
+[ext_resource type="Texture2D" uid="uid://bc5xarlps746k" path="res://assets/textures/objects/hole.png" id="1_lhvvt"]
 [ext_resource type="Script" uid="uid://cbw2quvldnfjm" path="res://src/debug/spawner_Testetr.gd" id="2_jd7o4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lhvvt"]

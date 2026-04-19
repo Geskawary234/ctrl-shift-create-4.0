@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://2ol2olo6xkog" path="res://src/items/pickable/Dihlofos.gd" id="2_iqvoe"]
 [ext_resource type="Script" uid="uid://bafpw1lj87nk8" path="res://Basic/src/inventory/InventoryItem.gd" id="3_0jsk1"]
 [ext_resource type="PackedScene" uid="uid://cy511k8v5b1ox" path="res://assets/models/Dihlofos 1.fbx" id="3_iqvoe"]
-[ext_resource type="Texture2D" uid="uid://b5j11qaf16fpk" path="res://assets/textures/green_gas_spritesheet_transparent.png" id="5_pyicr"]
+[ext_resource type="Texture2D" uid="uid://b5j11qaf16fpk" path="res://assets/textures/effects/green_gas_spritesheet_transparent.png" id="5_pyicr"]
 
 [sub_resource type="Resource" id="Resource_pyicr"]
 script = ExtResource("3_0jsk1")

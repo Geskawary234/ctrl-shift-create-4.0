@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dfp47qkyeawh4"
-path.s3tc="res://.godot/imported/cockroach language.png-fe296d116e611dc9184abbe41739921b.s3tc.ctex"
+path.s3tc="res://.godot/imported/cockroach language.png-ca3cb255b12d473c7f2345e073658aa9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/cockroach language.png"
-dest_files=["res://.godot/imported/cockroach language.png-fe296d116e611dc9184abbe41739921b.s3tc.ctex"]
+source_file="res://assets/textures/tarakan ai/cockroach language.png"
+dest_files=["res://.godot/imported/cockroach language.png-ca3cb255b12d473c7f2345e073658aa9.s3tc.ctex"]
 
 [params]
 
