@@ -7,7 +7,13 @@ extends Control
 
 var minimum_db : float = -50
 
+var master_bus : FmodBus
+# {46c0fd1b-b4e8-409d-bf66-41cf1ea4d0f9} - master bus
+
 func _ready() -> void:
+	
+	master_bus = FmodServer.get_bus_from_guid('{46c0fd1b-b4e8-409d-bf66-41cf1ea4d0f9}')
+	
 	master.value = get_volume(0)
 	sfx.value = get_volume(1)
 	music.value = get_volume(2)
@@ -17,8 +23,9 @@ func _ready() -> void:
 	music.value_changed.connect(music_changed)
 
 func master_changed(v : float):	
-	change_volume(0,v)
-
+	#change_volume(0,v)
+	master_bus.volume = v/100
+	
 func sfx_changed(v : float):
 	change_volume(1,v)
 

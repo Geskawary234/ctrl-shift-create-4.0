@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c5ri50c4ueoc4"]
+
+[ext_resource type="Script" uid="uid://d3u0tcpmpbqng" path="res://Basic/src/item/item.gd" id="1_3we51"]
+
+[node name="ItemBase" type="RigidBody3D" unique_id=935297416]
+collision_layer = 16
+collision_mask = 19
+script = ExtResource("1_3we51")
+metadata/_custom_type_script = "uid://d3u0tcpmpbqng"

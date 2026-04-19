@@ -1,0 +1,160 @@
+[gd_scene format=3 uid="uid://5b5ngrg31r5n"]
+
+[ext_resource type="PackedScene" uid="uid://b4xfkcwd8u42x" path="res://Basic/scenes/Item/PickableItem/pickable_item_base.tscn" id="1_dfujh"]
+[ext_resource type="Texture2D" uid="uid://cl7gl57b7ccm8" path="res://assets/textures/dzyn dzyn dzyn.png" id="2_2j4xc"]
+[ext_resource type="Script" uid="uid://b24h51243bg75" path="res://src/items/pickable/Castrylebuben.gd" id="2_ewkbg"]
+[ext_resource type="Texture2D" uid="uid://bdxqr8pumh342" path="res://assets/textures/ui/items/castrulebuben.png" id="3_ewkbg"]
+[ext_resource type="Script" uid="uid://bafpw1lj87nk8" path="res://Basic/src/inventory/InventoryItem.gd" id="4_314t6"]
+[ext_resource type="PackedScene" uid="uid://bqadaa2qk02qx" path="res://assets/models/items/pot.glb" id="5_81dfv"]
+[ext_resource type="PackedScene" uid="uid://d37wxsq6eyfkk" path="res://assets/models/items/bug spoon.glb" id="5_bw3de"]
+
+[sub_resource type="Resource" id="Resource_314t6"]
+script = ExtResource("4_314t6")
+item_name = "Кастрюлебубен"
+icon = ExtResource("3_ewkbg")
+scene = "res://ItemCatalog/items/castrylebuben.tscn"
+description = "Нихуя вот это кастрюля! Ебашь тараканов!"
+metadata/_custom_type_script = "uid://bafpw1lj87nk8"
+
+[sub_resource type="Animation" id="Animation_ewkbg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles3D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_314t6"]
+resource_name = "bang"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.96865773), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles3D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.56666666),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.56666666),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hit_all_roaches"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k238y"]
+_data = {
+&"RESET": SubResource("Animation_ewkbg"),
+&"bang": SubResource("Animation_314t6")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s2g1s"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("2_2j4xc")
+billboard_mode = 3
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ael6j"]
+size = Vector2(0.82, 0.34)
+orientation = 2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wes65"]
+height = 0.33251953
+radius = 0.44091797
+
+[node name="Castrylebuben" unique_id=935297416 node_paths=PackedStringArray("weapon_scene", "normal_scene") instance=ExtResource("1_dfujh")]
+script = ExtResource("2_ewkbg")
+weapon_scene = NodePath("CastrylaModel")
+normal_scene = NodePath("ModelItem")
+item_info = SubResource("Resource_314t6")
+
+[node name="CastrylaModel" type="Node3D" parent="." index="0" unique_id=809777157]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36246347, 0, 0)
+visible = false
+
+[node name="pot2" parent="CastrylaModel" index="0" unique_id=321981320 instance=ExtResource("5_81dfv")]
+transform = Transform3D(0.624534, -0.78099763, 1.509958e-07, -0.78099763, -0.624534, 5.820787e-08, 4.884181e-08, -1.5428016e-07, -1, -0.37555882, 0.22030759, 0.0013268301)
+
+[node name="Node3D" type="Node3D" parent="CastrylaModel" index="1" unique_id=818542160]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4709028, -0.35203743, -1.1920929e-07)
+
+[node name="bug spoon" parent="CastrylaModel/Node3D" index="0" unique_id=2078431529 instance=ExtResource("5_bw3de")]
+transform = Transform3D(0.2072629, 3.1295826e-08, -0.97828525, 1.509958e-07, -1, 3.7007437e-15, -0.97828525, -1.4771696e-07, -0.2072629, 0.094456375, 1.2572516, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CastrylaModel" index="2" unique_id=599158748]
+libraries/ = SubResource("AnimationLibrary_k238y")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="CastrylaModel" index="3" unique_id=637506243]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2275774, 0.16120994, -1.1920929e-07)
+material_override = SubResource("StandardMaterial3D_s2g1s")
+emitting = false
+amount = 1
+one_shot = true
+randomness = 1.0
+mesh = SubResource("PlaneMesh_ael6j")
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.1
+initial_velocity_max = 1.0
+anim_offset_max = 1.0
+
+[node name="ModelItem" type="Node3D" parent="." index="1" unique_id=1362719136]
+
+[node name="Node3D" type="Node3D" parent="ModelItem" index="0" unique_id=729585727]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22624314, -0.06785995, -1.1920929e-07)
+
+[node name="bug spoon" parent="ModelItem/Node3D" index="0" unique_id=206458775 instance=ExtResource("5_bw3de")]
+transform = Transform3D(1, 0, 0, 0, 0.7134217, -0.700735, 0, 0.700735, 0.7134217, 0.194906, -0.16935363, -0.23088041)
+
+[node name="pot2" parent="ModelItem/Node3D" index="1" unique_id=1841484944 instance=ExtResource("5_81dfv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21773711, -0.25383547, 0.019217491)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2" unique_id=208741921]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1496582, 0)
+shape = SubResource("CylinderShape3D_wes65")

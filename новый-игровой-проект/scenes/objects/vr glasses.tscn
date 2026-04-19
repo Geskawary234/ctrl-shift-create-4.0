@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bhyyr316ifmev"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vcs84"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="Node3D" type="Node3D" unique_id=370465345]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=2063748801]
+transform = Transform3D(0.84673214, -0.13529155, 0.51452965, 7.450581e-09, 0.9671259, 0.25429812, -0.5320194, -0.2153224, 0.8188965, 0, 0.31572294, 0)
+use_collision = true
+collision_layer = 16
+collision_mask = 17
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=471070841]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.30664063)
+size = Vector3(1.0830078, 0.31835938, 0.38671875)
+material = SubResource("StandardMaterial3D_vcs84")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=290683183]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41308594, 0, -0.17016602)
+size = Vector3(0.25683594, 0.31835938, 1.340332)
+material = SubResource("StandardMaterial3D_vcs84")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1472210934]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.393444, 0, -0.17016602)
+size = Vector3(0.25683594, 0.31835938, 1.340332)
+material = SubResource("StandardMaterial3D_vcs84")

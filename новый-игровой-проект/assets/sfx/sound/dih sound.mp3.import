@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bwcc6v1e4oqoe"
+path="res://.godot/imported/dih sound.mp3-78587b37102757167f4eafdd20b7a5fb.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/sound/dih sound.mp3"
+dest_files=["res://.godot/imported/dih sound.mp3-78587b37102757167f4eafdd20b7a5fb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

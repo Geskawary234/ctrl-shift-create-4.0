@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c7i7vfgk16c7"]
+
+[ext_resource type="PackedScene" uid="uid://c5ri50c4ueoc4" path="res://Basic/scenes/Item/item_base.tscn" id="1_lty57"]
+[ext_resource type="Script" uid="uid://bepyhwulgywb0" path="res://Basic/src/item/Draggable items/DraggableItem.gd" id="2_h2buc"]
+
+[node name="Draggable item base" unique_id=935297416 instance=ExtResource("1_lty57")]
+script = ExtResource("2_h2buc")

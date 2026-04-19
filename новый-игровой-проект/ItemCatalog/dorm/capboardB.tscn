@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cfwcsk2evqt3e"]
+
+[ext_resource type="PackedScene" uid="uid://c7i7vfgk16c7" path="res://Basic/scenes/Item/draggable item/draggable_item_base.tscn" id="1_axoc4"]
+[ext_resource type="Script" uid="uid://dywj6ekevdftc" path="res://Basic/src/item/Draggable items/HeavyItem.gd" id="2_l5ycd"]
+[ext_resource type="PackedScene" uid="uid://b8ngtgeyvuai" path="res://assets/models/dorm/capboardB.glb" id="3_o3k7a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o8ir0"]
+size = Vector3(0.49829102, 2.1589355, 1.1618652)
+
+[node name="CapboardB" unique_id=935297416 instance=ExtResource("1_axoc4")]
+mass = 100.0
+script = ExtResource("2_l5ycd")
+
+[node name="CapboardB" parent="." index="0" unique_id=1329149791 instance=ExtResource("3_o3k7a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0851092, 0, -0.8461349)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=1934517553]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029907227, 1.0914307, 0.041381836)
+shape = SubResource("BoxShape3D_o8ir0")

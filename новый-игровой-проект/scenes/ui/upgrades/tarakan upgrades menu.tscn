@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://dtsjoii7sv852"]
+
+[ext_resource type="Theme" uid="uid://dclvd56sbfv6j" path="res://assets/ui_theme.tres" id="1_w8xk8"]
+[ext_resource type="PackedScene" uid="uid://dorafsny08hdp" path="res://scenes/ui/upgrades/upgrade_slot.tscn" id="2_ht4h0"]
+[ext_resource type="Texture2D" uid="uid://ctwfuuib4fur0" path="res://assets/textures/ui/upgrades/gun.png" id="3_m8fdb"]
+[ext_resource type="Texture2D" uid="uid://oujctat475yp" path="res://assets/textures/ui/upgrades/saw.png" id="4_bghj2"]
+[ext_resource type="Texture2D" uid="uid://dkh4rj5thckuc" path="res://assets/textures/ui/upgrades/level 1.png" id="5_uwxde"]
+[ext_resource type="Texture2D" uid="uid://cdkntsb0jhvwq" path="res://assets/textures/ui/upgrades/level 2.png" id="6_2bh56"]
+
+[node name="Control" type="Control" unique_id=19362031]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 160.0
+offset_top = 114.0
+offset_right = -160.0
+offset_bottom = -114.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_w8xk8")
+
+[node name="Panel" type="Panel" parent="." unique_id=1684667392]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1031596197]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=932377195]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_constants/separation = 128
+alignment = 1
+
+[node name="GunUpgrade1" parent="HBoxContainer/VBoxContainer" unique_id=1240219738 instance=ExtResource("2_ht4h0")]
+layout_mode = 2
+texture = ExtResource("3_m8fdb")
+
+[node name="GunUpgrade2" parent="HBoxContainer/VBoxContainer" unique_id=1298373948 instance=ExtResource("2_ht4h0")]
+layout_mode = 2
+texture = ExtResource("3_m8fdb")
+locked = true
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/GunUpgrade2" unique_id=1655795250]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -124.0
+offset_top = -70.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "2x"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=728493728]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_constants/separation = 128
+alignment = 1
+
+[node name="SawUpgrade1" parent="HBoxContainer/VBoxContainer2" unique_id=1692187507 instance=ExtResource("2_ht4h0")]
+layout_mode = 2
+texture = ExtResource("4_bghj2")
+
+[node name="SawUpgrade2" parent="HBoxContainer/VBoxContainer2" unique_id=754447290 instance=ExtResource("2_ht4h0")]
+layout_mode = 2
+texture = ExtResource("4_bghj2")
+locked = true
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/SawUpgrade2" unique_id=2097518951]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -124.0
+offset_top = -70.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "2x"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer" unique_id=1414445064]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_constants/separation = 128
+alignment = 1
+
+[node name="PowerUpgrade1" parent="HBoxContainer/VBoxContainer3" unique_id=1471965508 instance=ExtResource("2_ht4h0")]
+layout_mode = 2
+texture = ExtResource("5_uwxde")
+
+[node name="PowerUpgrade2" parent="HBoxContainer/VBoxContainer3" unique_id=1804491782 instance=ExtResource("2_ht4h0")]
+layout_mode = 2
+texture = ExtResource("6_2bh56")
+locked = true

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bllaaaa886q81"]
+
+[ext_resource type="PackedScene" uid="uid://c7i7vfgk16c7" path="res://Basic/scenes/Item/draggable item/draggable_item_base.tscn" id="1_n4kge"]
+[ext_resource type="Script" uid="uid://cd446xyhkeyq2" path="res://Basic/src/item/Draggable items/LightItem.gd" id="2_lxk0s"]
+[ext_resource type="PackedScene" uid="uid://7tjbll80rfhy" path="res://assets/models/dorm/laptop.glb" id="3_uyhw8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n4kge"]
+size = Vector3(0.307, 0.005859375, 0.20214844)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lxk0s"]
+size = Vector3(0.307, 0.005859375, 0.20214844)
+
+[node name="Laptop" unique_id=935297416 instance=ExtResource("1_n4kge")]
+mass = 1.5
+script = ExtResource("2_lxk0s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0" unique_id=440641581]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0059814453, -0.062444404, 0.017089844)
+shape = SubResource("BoxShape3D_n4kge")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="1" unique_id=1795944173]
+transform = Transform3D(1, 0, 0, 0, 0.3662576, -0.93051344, 0, 0.93051344, 0.3662576, 0.0059814453, 0.031132393, -0.123267904)
+shape = SubResource("BoxShape3D_lxk0s")
+
+[node name="laptop2" parent="." index="2" unique_id=994754135 instance=ExtResource("3_uyhw8")]
+transform = Transform3D(0.9406322, 0, 0.33942753, 0, 1, 0, -0.33942753, 0, 0.9406322, 0.78382057, -0.9633106, 2.3635826)

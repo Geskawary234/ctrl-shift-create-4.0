@@ -17,6 +17,11 @@ func _process(delta: float) -> void:
 		if tree.paused and !pause_menu.is_visible(): return
 		
 		pause_tree()
+		if tree.paused:
+			pause_menu.show()
+		else:
+			pause_menu.hide()
+		
 		
 
 func pause_tree():
@@ -24,8 +29,6 @@ func pause_tree():
 		
 	if tree.paused:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		pause_menu.show()
 	else:
-		pause_menu.hide()
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	

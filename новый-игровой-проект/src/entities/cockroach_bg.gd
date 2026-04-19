@@ -1,35 +1,36 @@
 extends CharacterBody3D
 
-
-var rot_dir : int = randi_range(1,-1)
-var previous_normal : Vector3
-
-func _ready() -> void:
-	rotation_degrees.y = randi_range(0,360)
-
+var normal_changed : float = 0
+var cant_go_normals : Array
+var prev_position : Vector3
+var a : float = 0
+var overwhelmed : float = 0
 func _physics_process(delta: float) -> void:
-	
-
-	var col := get_last_slide_collision()
-	if col:
-		var normal := col.get_normal()
+	if overwhelmed<=0:
+		velocity = -global_basis.z * 3
+	else:
+		velocity = Vector3.ZERO
+		overwhelmed -= delta
 		
-		var smooth_normal = previous_normal.lerp(normal, 5.0 * delta).normalized()
-		previous_normal = smooth_normal
-		
-		smooth_normal = normal
-		
-		var basis = global_transform.basis
-		basis.y = smooth_normal
-		basis.x = -basis.z.cross(smooth_normal).normalized()
-		basis.z = basis.x.cross(smooth_normal).normalized()
-		
-		global_transform.basis = basis
-	
-	
-	velocity = -global_basis.z * 4
-	
-	
-	#rotate_object_local(Vector3.UP,rad_to_deg(delta * rot_dir / 100))
-
 	move_and_slide()
+	var col := get_last_slide_collision()
+	
+	if col and normal_changed<=0:
+		var n := col.get_normal()
+
+		look_at(n + global_position)
+		rotation_degrees.x = 0
+		rotation_degrees.z = 0
+		rotate_object_local(Vector3.UP,deg_to_rad(randf_range(-45,45)))
+		
+		normal_changed = 0.2
+		prev_position = global_position
+
+		
+		
+	normal_changed -= delta
+	
+const DEAD_TARAKAN = preload("uid://p7nrccetqxew")
+func die():
+	GameServer.spawn(DEAD_TARAKAN,global_position,get_tree().current_scene)
+	queue_free()

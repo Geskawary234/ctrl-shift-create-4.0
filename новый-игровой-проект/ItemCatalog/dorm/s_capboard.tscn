@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://csjqfoeqx554s"]
+
+[ext_resource type="PackedScene" uid="uid://c7i7vfgk16c7" path="res://Basic/scenes/Item/draggable item/draggable_item_base.tscn" id="1_w7dpq"]
+[ext_resource type="PackedScene" uid="uid://bjw1jl8p56mi7" path="res://assets/models/dorm/capboardS.glb" id="2_efu3o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i3vpg"]
+size = Vector3(0.3984375, 0.5777588, 0.37145996)
+
+[node name="SCapboard" unique_id=935297416 instance=ExtResource("1_w7dpq")]
+mass = 5.0
+
+[node name="CapboardS" parent="." index="0" unique_id=743057595 instance=ExtResource("2_efu3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1505256, 0, 0.34567177)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=1590595088]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.030808806, 0.28155518, -0.008117676)
+shape = SubResource("BoxShape3D_i3vpg")

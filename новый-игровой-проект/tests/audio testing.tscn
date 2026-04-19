@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://braimx0xb5daq"]
+
+[ext_resource type="PackedScene" uid="uid://bb4d3qmq28qes" path="res://scenes/ui/settings.tscn" id="1_mvgo0"]
+
+[node name="Node3D" type="Node3D" unique_id=267360486]
+
+[node name="SFXBank" type="FmodBankLoader" parent="." unique_id=1751710247]
+bank_paths = ["res://assets/FMOD/Ambience.bank", "res://assets/FMOD/Master.bank", "res://assets/FMOD/Foley.bank", "res://assets/FMOD/Music.bank"]
+
+[node name="Settings" parent="." unique_id=111502333 instance=ExtResource("1_mvgo0")]
+
+[node name="FmodEventEmitter3D" type="FmodEventEmitter3D" parent="." unique_id=1354666959]
+event_name = "event:/GAS"
+event_guid = "{74c51cdf-bf11-44bb-87eb-dda26af9a439}"
+autoplay = true
+
+[node name="FmodListener3D" type="FmodListener3D" parent="." unique_id=1345855407]

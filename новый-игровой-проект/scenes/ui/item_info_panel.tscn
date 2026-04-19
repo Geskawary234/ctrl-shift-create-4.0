@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://cbhqwatgn35mo"]
+
+[ext_resource type="Theme" uid="uid://dclvd56sbfv6j" path="res://assets/ui_theme.tres" id="1_qixds"]
+[ext_resource type="Script" uid="uid://cfqecs4njy1s0" path="res://src/ui/item_info_panel.gd" id="2_8054v"]
+
+[node name="ItemInfoPanel" type="Control" unique_id=1701949197]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_qixds")
+script = ExtResource("2_8054v")
+
+[node name="Panel" type="Panel" parent="." unique_id=1916492218]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2030458207]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 88.888916
+offset_top = 121.0
+offset_right = -88.888916
+offset_bottom = -121.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.60784316)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=722352462]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 91.111084
+offset_right = -91.111084
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ItemName" type="Label" parent="ColorRect/VBoxContainer" unique_id=800004524]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Название предмета"
+
+[node name="Info" type="Label" parent="ColorRect/VBoxContainer" unique_id=1049064793]
+custom_minimum_size = Vector2(0, 512)
+layout_mode = 2
+text = "Информация о нем"
+
+[node name="OkBtn" type="Button" parent="ColorRect" unique_id=1088576030]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = 29.0
+offset_right = 80.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Ok"

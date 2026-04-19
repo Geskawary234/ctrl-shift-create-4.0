@@ -20,6 +20,7 @@ class_name CameraController
 
 var sens : float = 0.004
 var mouse_input : Vector2
+var mouse_wheel_input : int
 var input : Vector2
 
 func _ready() -> void:
@@ -41,18 +42,27 @@ func update_camera_mode(v : int):
 				camera.reparent(camera_pivot,false)
 					#camera.position = Vector3(0,0.5,0)
 				pawn.angular_velocity.y = 0
+
+func _process(delta: float) -> void:
+	super(delta)
+	mouse_input = Vector2.ZERO
 	
+	if Input.is_action_just_pressed('mw_up'):
+		mouse_wheel_input = 1
+	elif Input.is_action_just_pressed('mw_dn'):
+		mouse_wheel_input = -1
+	else:
+		mouse_wheel_input = 0
+		
+
 
 func _input(event: InputEvent) -> void:
 	# mouse input is controlled by pawn
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and camera.current:
 		mouse_input = -event.relative * sens
 
-func pawn_process(delta: float) -> void:
+func pawn_physics_process(delta: float) -> void:
 	super(delta)
-	if camera_mode == 1:
-		follow_pawn()
-		
 	control_pawn(delta)
 	
 	match camera_mode:
@@ -60,10 +70,18 @@ func pawn_process(delta: float) -> void:
 			control_camera_1st(delta)
 		1:
 			control_camera_3rd(delta)
+
+func pawn_process(delta: float) -> void:
+	super(delta)
+	if camera_mode == 1:
+		follow_pawn()
+		
+	
+	
+	
 	
 	input = Input.get_vector('left','right','forward','back')
 	
-	mouse_input = Vector2.ZERO
 	
 	
 	if Input.is_action_just_pressed('change_view') and allow_mode_change:
@@ -78,21 +96,22 @@ func control_camera_3rd(delta : float):
 	spring_arm.rotation_degrees.x = clamp(spring_arm.rotation_degrees.x,-50,50)
 	spring_arm.spring_length = lerp(spring_arm.spring_length,spring_arm_len,0.1)
 	
+	'''
 	var mw : int
 	if Input.is_action_just_pressed('mw_up'):
 		mw = -1
 	elif Input.is_action_just_pressed('mw_dn'):
 		mw = 1
 		
-	spring_arm_len += mw * delta * 5
+	spring_arm_len += mw * delta * 5'''
 	
 	
 func control_camera_1st(delta : float):
 	#pawn.angular_velocity.y = mouse_input.x * 50
 	#
 	#pawn.angular_velocity.y = mouse_input.x * 50
-	camera.rotate_x(mouse_input.y)
-	pawn.rotate_y(mouse_input.x)
+	camera.rotate_x(mouse_input.y * delta * 50)
+	pawn.rotate_y(mouse_input.x * delta * 50)
 	camera.global_rotation.y = pawn.global_rotation.y
 	camera.rotation.z = 0
 	
@@ -102,6 +121,7 @@ func control_camera_1st(delta : float):
 
 func control_pawn(delta : float):
 	pass
+	
 
 func pawn_changed(old : Pawn):
 	if old:
@@ -112,6 +132,4 @@ func pawn_changed(old : Pawn):
 		#old.axis_lock_angular_z = false
 	
 	spring_arm.add_excluded_object(pawn.get_rid())
-	pawn.axis_lock_angular_x = true
-	pawn.axis_lock_angular_y = true
-	pawn.axis_lock_angular_z = true
+	pawn.lock_rotation = true

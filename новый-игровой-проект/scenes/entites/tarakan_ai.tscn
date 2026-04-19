@@ -1,26 +1,40 @@
 [gd_scene format=3 uid="uid://c3ujlv30r8egx"]
 
 [ext_resource type="Script" uid="uid://dkvt360m1ut8t" path="res://src/entities/pawns/tarakan_pawn.gd" id="1_fsfg4"]
-[ext_resource type="Texture2D" uid="uid://ihx83ehut38s" path="res://assets/cockroach.png" id="2_whr1p"]
+[ext_resource type="PackedScene" uid="uid://cu51knig8absp" path="res://assets/models/tarakan/cocroch.glb" id="2_388hn"]
 [ext_resource type="Script" uid="uid://5kxmhexva6rp" path="res://src/entities/ai controllers/ai_controller_tarakan.gd" id="3_388hn"]
 [ext_resource type="Texture2D" uid="uid://1ct17ufk8t6s" path="res://assets/textures/lamp bg.png" id="4_x37ky"]
 [ext_resource type="Texture2D" uid="uid://bungnb5ysbywl" path="res://assets/textures/lamp front.png" id="5_y8f67"]
 [ext_resource type="Texture2D" uid="uid://bpo4c1bk10xfp" path="res://assets/textures/alerted.png" id="6_whr1p"]
+[ext_resource type="Texture2D" uid="uid://dfp47qkyeawh4" path="res://assets/textures/cockroach language.png" id="7_388hn"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cmv3r"]
 friction = 0.0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_082oi"]
-size = Vector3(0.17272949, 0.1685791, 0.18652344)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vtver"]
+radius = 0.010253906
+height = 0.052734375
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_fsfg4"]
 viewport_path = NodePath("ProgBarView/SubViewport")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fsfg4"]
-radius = 7.0477366
+radius = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x37ky"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("7_388hn")
+billboard_mode = 3
+particles_anim_h_frames = 6
+particles_anim_v_frames = 5
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y8f67"]
+size = Vector2(0.1, 0.1)
+orientation = 2
 
 [node name="Tarakan" type="RigidBody3D" unique_id=174570234]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 collision_layer = 4
 collision_mask = 7
 axis_lock_angular_x = true
@@ -28,18 +42,16 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 mass = 0.002
 physics_material_override = SubResource("PhysicsMaterial_cmv3r")
-continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_fsfg4")
 metadata/_custom_type_script = "uid://c7d431onisa8u"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1456903613]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0034789443, 0.08302921, 0)
-shape = SubResource("BoxShape3D_082oi")
+transform = Transform3D(0.99999297, 0, 0, 0, -4.371139e-08, -0.999993, 0, 0.99999994, -4.371108e-08, 0, 0.0063275564, 0.007176783)
+shape = SubResource("CapsuleShape3D_vtver")
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=829318674]
-transform = Transform3D(0.025, 0, 0, 0, -1.0927848e-09, 0.025, 0, -0.025, -1.0927848e-09, 0, 0, 0)
-modulate = Color(1, 0.28627452, 0.30980393, 1)
-texture = ExtResource("2_whr1p")
+[node name="cocroch" parent="." unique_id=1857519142 instance=ExtResource("2_388hn")]
 
 [node name="AiController" type="Node3D" parent="." unique_id=128399844 node_paths=PackedStringArray("pawn")]
 script = ExtResource("3_388hn")
@@ -47,7 +59,7 @@ pawn = NodePath("..")
 metadata/_custom_type_script = "uid://c2u11awj85p74"
 
 [node name="ProgBarView" type="Sprite3D" parent="." unique_id=822148224]
-transform = Transform3D(0.040000003, 0, 0, 0, 0.04, 0, 0, 0, 0.040000003, 0, 0.17777151, 0)
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0.115249455, 0)
 visible = false
 billboard = 1
 texture = SubResource("ViewportTexture_fsfg4")
@@ -97,7 +109,31 @@ collision_mask = 4
 shape = SubResource("SphereShape3D_fsfg4")
 
 [node name="AlertedSprite" type="Sprite3D" parent="." unique_id=74219631]
-transform = Transform3D(0.095, 0, 0, 0, 0.095, 0, 0, 0, 0.095, 0, 0.38388032, 0)
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0, 0.12199515, 0)
 visible = false
 billboard = 1
 texture = ExtResource("6_whr1p")
+
+[node name="SpeakingParticles" type="CPUParticles3D" parent="." unique_id=2013339897]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0.08040097, 0)
+material_override = SubResource("StandardMaterial3D_x37ky")
+emitting = false
+amount = 1
+lifetime = 1.5
+randomness = 1.0
+lifetime_randomness = 0.42
+mesh = SubResource("PlaneMesh_y8f67")
+direction = Vector3(0, 1, 0)
+spread = 25.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.1
+initial_velocity_max = 0.2
+anim_offset_max = 1.0
+
+[node name="FmodEventEmitter3D" type="FmodEventEmitter3D" parent="." unique_id=1959140124]
+event_name = "event:/Night Ambience"
+event_guid = "{4d22a1c4-078f-4292-8cc8-294eaaa66598}"
+volume = 0.05
+"fmod_parameters/Day Nigth/id" = 828056755478705013
+"fmod_parameters/Day Nigth" = 0
+"fmod_parameters/Day Nigth/variant_type" = 2

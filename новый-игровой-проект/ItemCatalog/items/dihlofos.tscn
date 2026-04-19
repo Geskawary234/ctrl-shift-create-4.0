@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://chnqllcg560j6"]
+
+[ext_resource type="PackedScene" uid="uid://b4xfkcwd8u42x" path="res://Basic/scenes/Item/PickableItem/pickable_item_base.tscn" id="1_j8432"]
+[ext_resource type="Script" uid="uid://2ol2olo6xkog" path="res://src/items/pickable/Dihlofos.gd" id="2_iqvoe"]
+[ext_resource type="Script" uid="uid://bafpw1lj87nk8" path="res://Basic/src/inventory/InventoryItem.gd" id="3_0jsk1"]
+[ext_resource type="PackedScene" uid="uid://cy511k8v5b1ox" path="res://assets/models/Dihlofos 1.fbx" id="3_iqvoe"]
+[ext_resource type="Texture2D" uid="uid://b5j11qaf16fpk" path="res://assets/textures/green_gas_spritesheet_transparent.png" id="5_pyicr"]
+
+[sub_resource type="Resource" id="Resource_pyicr"]
+script = ExtResource("3_0jsk1")
+item_name = "Дихлофоз"
+scene = "res://ItemCatalog/items/dihlofos.tscn"
+metadata/_custom_type_script = "uid://bafpw1lj87nk8"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t6ajw"]
+transparency = 1
+albedo_texture = ExtResource("5_pyicr")
+billboard_mode = 3
+particles_anim_h_frames = 12
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cf5dn"]
+size = Vector2(0.3, 0.3)
+orientation = 2
+
+[sub_resource type="Curve" id="Curve_esc85"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_pyicr"]
+top_radius = 0.065
+bottom_radius = 1.41
+height = 1.795
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_t6ajw"]
+points = PackedVector3Array(-0.720815, -0.87168014, 1.1873654, -0.2574781, -0.8826681, -1.3742926, -0.4288925, -0.88162917, -1.3296742, 0.08099425, 0.83119243, -0.08124895, 1.3740503, -0.8823405, 0.2574327, -1.3742903, -0.8826666, -0.25747767, 0.4801323, -0.8975, 1.3098994, 0.990284, -0.8848237, -0.990284, -0.08123047, 0.83100295, 0.08123047, -1.2778534, -0.87559843, 0.55378985, -1.0998951, -0.8697481, -0.8461955, 0.990284, -0.8848237, 0.990284, 0.4801323, -0.8975, -1.3098994, 1.3296051, -0.8814113, -0.42860147, -0.25747767, -0.8826666, 1.3742903, -0.08123047, 0.83100295, -0.08123047, 0.08099458, 0.83119583, 0.08124928, -0.9434592, -0.8815821, 1.0294482, -1.293486, -0.7499516, 0.121042736, -0.84595567, -0.86950225, -1.0998485, 1.1871606, -0.87136, 0.72069067, 0.12104273, -0.74995154, -1.2934859, 0.121042736, -0.7499516, 1.293486, 1.2932733, -0.7496665, -0.121022835, -1.2778403, -0.87558943, -0.5537842, 1.1871508, -0.87135285, -0.72068477, 0.72069067, -0.87136, -1.1871606, 0.72068477, -0.87135285, 1.1871508, -1.0999005, -0.86975235, 0.84619963, 0.44887474, 0.38519132, 0, -0.07987331, 0.6969386, 0.19980845, -0.079875134, 0.69695455, -0.19981304)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pyicr"]
+height = 0.7290039
+radius = 0.19042969
+
+[node name="Dihlofos" unique_id=935297416 node_paths=PackedStringArray("weapon_scene", "normal_scene") instance=ExtResource("1_j8432")]
+script = ExtResource("2_iqvoe")
+weapon_scene = NodePath("Dihlofos 2")
+normal_scene = NodePath("Dihlofos 1")
+item_info = SubResource("Resource_pyicr")
+
+[node name="Dihlofos 1" parent="." index="0" unique_id=1590323665 instance=ExtResource("3_iqvoe")]
+transform = Transform3D(0.11, 0, 0, 0, 0.11, 0, 0, 0, 0.11, 0, 0, 0)
+
+[node name="Dihlofos 2" parent="." index="1" unique_id=2082607499 instance=ExtResource("3_iqvoe")]
+transform = Transform3D(-0.14406791, 0, 0.016414454, 0, 0.145, 0, -0.016414454, 0, -0.14406791, -0.085, -0.69, 0.42)
+visible = false
+
+[node name="Node3D" type="CPUParticles3D" parent="Dihlofos 2" index="7" unique_id=1527492400]
+transform = Transform3D(1.0000002, 0, 7.450581e-09, 0, 0.9999999, 0, -7.450581e-09, 0, 1.0000002, -0.017182559, 6.237732, 2.7596946)
+material_override = SubResource("StandardMaterial3D_t6ajw")
+emitting = false
+amount = 128
+mesh = SubResource("PlaneMesh_cf5dn")
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.55
+emission_ring_radius = 0.25
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 0, 1)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 3.0
+anim_offset_max = 1.0
+anim_offset_curve = SubResource("Curve_esc85")
+
+[node name="DetectRoaches" type="Area3D" parent="Dihlofos 2" index="8" unique_id=1647021505]
+collision_layer = 0
+collision_mask = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Dihlofos 2/DetectRoaches" index="0" unique_id=221621230]
+transform = Transform3D(4.775, 0, 0, 0, -1.235861, 4.6122956, 0, -4.6122956, -1.235861, -1.63652e-06, 7.1990604, 6.3208227)
+visible = false
+mesh = SubResource("CylinderMesh_pyicr")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Dihlofos 2/DetectRoaches" index="1" unique_id=501906626]
+transform = Transform3D(4.775, 0, 0, 0, -1.2358608, 4.612295, 0, -4.612295, -1.2358608, -1.63652e-06, 7.1990604, 6.3208227)
+shape = SubResource("ConvexPolygonShape3D_t6ajw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2" unique_id=637344022]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3869629, 0)
+shape = SubResource("CylinderShape3D_pyicr")
+
+[node name="FmodEventEmitter3D" type="FmodEventEmitter3D" parent="." index="3" unique_id=484933482]
+event_name = "event:/GAS"
+event_guid = "{74c51cdf-bf11-44bb-87eb-dda26af9a439}"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.012242556, 0)

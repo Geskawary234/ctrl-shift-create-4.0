@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://csinxkwqir5pj"]
+
+[ext_resource type="Script" uid="uid://dfbfp1yfwdgyy" path="res://src/player/pawns/player_human_pawn.gd" id="1_g6npg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dsb46"]
+radius = 0.3
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7517i"]
+radius = 0.3
+
+[node name="Pawn" type="RigidBody3D" unique_id=542977680]
+collision_layer = 2
+mass = 10.0
+script = ExtResource("1_g6npg")
+metadata/_custom_type_script = "uid://c7d431onisa8u"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=219744406]
+shape = SubResource("CapsuleShape3D_dsb46")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1096824363]
+mesh = SubResource("CapsuleMesh_7517i")

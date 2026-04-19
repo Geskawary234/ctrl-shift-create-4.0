@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://os6kn6yevq3t"]
+
+[ext_resource type="Theme" uid="uid://dclvd56sbfv6j" path="res://assets/ui_theme.tres" id="1_77qlt"]
+[ext_resource type="Script" uid="uid://blcjmfswnok1n" path="res://Basic/src/inventory/slot.gd" id="2_6cdc6"]
+
+[node name="Slot" type="Control" unique_id=11648837]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1720.0
+offset_bottom = -880.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_77qlt")
+script = ExtResource("2_6cdc6")
+
+[node name="Panel" type="Panel" parent="." unique_id=1928949361]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemTexture" type="TextureRect" parent="." unique_id=1429142607]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Count" type="Label" parent="." unique_id=1236872084]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -51.0
+offset_right = 50.0
+offset_bottom = -6.0
+grow_vertical = 0
+text = "1"
+horizontal_alignment = 1

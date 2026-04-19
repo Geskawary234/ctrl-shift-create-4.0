@@ -1,0 +1,2 @@
+extends DraggableItem
+class_name HeavyItem

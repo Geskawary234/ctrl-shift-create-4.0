@@ -2,11 +2,15 @@ extends RefCounted
 class_name GameServer
 
 
+
+
 static func spawn(scene : PackedScene, pos : Vector3, owner : Node):
 	var s = scene.instantiate()
 	owner.add_child(s)
 	s.global_position = pos
-
+	
+	return s
+	
 static func play_sound_3d(Stream : AudioStream,owner : Node3D, pos : Vector3, volume : float = 0, remove_after_play : bool = true):
 	var aud : = AudioStreamPlayer3D.new()
 	aud.stream = Stream

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://blivov7br06b6"]
+
+[ext_resource type="PackedScene" uid="uid://b4xfkcwd8u42x" path="res://Basic/scenes/Item/PickableItem/pickable_item_base.tscn" id="1_7vfgl"]
+[ext_resource type="Texture2D" uid="uid://bx40bofn7yy27" path="res://icon.svg" id="2_qbni7"]
+[ext_resource type="Script" uid="uid://bafpw1lj87nk8" path="res://Basic/src/inventory/InventoryItem.gd" id="3_dk1ej"]
+
+[sub_resource type="Resource" id="Resource_ymr3d"]
+script = ExtResource("3_dk1ej")
+item_name = "item1"
+icon = ExtResource("2_qbni7")
+scene = "res://ItemCatalog/items/test item pickable.tscn"
+metadata/_custom_type_script = "uid://bafpw1lj87nk8"
+
+[sub_resource type="BoxMesh" id="BoxMesh_sttyf"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_el8c7"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[node name="PickableItemBase" unique_id=935297416 instance=ExtResource("1_7vfgl")]
+item_info = SubResource("Resource_ymr3d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0" unique_id=1149132971]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+mesh = SubResource("BoxMesh_sttyf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=674682298]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_el8c7")

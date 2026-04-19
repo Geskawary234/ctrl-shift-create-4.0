@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bxx5bj38i5ua5"]
 
-[ext_resource type="Script" uid="uid://ccmwkukm8wn52" path="res://src/player/pawns/player_tarakan_pawn.gd" id="1_b1wyh"]
-[ext_resource type="Texture2D" uid="uid://ihx83ehut38s" path="res://assets/cockroach.png" id="2_b1wyh"]
+[ext_resource type="PackedScene" uid="uid://ngku7byw60b5" path="res://scenes/player/pawns/player_tarakan_pawn.tscn" id="2_imhu7"]
 [ext_resource type="PackedScene" uid="uid://b55rysp664v8q" path="res://scenes/controllers/player_controller.tscn" id="3_imhu7"]
-[ext_resource type="PackedScene" uid="uid://c3ujlv30r8egx" path="res://scenes/entites/tarakan_ai.tscn" id="4_imhu7"]
+[ext_resource type="PackedScene" uid="uid://cbkgchds18sb7" path="res://scenes/powerups/rune.tscn" id="4_imhu7"]
+[ext_resource type="PackedScene" uid="uid://c3ujlv30r8egx" path="res://scenes/entites/tarakan_ai.tscn" id="5_cmv3r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b1wyh"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -18,13 +18,12 @@ sky = SubResource("Sky_imhu7")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_082oi"]
-size = Vector3(0.17272949, 0.1685791, 0.18652344)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_b1wyh"]
-radius = 0.49005398
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_cmv3r"]
 
 [node name="Node3D" type="Node3D" unique_id=220640549]
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=2093007519]
+bank_paths = ["res://assets/FMOD/Master.bank"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=556544431]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -35,45 +34,89 @@ environment = SubResource("Environment_cmv3r")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=348013284]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-use_collision = true
 size = Vector3(100, 1, 100)
-
-[node name="Pawn" type="RigidBody3D" parent="." unique_id=1107291944]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09373811, 0)
-collision_layer = 2
-collision_mask = 5
-mass = 0.002
-continuous_cd = true
-script = ExtResource("1_b1wyh")
-metadata/_custom_type_script = "uid://c7d431onisa8u"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pawn" unique_id=357144598]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003479004, 0.0829511, 0)
-shape = SubResource("BoxShape3D_082oi")
-
-[node name="Sprite3D" type="Sprite3D" parent="Pawn" unique_id=969086272]
-transform = Transform3D(0.025, 0, 0, 0, -1.0927848e-09, 0.025, 0, -0.025, -1.0927848e-09, 0, 0, 0)
-texture = ExtResource("2_b1wyh")
-
-[node name="AlertArea" type="Area3D" parent="Pawn" unique_id=1892719786]
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pawn/AlertArea" unique_id=1426558808]
-shape = SubResource("SphereShape3D_b1wyh")
-debug_color = Color(0.99955755, 0, 0.123644374, 0.41960785)
 
 [node name="PlayerController" parent="." unique_id=458364125 node_paths=PackedStringArray("pawn") instance=ExtResource("3_imhu7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08984372, 0.3845849, 0.9793027)
-speed = 1.5
+speed = 0.5
 camera_mode = 1
-pawn = NodePath("../Pawn")
+pawn = NodePath("../PlayerTarakan")
 
-[node name="Tarakan" parent="." unique_id=174570234 instance=ExtResource("4_imhu7")]
-transform = Transform3D(-0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, -0.7071067, -0.8646416, 0.298522, -1.0164506)
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=548069428]
 
-[node name="Tarakan2" parent="." unique_id=1554800370 instance=ExtResource("4_imhu7")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -1.0194556, 0.01933909, -1.7339845)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1596221826]
+shape = SubResource("WorldBoundaryShape3D_cmv3r")
 
-[node name="Tarakan3" parent="." unique_id=416773853 instance=ExtResource("4_imhu7")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -1.3622395, 0.027589357, -1.485061)
+[node name="Node3D" type="Node3D" parent="." unique_id=397177355]
+
+[node name="PlayerTarakan" parent="." unique_id=1044468272 instance=ExtResource("2_imhu7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0312528, 0)
+
+[node name="Rune" parent="." unique_id=1798234083 instance=ExtResource("4_imhu7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.030696869, 0.09556103, -0.59631383)
+
+[node name="Tarakan" parent="." unique_id=174570234 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.969794, 0.07269186, -0.31290302)
+
+[node name="Tarakan2" parent="." unique_id=249273472 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.167321, 0.0726918, -0.30965024)
+
+[node name="Tarakan3" parent="." unique_id=1610685470 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5214443, 0.07269186, -0.22381634)
+
+[node name="Tarakan4" parent="." unique_id=936004525 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5809982, 0.07269186, -0.07125747)
+
+[node name="Tarakan5" parent="." unique_id=850880603 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4475397, 0.06461024, -0.057415724)
+
+[node name="Tarakan6" parent="." unique_id=31574619 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2901582, 0.06461024, -0.14919561)
+
+[node name="Tarakan7" parent="." unique_id=510190720 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1973939, 0.06461024, -0.03159447)
+
+[node name="Tarakan8" parent="." unique_id=1007310938 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2957336, 0.06461024, 0.021123052)
+
+[node name="Tarakan9" parent="." unique_id=804744201 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0801214, 0.06461024, 0.017060414)
+
+[node name="Tarakan10" parent="." unique_id=421661510 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0368304, 0.06461024, -0.11589062)
+
+[node name="Tarakan11" parent="." unique_id=2068675022 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1109626, 0.06461024, -0.1995987)
+
+[node name="Tarakan12" parent="." unique_id=1540506859 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2712452, 0.06461024, -0.30510595)
+
+[node name="Tarakan13" parent="." unique_id=790788472 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4493558, 0.06461024, -0.28952637)
+
+[node name="Tarakan14" parent="." unique_id=2094093437 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3842226, 0.06461024, -0.20697838)
+
+[node name="Tarakan15" parent="." unique_id=1213620597 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4807498, 0.06461024, -0.18176791)
+
+[node name="Tarakan16" parent="." unique_id=2057794464 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5160121, 0.06461024, -0.0536263)
+
+[node name="Tarakan17" parent="." unique_id=901298515 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5316551, 0.06461024, 0.023641288)
+
+[node name="Tarakan18" parent="." unique_id=277080188 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3934674, 0.06461024, 0.07535255)
+
+[node name="Tarakan19" parent="." unique_id=1382972420 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2590702, 0.06461024, 0.13917768)
+
+[node name="Tarakan20" parent="." unique_id=1685820285 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2095426, 0.06461024, 0.11135544)
+
+[node name="Tarakan21" parent="." unique_id=274486577 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2624379, 0.06461024, -0.07426463)
+
+[node name="Tarakan22" parent="." unique_id=614573457 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2191068, 0.06461024, -0.12130888)

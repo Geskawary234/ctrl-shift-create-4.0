@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b4xfkcwd8u42x"]
+
+[ext_resource type="PackedScene" uid="uid://c5ri50c4ueoc4" path="res://Basic/scenes/Item/item_base.tscn" id="1_bluel"]
+[ext_resource type="Script" uid="uid://yogjetmqy02q" path="res://Basic/src/item/PickableItem.gd" id="2_sxdmm"]
+
+[node name="PickableItemBase" unique_id=935297416 instance=ExtResource("1_bluel")]
+script = ExtResource("2_sxdmm")
+item_info = null

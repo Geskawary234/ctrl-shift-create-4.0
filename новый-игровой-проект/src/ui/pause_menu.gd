@@ -9,9 +9,15 @@ extends Control
 
 func _ready() -> void:
 	
-	play.pressed.connect(pause_manager.pause_tree)
+	play.pressed.connect(
+		func(): 
+		hide()
+		pause_manager.pause_tree()
+		)
 	
 	settings.pressed.connect(func(): 
 		settings_ui.show()
 		hide()
 		)
+	
+	quit.pressed.connect(func(): get_tree().change_scene_to_file('res://scenes/ui/main_menu.tscn'))

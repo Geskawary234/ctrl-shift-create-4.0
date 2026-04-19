@@ -1,8 +1,15 @@
 [gd_scene format=3 uid="uid://cdrwegb4kspn"]
 
-[ext_resource type="Script" uid="uid://c7d431onisa8u" path="res://Basic/src/Pawn.gd" id="1_yggfj"]
+[ext_resource type="PackedScene" uid="uid://csinxkwqir5pj" path="res://scenes/player/pawns/player_human_pawn.tscn" id="1_ry45r"]
 [ext_resource type="PackedScene" uid="uid://b55rysp664v8q" path="res://scenes/controllers/player_controller.tscn" id="2_eig8f"]
-[ext_resource type="Script" uid="uid://d3u0tcpmpbqng" path="res://Basic/src/item/item.gd" id="4_ry45r"]
+[ext_resource type="PackedScene" uid="uid://cmgx01rh0rx35" path="res://scenes/objects/trash_bin.tscn" id="5_dsb46"]
+[ext_resource type="PackedScene" uid="uid://cfwcsk2evqt3e" path="res://ItemCatalog/dorm/capboardB.tscn" id="5_uofsi"]
+[ext_resource type="PackedScene" uid="uid://dfsbrgkdhvwqp" path="res://ItemCatalog/dorm/chair.tscn" id="6_jenrn"]
+[ext_resource type="PackedScene" uid="uid://l4jhuhehqrub" path="res://ItemCatalog/items/test_light_item.tscn" id="6_uofsi"]
+[ext_resource type="PackedScene" uid="uid://cdq5m407smmqp" path="res://ItemCatalog/dorm/wcapboard.tscn" id="7_jenrn"]
+[ext_resource type="PackedScene" uid="uid://cuedytqi7hu8b" path="res://ItemCatalog/dorm/table_1.tscn" id="8_mm0ke"]
+[ext_resource type="PackedScene" uid="uid://5b5ngrg31r5n" path="res://ItemCatalog/items/castrylebuben.tscn" id="9_ymr3d"]
+[ext_resource type="PackedScene" uid="uid://bf3rvimmn78aj" path="res://ItemCatalog/other/trash_bag.tscn" id="10_5fw7c"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eig8f"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -16,21 +23,6 @@ background_mode = 2
 sky = SubResource("Sky_7517i")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dsb46"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_7517i"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_eig8f"]
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7517i"]
-points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ry45r"]
-size = Vector3(0.5, 0.5, 0.5)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ry45r"]
-points = PackedVector3Array(-0.25, -0.25, -0.25, 0.25, 0.25, 0.25, 0.25, -0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.25, 0.25, 0.25, -0.25, -0.25, -0.25, -0.25, 0.25, -0.25, 0.25, -0.25)
 
 [node name="Node3D" type="Node3D" unique_id=592294767]
 
@@ -46,46 +38,46 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 use_collision = true
 size = Vector3(10, 1, 10)
 
-[node name="Pawn" type="RigidBody3D" parent="." unique_id=571182842]
+[node name="Pawn" parent="." unique_id=542977680 instance=ExtResource("1_ry45r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-collision_layer = 2
-mass = 70.0
-script = ExtResource("1_yggfj")
-metadata/_custom_type_script = "uid://c7d431onisa8u"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pawn" unique_id=1534702876]
-shape = SubResource("CapsuleShape3D_dsb46")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pawn" unique_id=1464491911]
-mesh = SubResource("CapsuleMesh_7517i")
+collision_mask = 17
+mass = 1.0
 
 [node name="PlayerController" parent="." unique_id=458364125 node_paths=PackedStringArray("pawn") instance=ExtResource("2_eig8f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8379469, 0, -0.71716845)
-camera_mode = 1
 pawn = NodePath("../Pawn")
 
-[node name="Tarakan" type="RigidBody3D" parent="." unique_id=651035833]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5318553, 0.18030053, 0)
-script = ExtResource("1_yggfj")
-metadata/_custom_type_script = "uid://c7d431onisa8u"
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=756948009]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7173905, 1.8894563, -3.7496197)
+use_collision = true
+size = Vector3(4.8154297, 1, 1)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tarakan" unique_id=754036717]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-mesh = SubResource("BoxMesh_eig8f")
+[node name="trash bin" parent="." unique_id=1796790966 instance=ExtResource("5_dsb46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7526839, 0.015586376, -0.5315733)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tarakan" unique_id=1937212441]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_7517i")
+[node name="TestLightItem" parent="." unique_id=935297416 instance=ExtResource("6_uofsi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4896595, 0.14999977, 1.0694301)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1514972199]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54750896, -3.3579507)
-script = ExtResource("4_ry45r")
-metadata/_custom_type_script = "uid://d3u0tcpmpbqng"
+[node name="TestLightItem2" parent="." unique_id=1576963414 instance=ExtResource("6_uofsi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.053073, 0.14999977, 1.2240124)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=329606935]
-transform = Transform3D(1, 0, 0, 0, 7.055, 0, 0, 0, 1, 0, 1.5367293, 0)
-mesh = SubResource("BoxMesh_ry45r")
+[node name="TestLightItem3" parent="." unique_id=909958270 instance=ExtResource("6_uofsi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9934604, 0.14999977, 1.2478335)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=139823788]
-transform = Transform3D(1, 0, 0, 0, 7.055, 0, 0, 0, 1, 0, 1.5367293, 0)
-shape = SubResource("ConvexPolygonShape3D_ry45r")
+[node name="CapboardB" parent="." unique_id=60780885 instance=ExtResource("5_uofsi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.408654, 4.7683716e-07, -0.15834522)
+
+[node name="Chair" parent="." unique_id=1363630744 instance=ExtResource("6_jenrn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4203327, 0, 0.90396357)
+
+[node name="Wcapboard" parent="." unique_id=755161502 instance=ExtResource("7_jenrn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9207313, 0.10176623, 1.5462646)
+
+[node name="Table1" parent="." unique_id=1333208781 instance=ExtResource("8_mm0ke")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7866459, 0, 2.9269)
+
+[node name="Castrylebuben" parent="." unique_id=1591021361 instance=ExtResource("9_ymr3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6063817, 0.40661415, 1.1220558)
+
+[node name="Trash Bag" parent="." unique_id=1570949886 instance=ExtResource("10_5fw7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7488283, 0.46742564, 2.4707546)

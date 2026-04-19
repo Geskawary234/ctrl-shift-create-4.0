@@ -21,15 +21,19 @@ func _ready() -> void:
 		pawn_changed(null)
 
 func _process(delta: float) -> void:
-	pass
-
-func _physics_process(delta: float) -> void:
 	if pawn:
 		pawn_process(delta)
 
+func _physics_process(delta: float) -> void:
+	if pawn:
+		pawn_physics_process(delta)
+
 func pawn_process(delta : float):
 	pass
-	
+
+func pawn_physics_process(delta : float):
+	pass
+
 func follow_pawn():
 	global_position = global_position.lerp(pawn.global_position,1)
 

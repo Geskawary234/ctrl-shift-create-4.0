@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://l4jhuhehqrub"]
+
+[ext_resource type="PackedScene" uid="uid://c7i7vfgk16c7" path="res://Basic/scenes/Item/draggable item/draggable_item_base.tscn" id="1_rv87x"]
+[ext_resource type="Script" uid="uid://cd446xyhkeyq2" path="res://Basic/src/item/Draggable items/LightItem.gd" id="2_elkrh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ftvs5"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vscut"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[node name="TestLightItem" unique_id=935297416 instance=ExtResource("1_rv87x")]
+script = ExtResource("2_elkrh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0" unique_id=1891436660]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+mesh = SubResource("BoxMesh_ftvs5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=209397494]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_vscut")

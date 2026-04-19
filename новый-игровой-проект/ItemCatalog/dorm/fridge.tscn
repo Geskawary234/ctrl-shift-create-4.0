@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b3uu3ber28k3f"]
+
+[ext_resource type="PackedScene" uid="uid://c7i7vfgk16c7" path="res://Basic/scenes/Item/draggable item/draggable_item_base.tscn" id="1_3n3vw"]
+[ext_resource type="Script" uid="uid://dywj6ekevdftc" path="res://Basic/src/item/Draggable items/HeavyItem.gd" id="2_b6t77"]
+[ext_resource type="PackedScene" uid="uid://bvy36mx82qy7w" path="res://assets/models/dorm/fridge.glb" id="3_htcjq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aooun"]
+size = Vector3(0.5995407, 1.6108398, 0.6645508)
+
+[node name="Fridge" unique_id=935297416 instance=ExtResource("1_3n3vw")]
+mass = 120.0
+script = ExtResource("2_b6t77")
+
+[node name="Fridge" parent="." index="0" unique_id=1095652795 instance=ExtResource("3_htcjq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9764026, 2.3841858e-07, -0.2167896)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=1485747969]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.033664703, 0.7800293, 0.055847168)
+shape = SubResource("BoxShape3D_aooun")
