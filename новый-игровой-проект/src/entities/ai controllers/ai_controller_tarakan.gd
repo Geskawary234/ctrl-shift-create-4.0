@@ -20,7 +20,7 @@ var attack_speed : float = 0.4
 var attack_timer : float = 0
 
 #other
-var speed : float = 0.3
+var speed : float = 0.5
 var state : States 
 enum States {
 	Idle,
@@ -108,25 +108,24 @@ func pawn_physics_process(delta : float):
 	else:
 		think_timer -= delta
 		delta_accum += delta
+	
+	pawn.linear_velocity.x = dir.x * speed
+	pawn.linear_velocity.z = dir.z * speed
 
 # cockroach thinks every few moments
 func think(delta_accum : float):
 	speaking_particles.emitting = false
 	match state:
 		States.Idle:
-			pawn.linear_velocity.x = 0
-			pawn.linear_velocity.z = 0
+			dir = Vector3.ZERO
 			
 			
 			if randi_range(0,5) == 0:
-				walk_time = randf_range(0.2,1)
+				walk_time = randf_range(0.8,2)
 				dir = Vector3(randf() * [-1,1].pick_random(),0,randf() * [-1,1].pick_random())
 				state = States.Walking
 				
 		States.Walking:
-			pawn.linear_velocity.x = dir.x * speed
-			pawn.linear_velocity.z = dir.z * speed
-			
 			pawn.look_at(pawn.global_position + dir)
 			
 			
@@ -136,8 +135,7 @@ func think(delta_accum : float):
 				state = States.Idle
 		
 		States.Suspecting:
-			pawn.linear_velocity.x = 0
-			pawn.linear_velocity.z = 0
+			dir = Vector3.ZERO
 			
 			state = States.Idle
 			prog_bar_view.hide()
@@ -151,9 +149,7 @@ func think(delta_accum : float):
 			var d := target.global_position - global_position
 			
 			dir = d.normalized()
-			
-			pawn.linear_velocity.x = dir.x * speed
-			pawn.linear_velocity.z = dir.z * speed
+	
 			
 			if d.length()<=0.05:
 				if attack_timer<=0:
@@ -167,9 +163,7 @@ func think(delta_accum : float):
 			
 		
 		States.Talking:
-			pawn.linear_velocity.x = 0
-			pawn.linear_velocity.z = 0
-			
+			dir = Vector3.ZERO
 
 			pawn.look_at(speaking_partner.global_position)
 				

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b3d3225npkml2"]
 
+[ext_resource type="PackedScene" uid="uid://csgtfqosgi8yl" path="res://scenes/fmod_bank_manager.tscn" id="1_d7p0r"]
 [ext_resource type="PackedScene" uid="uid://b55rysp664v8q" path="res://scenes/controllers/player_controller.tscn" id="2_rn4ej"]
 [ext_resource type="PackedScene" uid="uid://cuedytqi7hu8b" path="res://ItemCatalog/dorm/table_1.tscn" id="4_ke76d"]
 [ext_resource type="PackedScene" uid="uid://bllaaaa886q81" path="res://ItemCatalog/dorm/laptop.tscn" id="5_omv1y"]
@@ -45,8 +46,16 @@ point_count = 5
 
 [node name="Node3D" type="Node3D" unique_id=744744297]
 
-[node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=895111264]
-bank_paths = ["res://assets/FMOD/Master.strings.bank", "res://assets/FMOD/Master.bank", "res://assets/FMOD/Ambience.bank", "res://assets/FMOD/Foley.bank", "res://assets/FMOD/Music.bank"]
+[node name="FmodBankManager" parent="." unique_id=737683508 instance=ExtResource("1_d7p0r")]
+
+[node name="BgMusic" type="FmodEventEmitter3D" parent="." unique_id=394113090]
+event_name = "event:/Day Night Music"
+event_guid = "{838f5ce2-132e-40d6-aafd-f4cffbe9464b}"
+autoplay = true
+volume = 0.2
+"fmod_parameters/Parameter 2/id" = -4589912279821278861
+"fmod_parameters/Parameter 2" = 0
+"fmod_parameters/Parameter 2/variant_type" = 2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2102947191]
 environment = SubResource("Environment_d7p0r")
@@ -151,7 +160,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3181937, -0.22349116, 2.284
 curve = SubResource("Curve3D_d7p0r")
 
 [node name="HolePosition" type="PathFollow3D" parent="HoleTrajectory" unique_id=2040600383]
-transform = Transform3D(-4.3711363e-08, 0, 0.9999994, 0, 1, 0, -0.9999994, 0, -4.3711363e-08, -0.7668524, 0, 0)
-progress = 6.6533575
+transform = Transform3D(-4.3711335e-08, 0, 0.9999988, 0, 1, 0, -0.9999988, 0, -4.3711335e-08, -1.2236168, 0, 0)
+progress = 7.1086965
 
 [node name="Hole" parent="HoleTrajectory/HolePosition" unique_id=1478599438 instance=ExtResource("16_d7p0r")]

@@ -19,3 +19,10 @@ shape = SubResource("CapsuleShape3D_dsb46")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1096824363]
 mesh = SubResource("CapsuleMesh_7517i")
+
+[node name="Footsteps" type="FmodEventEmitter3D" parent="." unique_id=376470365]
+event_name = "event:/Footsteps"
+event_guid = "{86104cf6-74a1-4fe7-aac5-71123e581f88}"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9249871, 0)
+
+[node name="Timer" type="Timer" parent="." unique_id=1841888765]

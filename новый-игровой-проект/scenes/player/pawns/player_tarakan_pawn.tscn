@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ngku7byw60b5"]
 
 [ext_resource type="Script" uid="uid://ccmwkukm8wn52" path="res://src/player/pawns/player_tarakan_pawn.gd" id="1_qodcx"]
+[ext_resource type="PhysicsMaterial" uid="uid://mleklhpl6kxc" path="res://assets/TarakanPhysicsMaterial.tres" id="1_ud0og"]
 [ext_resource type="PackedScene" uid="uid://bmxw4kevf4q4g" path="res://assets/models/cyber tarakan/RoboTarakan.glb" id="2_ud0og"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_imhu7"]
@@ -14,6 +15,7 @@ radius = 0.49005398
 collision_layer = 2
 collision_mask = 5
 mass = 0.002
+physics_material_override = ExtResource("1_ud0og")
 continuous_cd = true
 script = ExtResource("1_qodcx")
 _health = 25.0

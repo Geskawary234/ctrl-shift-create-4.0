@@ -8,15 +8,22 @@ extends Control
 var minimum_db : float = -50
 
 var master_bus : FmodBus
+var ambience_bus : FmodBus
+var foley_bus : FmodBus
+var music_bus : FmodBus
 # {46c0fd1b-b4e8-409d-bf66-41cf1ea4d0f9} - master bus
 
 func _ready() -> void:
 	
-	master_bus = FmodServer.get_bus_from_guid('{46c0fd1b-b4e8-409d-bf66-41cf1ea4d0f9}')
+	master_bus = Global.master_bus
+	ambience_bus = Global.ambience_bus
+	foley_bus = Global.foley_bus
+	music_bus = Global.music_bus
 	
-	master.value = get_volume(0)
-	sfx.value = get_volume(1)
-	music.value = get_volume(2)
+	
+	master.value = master_bus.volume * 100
+	sfx.value = foley_bus.volume * 100
+	music.value = music_bus.volume * 100
 	
 	master.value_changed.connect(master_changed)
 	sfx.value_changed.connect(sfx_changed)
@@ -25,12 +32,17 @@ func _ready() -> void:
 func master_changed(v : float):	
 	#change_volume(0,v)
 	master_bus.volume = v/100
+	Global.master_volume = v/100
 	
 func sfx_changed(v : float):
-	change_volume(1,v)
+	foley_bus.volume = v/100
+	Global.sound_volume = v/100
 
 func music_changed(v : float):
-	change_volume(2,v)
+	music_bus.volume = v/100
+	ambience_bus.volume = v/100
+	
+	Global.music_volume = v/100
 
 func change_volume(bus_index : int, slider_val : float):
 	var vol : float = minimum_db * (1 - (slider_val/100))

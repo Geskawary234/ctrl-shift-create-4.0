@@ -106,6 +106,3 @@ text = "Звук"
 [node name="Back" type="Button" parent="VBoxContainer" unique_id=889873292]
 layout_mode = 2
 text = "Назад"
-
-[node name="SFXBank" type="FmodBankLoader" parent="." unique_id=1080641138]
-bank_paths = ["res://assets/FMOD/Ambience.bank", "res://assets/FMOD/Master.bank", "res://assets/FMOD/Foley.bank", "res://assets/FMOD/Music.bank"]

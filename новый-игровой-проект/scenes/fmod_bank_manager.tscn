@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://csgtfqosgi8yl"]
+
+[ext_resource type="Script" uid="uid://dbcbev5lifmd6" path="res://src/FMOD/fmod_bank_manager.gd" id="1_uv0bv"]
+
+[node name="FmodBankManager" type="FmodBankLoader" unique_id=737683508]
+bank_paths = ["res://assets/FMOD/Master.strings.bank", "res://assets/FMOD/Master.bank", "res://assets/FMOD/Ambience.bank", "res://assets/FMOD/Foley.bank", "res://assets/FMOD/Music.bank"]
+script = ExtResource("1_uv0bv")

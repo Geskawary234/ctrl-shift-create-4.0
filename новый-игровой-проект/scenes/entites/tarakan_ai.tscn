@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://dfp47qkyeawh4" path="res://assets/textures/cockroach language.png" id="7_388hn"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cmv3r"]
-friction = 0.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vtver"]
 radius = 0.010253906
@@ -131,9 +130,6 @@ initial_velocity_max = 0.2
 anim_offset_max = 1.0
 
 [node name="FmodEventEmitter3D" type="FmodEventEmitter3D" parent="." unique_id=1959140124]
-event_name = "event:/Night Ambience"
-event_guid = "{4d22a1c4-078f-4292-8cc8-294eaaa66598}"
+event_name = "event:/Roach"
+event_guid = "{2d655f2c-573f-41b1-b4b2-75efe73bb2b8}"
 volume = 0.05
-"fmod_parameters/Day Nigth/id" = 828056755478705013
-"fmod_parameters/Day Nigth" = 0
-"fmod_parameters/Day Nigth/variant_type" = 2

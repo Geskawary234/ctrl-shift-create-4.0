@@ -47,12 +47,14 @@ func found_item(item: PickableItem) -> void:
 	if inventory.has(item_info):
 		inventory[item_info].append(item)
 		
-		item.set_process(false)
-		item.set_physics_process(false)
-		item.hide()
+		
 		
 	else:
 		inventory[item_info] = [item]
+	
+	item.set_process(false)
+	item.set_physics_process(false)
+	item.hide()
 	
 	player_controller.pawn.add_collision_exception_with(item)
 	item.reparent(hand)
