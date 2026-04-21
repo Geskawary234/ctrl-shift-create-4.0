@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dl4mgekouahnk"]
+
+[ext_resource type="PackedScene" uid="uid://c7i7vfgk16c7" path="res://Basic/scenes/Item/draggable item/draggable_item_base.tscn" id="1_8mlts"]
+[ext_resource type="Script" uid="uid://dywj6ekevdftc" path="res://Basic/src/item/Draggable items/HeavyItem.gd" id="2_faovs"]
+[ext_resource type="PackedScene" uid="uid://didivjr5uxnte" path="res://assets/models/dorm/tumba.glb" id="3_faovs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rc0v2"]
+size = Vector3(0.6224365, 0.6861572, 0.56640625)
+
+[node name="Tumba" unique_id=935297416 instance=ExtResource("1_8mlts")]
+mass = 15.0
+script = ExtResource("2_faovs")
+
+[node name="tumba" parent="." index="1" unique_id=827739329 instance=ExtResource("3_faovs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7639401, 0, 2.4910734)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2" unique_id=1850929255]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.039855957, 0.37286377, 0)
+shape = SubResource("BoxShape3D_rc0v2")

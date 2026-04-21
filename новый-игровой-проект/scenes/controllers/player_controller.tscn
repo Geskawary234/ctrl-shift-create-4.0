@@ -6,9 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://os6kn6yevq3t" path="res://Basic/scenes/inventory/slot.tscn" id="3_6fch3"]
 [ext_resource type="Script" uid="uid://7aa31dj66xpj" path="res://src/ui/game_ui_human.gd" id="3_65r03"]
 [ext_resource type="Script" uid="uid://dwtqctb10xwql" path="res://src/player/pause_manager.gd" id="3_deed6"]
+[ext_resource type="Theme" uid="uid://dclvd56sbfv6j" path="res://assets/ui_theme.tres" id="3_det3y"]
 [ext_resource type="PackedScene" uid="uid://bb4d3qmq28qes" path="res://scenes/ui/settings.tscn" id="3_ub4dc"]
 [ext_resource type="Script" uid="uid://34oq5bctftxf" path="res://src/ui/game_ui_tarakan.gd" id="5_2iugi"]
 [ext_resource type="PackedScene" uid="uid://cbhqwatgn35mo" path="res://scenes/ui/item_info_panel.tscn" id="6_44cuw"]
+[ext_resource type="Script" uid="uid://berewscxd250k" path="res://src/ui/black_screen.gd" id="10_kvy6k"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_65r03"]
 radius = 0.001
@@ -28,23 +30,23 @@ shape = SubResource("SphereShape3D_65r03")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 near = 0.001
 
-[node name="FmodListener3D" type="FmodListener3D" parent="SpringArm3D/CameraPivot/Camera3D" index="0" unique_id=123447587]
-
-[node name="RayCast3D" type="RayCast3D" parent="SpringArm3D/CameraPivot/Camera3D" index="1" unique_id=1699724941]
+[node name="RayCast3D" type="RayCast3D" parent="SpringArm3D/CameraPivot/Camera3D" index="0" unique_id=1699724941]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 target_position = Vector3(0, -2.5, 0)
 collision_mask = 17
 
-[node name="Hand" type="Node3D" parent="SpringArm3D/CameraPivot/Camera3D" index="2" unique_id=1334154316]
+[node name="Hand" type="Node3D" parent="SpringArm3D/CameraPivot/Camera3D" index="1" unique_id=1334154316]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4136425, -0.31445116, -0.92181695)
 
-[node name="GameUIHuman" type="Control" parent="SpringArm3D/CameraPivot/Camera3D" index="3" unique_id=1244215861]
+[node name="GameUIHuman" type="Control" parent="SpringArm3D/CameraPivot/Camera3D" index="2" unique_id=1244215861]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_det3y")
 script = ExtResource("3_65r03")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SpringArm3D/CameraPivot/Camera3D/GameUIHuman" index="0" unique_id=1848599029]
@@ -133,7 +135,6 @@ offset_right = 20.0
 offset_bottom = 58.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "fsafwafsfafwasf"
 
 [node name="ProgressBar" type="ProgressBar" parent="SpringArm3D/CameraPivot/Camera3D/GameUIHuman" index="3" unique_id=572264833]
 layout_mode = 1
@@ -148,10 +149,19 @@ offset_left = -3.0
 offset_top = -36.0
 offset_right = 178.0
 offset_bottom = -13.0
+theme_override_font_sizes/font_size = 16
 text = "Нашествие тараканов"
 
-[node name="GameUITarakan" type="Control" parent="SpringArm3D/CameraPivot/Camera3D" index="4" unique_id=703751507]
-visible = false
+[node name="Days count" type="Label" parent="SpringArm3D/CameraPivot/Camera3D/GameUIHuman" index="4" unique_id=1578448655]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 139.0
+offset_right = 635.0
+offset_bottom = 266.0
+theme_override_font_sizes/font_size = 29
+text = "Дней пережито"
+
+[node name="GameUITarakan" type="Control" parent="SpringArm3D/CameraPivot/Camera3D" index="3" unique_id=703751507]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -159,6 +169,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("3_det3y")
 script = ExtResource("5_2iugi")
 
 [node name="hp" type="ProgressBar" parent="SpringArm3D/CameraPivot/Camera3D/GameUITarakan" index="0" unique_id=774567340]
@@ -168,10 +179,45 @@ offset_top = 39.0
 offset_right = 691.0
 offset_bottom = 113.0
 
-[node name="ItemInfoPanel" parent="SpringArm3D/CameraPivot/Camera3D" index="5" unique_id=1701949197 node_paths=PackedStringArray("pause_manager") instance=ExtResource("6_44cuw")]
+[node name="Label" type="Label" parent="SpringArm3D/CameraPivot/Camera3D/GameUITarakan/hp" index="0" unique_id=282604240]
+layout_mode = 1
+offset_top = -31.0
+offset_right = 40.0
+offset_bottom = -1.0
+text = "Здоровье"
+
+[node name="RunesCount" type="Label" parent="SpringArm3D/CameraPivot/Camera3D/GameUITarakan" index="1" unique_id=922848549]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 130.0
+offset_right = 187.0
+offset_bottom = 160.0
+text = "Рун найдено: "
+
+[node name="ItemInfoPanel" parent="SpringArm3D/CameraPivot/Camera3D" index="4" unique_id=1701949197 node_paths=PackedStringArray("pause_manager") instance=ExtResource("6_44cuw")]
 process_mode = 3
 visible = false
 pause_manager = NodePath("../../../../PauseManager")
+
+[node name="BlackScreen" type="Control" parent="SpringArm3D/CameraPivot/Camera3D" index="5" unique_id=627774785]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("10_kvy6k")
+
+[node name="ColorRect" type="ColorRect" parent="SpringArm3D/CameraPivot/Camera3D/BlackScreen" index="0" unique_id=698606595]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
 
 [node name="Settings" parent="SpringArm3D/CameraPivot/Camera3D" index="6" unique_id=111502333 node_paths=PackedStringArray("pause_menu") instance=ExtResource("3_ub4dc")]
 process_mode = 2
@@ -187,3 +233,5 @@ settings_ui = NodePath("../Settings")
 [node name="PauseManager" type="Node" parent="." index="1" unique_id=612787171]
 process_mode = 3
 script = ExtResource("3_deed6")
+
+[node name="FmodListener3D" type="FmodListener3D" parent="." index="2" unique_id=418568817]

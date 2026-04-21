@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cx8v5q34v07lc"]
+
+[ext_resource type="Theme" uid="uid://dclvd56sbfv6j" path="res://assets/ui_theme.tres" id="1_pc6nu"]
+[ext_resource type="Script" uid="uid://vgg0blfs3gek" path="res://src/ui/ending.gd" id="2_0t4c0"]
+[ext_resource type="PackedScene" uid="uid://csgtfqosgi8yl" path="res://scenes/fmod_bank_manager.tscn" id="3_q1ola"]
+
+[node name="Control" type="Control" unique_id=1281229887]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_pc6nu")
+script = ExtResource("2_0t4c0")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1044105035]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="." unique_id=1734025634]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 102.0
+offset_top = -293.0
+offset_right = 673.0
+offset_bottom = -112.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 67
+text = "Блин, ну проиграл черт"
+
+[node name="FmodBankManager" parent="." unique_id=737683508 instance=ExtResource("3_q1ola")]
+
+[node name="FmodListener2D" type="FmodListener2D" parent="." unique_id=60469367]
+
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="." unique_id=835857610]
+event_guid = "{0000005f-006e-0000-6f00-000064000000}"
+autoplay = true

@@ -5,5 +5,12 @@
 [node name="ItemBase" type="RigidBody3D" unique_id=935297416]
 collision_layer = 16
 collision_mask = 19
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_3we51")
 metadata/_custom_type_script = "uid://d3u0tcpmpbqng"
+
+[node name="ObjectThrow" type="FmodEventEmitter3D" parent="." unique_id=565301884]
+event_name = "event:/Objects throw"
+event_guid = "{784f1754-c73f-4c88-96a6-46f83a43c358}"
+volume = 0.5

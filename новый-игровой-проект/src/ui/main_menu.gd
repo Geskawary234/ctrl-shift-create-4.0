@@ -20,8 +20,11 @@ func _ready() -> void:
 	
 	quit_btn.pressed.connect(func(): get_tree().quit())
 	
-	play_btn.pressed.connect(func(): get_tree().change_scene_to_file('res://tests/test_map.tscn'))
+	play_btn.pressed.connect(func(): get_tree().change_scene_to_file('res://scenes/game_map.tscn'))
 	
 	
-	await get_tree().create_timer(7,false).timeout
+	await get_tree().create_timer(9,false).timeout
 	Global.intro_played = true
+
+func _process(delta: float) -> void:
+	$BgMusic.volume = Global.music_volume

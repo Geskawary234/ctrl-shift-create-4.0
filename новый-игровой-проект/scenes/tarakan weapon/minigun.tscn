@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://h4go4mc2ale1"]
+
+[ext_resource type="PackedScene" uid="uid://cjt1p7suy6a2" path="res://assets/models/cyber tarakan/mini_gun_anim_1-36.glb" id="1_sgt3s"]
+[ext_resource type="Script" uid="uid://cmfkjv5wgk232" path="res://src/cockroach_weapons/weapon.gd" id="2_1ynbn"]
+[ext_resource type="PackedScene" uid="uid://d1cclyjfqn6g4" path="res://scenes/tarakan weapon/targeting_area.tscn" id="3_1ynbn"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_w8r3n"]
+height = 0.40680665
+radius = 0.04
+
+[node name="Minigun" unique_id=1891481190 node_paths=PackedStringArray("ap") instance=ExtResource("1_sgt3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015481813, -0.023244033, 3.7252903e-09)
+script = ExtResource("2_1ynbn")
+ap = NodePath("AnimationPlayer")
+deployed = true
+
+[node name="Cube" parent="." index="0" unique_id=1350318620]
+transform = Transform3D(-0.99553496, 0.09439237, 9.567481e-08, -0.09439237, -0.99553496, -8.703243e-08, 8.7032426e-08, -9.567479e-08, 1, 0.013783532, 0.01672136, 0.015209585)
+
+[node name="pila_002" parent="." index="1" unique_id=1423941431]
+transform = Transform3D(4.3710827e-11, -0.0009999871, -1.5099386e-10, -0.0009999871, -4.3710827e-11, -1.0658004e-17, 4.0578528e-18, 1.5099386e-10, -0.0009999871, 0.025656171, 0.015967159, 0.015850898)
+
+[node name="Cylinder" parent="." index="2" unique_id=1694619891]
+transform = Transform3D(0.0009999871, 0, 0, 0, -1.281076e-11, -0.0009999871, 0, 0.00029307604, -4.3710827e-11, 0.025659105, 0.015967159, 0.015850533)
+
+[node name="Cylinder_001" parent="." index="3" unique_id=1553050049]
+transform = Transform3D(0.0009999871, 0, 0, 0, -1.281076e-11, -0.0009999871, 0, 0.00029307604, -4.3710827e-11, 0.025659105, 0.015967159, 0.015850246)
+
+[node name="pila_001" parent="." index="4" unique_id=481022397]
+transform = Transform3D(4.056871e-11, -0.0009281039, -1.2096069e-10, -0.0009281039, -4.056871e-11, -1.1384123e-17, 7.063444e-18, 1.401398e-10, -0.0008010864, 0.025659105, 0.015967159, 0.015850952)
+
+[node name="pila_003" parent="." index="5" unique_id=2075771460]
+transform = Transform3D(4.056871e-11, -0.0009281039, -1.1063763e-10, -0.0009281039, -4.056871e-11, -1.0412576e-17, 7.063444e-18, 1.401398e-10, -0.0007327199, 0.025659105, 0.015967159, 0.015850807)
+
+[node name="Targeting Area" parent="." index="7" unique_id=1588663535 node_paths=PackedStringArray("light") instance=ExtResource("3_1ynbn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.027881231, 0.016692426, -0.0004198514)
+damage_timer = 0.01
+light = NodePath("OmniLight3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Targeting Area" index="0" unique_id=1649794841]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.0001743976, 8.6566433e-07, -0.208528)
+shape = SubResource("CylinderShape3D_w8r3n")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Targeting Area" index="1" unique_id=2066624382]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0014224462)
+light_color = Color(1, 1, 0, 1)
+light_energy = 0.0
+omni_range = 0.061765175
+
+[node name="FmodEventEmitter3D" type="FmodEventEmitter3D" parent="Targeting Area" index="2" unique_id=269220853]
+event_name = "event:/Mini Gun"
+event_guid = "{1e9e9ec2-befd-47f0-9ab0-45e658f939af}"
+"fmod_parameters/Parameter 3/id" = -1522818097161509043
+"fmod_parameters/Parameter 3" = 1
+"fmod_parameters/Parameter 3/variant_type" = 2

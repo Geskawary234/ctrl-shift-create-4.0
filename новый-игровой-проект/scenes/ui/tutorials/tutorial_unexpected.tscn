@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dwst2t3c2ubgh"]
+
+[ext_resource type="PackedScene" uid="uid://7yhvxa5qa77w" path="res://scenes/ui/tutorial.tscn" id="1_3pe04"]
+[ext_resource type="Script" uid="uid://cd4suk3qy7kvd" path="res://Basic/src/ResourceObjects/TutorialPart.gd" id="2_hs63t"]
+
+[sub_resource type="Resource" id="Resource_b787j"]
+script = ExtResource("2_hs63t")
+step_text = "Мдаа... и почему она такая злая?"
+speed = 60.0
+metadata/_custom_type_script = "uid://cd4suk3qy7kvd"
+
+[node name="Tutorial_unexpected" unique_id=1970928923 instance=ExtResource("1_3pe04")]
+current_step = 0
+steps = Array[ExtResource("2_hs63t")]([SubResource("Resource_b787j")])
+
+[node name="TutorialName" parent="Control/Panel" parent_id_path=PackedInt32Array(1000018944) index="0" unique_id=1556630717]
+text = "Неожиданно"
+
+[node name="TutorialInfo" parent="Control" parent_id_path=PackedInt32Array(136197617) index="1" unique_id=1644021050]
+text = "Мдаа... и почему она такая злая?"

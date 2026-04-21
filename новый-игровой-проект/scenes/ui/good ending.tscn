@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b7isncws4rnr6"]
+
+[ext_resource type="PackedScene" uid="uid://cx8v5q34v07lc" path="res://scenes/ui/ending.tscn" id="1_8tfbc"]
+[ext_resource type="Texture2D" uid="uid://d2q5xbs1rrepp" path="res://assets/textures/comix/Good ending.png" id="2_fxdxu"]
+
+[node name="Control" unique_id=1281229887 instance=ExtResource("1_8tfbc")]
+
+[node name="TextureRect" parent="." index="0" unique_id=1044105035]
+texture = ExtResource("2_fxdxu")
+
+[node name="Button" parent="." index="1" unique_id=1734025634]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -737.0
+offset_top = -383.0
+offset_right = -166.0
+offset_bottom = -202.0
+grow_horizontal = 0
+text = "УРАА!1!11"
+
+[node name="FmodEventEmitter2D" parent="." index="4" unique_id=835857610]
+event_name = "event:/HappyEnd"
+event_guid = "{a60da7c9-5c85-46bf-b170-4dd4d6b0d854}"

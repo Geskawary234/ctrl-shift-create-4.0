@@ -1,5 +1,9 @@
 [gd_resource type="Theme" format=3 uid="uid://dclvd56sbfv6j"]
 
+[ext_resource type="FontFile" uid="uid://cpn064ar4wxpa" path="res://assets/House of  Terror SHA.otf" id="1_wf4hb"]
+
 [resource]
+default_font = ExtResource("1_wf4hb")
 Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_wf4hb")
 Label/font_sizes/font_size = 32

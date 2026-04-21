@@ -1,6 +1,77 @@
 [gd_scene format=3 uid="uid://o4u27q1po6iq"]
 
+[ext_resource type="PackedScene" uid="uid://du2ddn6yu7jat" path="res://assets/models/items/tapok.glb" id="1_kbira"]
+
+[sub_resource type="Animation" id="Animation_7s1nq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tapok2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-5.9604645e-08, 0.13331497, 0.5173953)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("tapok2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.02193605e-08, -1.2909677, -1.2859935)]
+}
+
+[sub_resource type="Animation" id="Animation_8cgjp"]
+resource_name = "slap"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tapok2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-5.9604645e-08, 0.13331497, 0.5173953), Vector3(-0.09514295, -0.011066407, 0.18631253), Vector3(-5.9604645e-08, 0.13331497, 0.5173953)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("tapok2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666666, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1.02193605e-08, -1.2909677, -1.2859935), Vector3(0.89461446, -1.2380313, -1.2166634), Vector3(1.02193605e-08, -1.2909677, -1.2859935)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uc3es"]
+_data = {
+&"RESET": SubResource("Animation_7s1nq"),
+&"slap": SubResource("Animation_8cgjp")
+}
+
 [node name="Camera3D" type="Camera3D" unique_id=1759717315]
 
 [node name="Hand" type="Node3D" parent="." unique_id=1539207249]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4136425, -0.31445116, -0.92181695)
+
+[node name="Handheld" type="Node3D" parent="Hand" unique_id=2071525621]
+
+[node name="tapok2" parent="Hand/Handheld" unique_id=1237465881 instance=ExtResource("1_kbira")]
+transform = Transform3D(0.0776009, 0.2650651, -0.9611028, -0.95971704, 0.28096825, -1.02193605e-08, 0.2700394, 0.9223866, 0.27619094, -5.9604645e-08, 0.13331497, 0.5173953)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hand/Handheld" unique_id=1388784485]
+libraries/ = SubResource("AnimationLibrary_uc3es")

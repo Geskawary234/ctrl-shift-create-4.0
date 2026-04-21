@@ -9,8 +9,7 @@ class_name CameraController
 		
 		
 			
-		
-		
+
 @export var allow_mode_change : bool = true
 @export var camera : Camera3D
 @export var camera_pivot : Node3D
@@ -70,14 +69,16 @@ func pawn_physics_process(delta: float) -> void:
 			control_camera_1st(delta)
 		1:
 			control_camera_3rd(delta)
-
+	
+	
 func pawn_process(delta: float) -> void:
 	super(delta)
 	if camera_mode == 1:
 		follow_pawn()
 		
 	
-	
+
+
 	
 	
 	input = Input.get_vector('left','right','forward','back')

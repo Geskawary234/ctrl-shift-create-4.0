@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://nxpi53275k7e"]
+
+[ext_resource type="PackedScene" uid="uid://yf1j02rawp0j" path="res://assets/models/cyber tarakan/pila_anim_final_1-12.glb" id="1_kfw63"]
+[ext_resource type="Script" uid="uid://cmfkjv5wgk232" path="res://src/cockroach_weapons/weapon.gd" id="2_xvg3o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xvg3o"]
+metallic = 1.0
+roughness = 0.5
+
+[node name="Pila" unique_id=2088321669 node_paths=PackedStringArray("ap") instance=ExtResource("1_kfw63")]
+script = ExtResource("2_xvg3o")
+ap = NodePath("AnimationPlayer")
+
+[node name="pila_002" parent="." index="0" unique_id=936417324]
+surface_material_override/0 = SubResource("StandardMaterial3D_xvg3o")
+
+[node name="pila_004" parent="." index="1" unique_id=1458712009]
+transform = Transform3D(-2.6109506e-09, -0.009550691, 7.585463e-08, 0.008554642, -3.606668e-08, -0.0042466223, 0.0042466223, 6.678276e-08, 0.008554642, -0.002403438, 5.481097, -1.3273606)
+surface_material_override/0 = SubResource("StandardMaterial3D_xvg3o")
+
+[node name="pila_003" parent="." index="2" unique_id=1531021281]
+transform = Transform3D(4.0008874e-08, -0.09968841, -1.5052532e-08, -0.09968841, -4.0008874e-08, -7.526267e-09, 7.5262605e-09, 1.5052535e-08, -0.09968841, -0.002403386, 5.0657315, 2.2788296)
+surface_material_override/0 = SubResource("StandardMaterial3D_xvg3o")

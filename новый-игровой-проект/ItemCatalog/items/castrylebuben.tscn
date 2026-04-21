@@ -3,17 +3,16 @@
 [ext_resource type="PackedScene" uid="uid://b4xfkcwd8u42x" path="res://Basic/scenes/Item/PickableItem/pickable_item_base.tscn" id="1_dfujh"]
 [ext_resource type="Texture2D" uid="uid://cl7gl57b7ccm8" path="res://assets/textures/effects/dzyn dzyn dzyn.png" id="2_2j4xc"]
 [ext_resource type="Script" uid="uid://b24h51243bg75" path="res://src/items/pickable/Castrylebuben.gd" id="2_ewkbg"]
-[ext_resource type="Texture2D" uid="uid://bdxqr8pumh342" path="res://assets/textures/ui/items/castrulebuben.png" id="3_ewkbg"]
-[ext_resource type="Script" uid="uid://bafpw1lj87nk8" path="res://Basic/src/inventory/InventoryItem.gd" id="4_314t6"]
+[ext_resource type="Texture2D" uid="uid://bqmclai76gm67" path="res://assets/textures/castryla.png" id="3_81dfv"]
+[ext_resource type="Script" uid="uid://bafpw1lj87nk8" path="res://Basic/src/ResourceObjects/InventoryItem.gd" id="4_314t6"]
 [ext_resource type="PackedScene" uid="uid://bqadaa2qk02qx" path="res://assets/models/items/pot.glb" id="5_81dfv"]
 [ext_resource type="PackedScene" uid="uid://d37wxsq6eyfkk" path="res://assets/models/items/bug spoon.glb" id="5_bw3de"]
 
 [sub_resource type="Resource" id="Resource_314t6"]
 script = ExtResource("4_314t6")
 item_name = "Кастрюлебубен"
-icon = ExtResource("3_ewkbg")
-scene = "res://ItemCatalog/items/castrylebuben.tscn"
-description = "Нихуя вот это кастрюля! Ебашь тараканов!"
+icon = ExtResource("3_81dfv")
+description = "Нажимай ЛКМ и оглуши этих надоедливых букашек. Главное не разозлить соседей."
 metadata/_custom_type_script = "uid://bafpw1lj87nk8"
 
 [sub_resource type="Animation" id="Animation_ewkbg"]
@@ -42,10 +41,22 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label3D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_314t6"]
 resource_name = "bang"
-length = 1.3
+length = 10.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -83,6 +94,32 @@ tracks/2/keys = {
 "args": [],
 "method": &"hit_all_roaches"
 }]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node3D/bug spoon/PotSfx")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.56666666),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"play"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label3D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.56666666, 0.6333333, 9.933333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k238y"]
@@ -127,6 +164,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4709028, -0.35203743, -1.19
 [node name="bug spoon" parent="CastrylaModel/Node3D" index="0" unique_id=2078431529 instance=ExtResource("5_bw3de")]
 transform = Transform3D(0.2072629, 3.1295826e-08, -0.97828525, 1.509958e-07, -1, 3.7007437e-15, -0.97828525, -1.4771696e-07, -0.2072629, 0.094456375, 1.2572516, 0)
 
+[node name="PotSfx" type="FmodEventEmitter3D" parent="CastrylaModel/Node3D/bug spoon" index="1" unique_id=2131173541]
+event_name = "event:/Pot"
+event_guid = "{4e363e0f-16e6-4943-9361-37db122463e1}"
+transform = Transform3D(1.0000002, 0, 0, 0, 1, -3.5527137e-15, 0, 0, 1.0000002, -0.009616144, 0.09375346, 0.04538834)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CastrylaModel" index="2" unique_id=599158748]
 libraries/ = SubResource("AnimationLibrary_k238y")
 
@@ -143,6 +185,12 @@ gravity = Vector3(0, 0, 0)
 initial_velocity_min = 0.1
 initial_velocity_max = 1.0
 anim_offset_max = 1.0
+
+[node name="Label3D" type="Label3D" parent="CastrylaModel" index="4" unique_id=93539505]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.382868, 0.6235899, -0.30540174)
+visible = false
+billboard = 1
+text = "timer"
 
 [node name="ModelItem" type="Node3D" parent="." index="1" unique_id=1362719136]
 

@@ -1,5 +1,8 @@
 extends CharacterBody3D
 
+
+	
+
 var normal_changed : float = 0
 var cant_go_normals : Array
 var prev_position : Vector3
@@ -32,5 +35,6 @@ func _physics_process(delta: float) -> void:
 	
 const DEAD_TARAKAN = preload("uid://p7nrccetqxew")
 func die():
+	Global.GM.human_tarakan_kill_count += 1
 	GameServer.spawn(DEAD_TARAKAN,global_position,get_tree().current_scene)
 	queue_free()

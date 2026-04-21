@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://wemm2fupaxei"]
+
+[ext_resource type="PackedScene" uid="uid://7yhvxa5qa77w" path="res://scenes/ui/tutorial.tscn" id="1_duonj"]
+[ext_resource type="Script" uid="uid://cd4suk3qy7kvd" path="res://Basic/src/ResourceObjects/TutorialPart.gd" id="2_yingy"]
+
+[sub_resource type="Resource" id="Resource_n71od"]
+script = ExtResource("2_yingy")
+step_text = "Посмотрите, кто стучит в дверь"
+speed = 50.0
+metadata/_custom_type_script = "uid://cd4suk3qy7kvd"
+
+[node name="unknown intruders tutorial" unique_id=1970928923 instance=ExtResource("1_duonj")]
+current_step = 0
+steps = Array[ExtResource("2_yingy")]([SubResource("Resource_n71od")])
+
+[node name="TutorialName" parent="Control/Panel" parent_id_path=PackedInt32Array(1000018944) index="0" unique_id=1556630717]
+text = "Незванные гости"
+
+[node name="TutorialInfo" parent="Control" parent_id_path=PackedInt32Array(136197617) index="1" unique_id=1644021050]
+text = "Посмотрите, кто стучит в дверь"

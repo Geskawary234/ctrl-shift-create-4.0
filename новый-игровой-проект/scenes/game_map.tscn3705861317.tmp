@@ -1,0 +1,166 @@
+[gd_scene format=3 uid="uid://b3d3225npkml2"]
+
+[ext_resource type="Script" uid="uid://cynm5seosyll4" path="res://src/GameManager.gd" id="1_njjhs"]
+[ext_resource type="PackedScene" uid="uid://csgtfqosgi8yl" path="res://scenes/fmod_bank_manager.tscn" id="1_ohl2k"]
+[ext_resource type="PackedScene" uid="uid://b55rysp664v8q" path="res://scenes/controllers/player_controller.tscn" id="2_njjhs"]
+[ext_resource type="PackedScene" uid="uid://csinxkwqir5pj" path="res://scenes/player/pawns/player_human_pawn.tscn" id="3_lnsab"]
+[ext_resource type="PackedScene" uid="uid://cuedytqi7hu8b" path="res://ItemCatalog/dorm/table_1.tscn" id="4_mwn28"]
+[ext_resource type="PackedScene" uid="uid://bllaaaa886q81" path="res://ItemCatalog/dorm/laptop.tscn" id="5_8r01v"]
+[ext_resource type="PackedScene" uid="uid://dfsbrgkdhvwqp" path="res://ItemCatalog/dorm/chair.tscn" id="6_ubjbs"]
+[ext_resource type="PackedScene" uid="uid://b3uu3ber28k3f" path="res://ItemCatalog/dorm/fridge.tscn" id="7_tayly"]
+[ext_resource type="PackedScene" uid="uid://ctvs4agrpmp07" path="res://ItemCatalog/dorm/table_2.tscn" id="8_dawqo"]
+[ext_resource type="PackedScene" uid="uid://cdq5m407smmqp" path="res://ItemCatalog/dorm/wcapboard.tscn" id="9_4ecoa"]
+[ext_resource type="PackedScene" uid="uid://cfwcsk2evqt3e" path="res://ItemCatalog/dorm/capboardB.tscn" id="10_r0oww"]
+[ext_resource type="PackedScene" uid="uid://c1iv2o56q203g" path="res://ItemCatalog/dorm/bed.tscn" id="11_ol7g8"]
+[ext_resource type="PackedScene" uid="uid://csjqfoeqx554s" path="res://ItemCatalog/dorm/s_capboard.tscn" id="12_x3tw2"]
+[ext_resource type="PackedScene" uid="uid://chnqllcg560j6" path="res://ItemCatalog/items/dihlofos.tscn" id="13_7ub60"]
+[ext_resource type="PackedScene" uid="uid://5b5ngrg31r5n" path="res://ItemCatalog/items/castrylebuben.tscn" id="14_71g7k"]
+[ext_resource type="Script" uid="uid://ekwhxri577me" path="res://src/cutscenes/start_camera.gd" id="15_8ahg6"]
+[ext_resource type="PackedScene" uid="uid://dx00v7u0y4ojl" path="res://scenes/building/dorm_room.tscn" id="16_2t4po"]
+[ext_resource type="PackedScene" uid="uid://h4kseaa5acjh" path="res://scenes/objects/hole.tscn" id="17_t3v3j"]
+
+[sub_resource type="Curve3D" id="Curve3D_d7p0r"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, -5.885, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -4.4916906, 0, 0, 0, 0, 0, 0, 0, 0, -4.492, 0, -5.9228888, 0, 0, 0, 0, 0, 0, 0, 0, -5.885),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Environment" id="Environment_d7p0r"]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
+background_energy_multiplier = 0.0
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rn4ej"]
+size = Vector3(6.7841797, 4.5492554, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ke76d"]
+size = Vector3(8.37915, 4.5492554, 1)
+
+[node name="Node3D" type="Node3D" unique_id=744744297]
+
+[node name="GameManager" type="Node" parent="." unique_id=1956660471 node_paths=PackedStringArray("bg_music")]
+script = ExtResource("1_njjhs")
+bg_music = NodePath("../BgMusic")
+roach_infestation_level = 50.0
+
+[node name="HoleTrajectory" type="Path3D" parent="GameManager" unique_id=2049882899]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3181937, -0.22349116, 2.2848687)
+curve = SubResource("Curve3D_d7p0r")
+
+[node name="HolePosition" type="PathFollow3D" parent="GameManager/HoleTrajectory" unique_id=2040600383]
+transform = Transform3D(-4.3711335e-08, 0, 0.9999988, 0, 1, 0, -0.9999988, 0, -4.3711335e-08, -1.2236168, 0, 0)
+progress = 7.1086965
+
+[node name="Hole" parent="GameManager/HoleTrajectory/HolePosition" unique_id=1478599438 instance=ExtResource("17_t3v3j")]
+
+[node name="StartCamera" type="Camera3D" parent="GameManager" unique_id=1719523108]
+transform = Transform3D(-1, -8.7422784e-08, 3.821371e-15, -1.6220996e-08, 0.18554652, -0.9826355, 8.590472e-08, -0.9826355, -0.18554652, 2.0908804, 0.457914, -2.9634252)
+current = true
+script = ExtResource("15_8ahg6")
+
+[node name="BgTarakansNode" type="Node" parent="GameManager" unique_id=942509024]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2102947191]
+environment = SubResource("Environment_d7p0r")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=491288852]
+transform = Transform3D(-0.99148154, 0.051926896, 0.119449265, 0.11139937, 0.8132741, 0.5711177, -0.0674886, 0.5795593, -0.81213075, 0, 0, 0)
+shadow_enabled = true
+
+[node name="FmodBankManager" parent="." unique_id=737683508 instance=ExtResource("1_ohl2k")]
+
+[node name="BgMusic" type="FmodEventEmitter3D" parent="." unique_id=394113090]
+event_name = "event:/Day Night Music"
+event_guid = "{838f5ce2-132e-40d6-aafd-f4cffbe9464b}"
+volume = 0.2
+"fmod_parameters/Parameter 2/id" = -4589912279821278861
+"fmod_parameters/Parameter 2" = 0
+"fmod_parameters/Parameter 2/variant_type" = 2
+
+[node name="Background assets" type="Node3D" parent="." unique_id=295615932]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Background assets" unique_id=30857939]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1098065, 0)
+omni_range = 29.570816
+
+[node name="Furniture" type="Node3D" parent="Background assets" unique_id=837036097]
+
+[node name="Table1" parent="Background assets/Furniture" unique_id=935297416 instance=ExtResource("4_mwn28")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.046351016, -0.26360452, -3.1139677)
+
+[node name="Laptop" parent="Background assets/Furniture" unique_id=345442934 instance=ExtResource("5_8r01v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13752934, 0.8035009, -2.8439355)
+
+[node name="Chair" parent="Background assets/Furniture" unique_id=930817039 instance=ExtResource("6_ubjbs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20809704, -0.10700989, -2.4040968)
+
+[node name="Fridge" parent="Background assets/Furniture" unique_id=1624273473 instance=ExtResource("7_tayly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8303193, -0.22042358, -0.71160084)
+
+[node name="Table2" parent="Background assets/Furniture" unique_id=1759219209 instance=ExtResource("8_dawqo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6871605, -0.21963704, 0.8191239)
+
+[node name="Wcapboard" parent="Background assets/Furniture" unique_id=1011895048 instance=ExtResource("9_4ecoa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4024559, -0.25580704, 0.45564938)
+
+[node name="Wcapboard2" parent="Background assets/Furniture" unique_id=543900513 instance=ExtResource("9_4ecoa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3512347, -0.25580716, 0.9297664)
+
+[node name="Chair2" parent="Background assets/Furniture" unique_id=309823705 instance=ExtResource("6_ubjbs")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.2011772, -0.26360452, 1.2357602)
+
+[node name="CapboardB" parent="Background assets/Furniture" unique_id=419442321 instance=ExtResource("10_r0oww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0725915, -0.26360452, -0.46702754)
+
+[node name="Bed" parent="Background assets/Furniture" unique_id=1808455437 instance=ExtResource("11_ol7g8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.955342, -0.231968, -2.5387743)
+
+[node name="SCapboard" parent="Background assets/Furniture" unique_id=1672412555 instance=ExtResource("12_x3tw2")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -1.8439023, -0.19692892, -1.3205118)
+
+[node name="SCapboard2" parent="Background assets/Furniture" unique_id=1335530209 instance=ExtResource("12_x3tw2")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -1.8439023, 0.37878048, -1.3205118)
+
+[node name="Tarakan walls" type="StaticBody3D" parent="Background assets" unique_id=536325044]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7436246)
+visible = false
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Background assets/Tarakan walls" unique_id=1133266555]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48870146, 3.5223703)
+shape = SubResource("BoxShape3D_rn4ej")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Background assets/Tarakan walls" unique_id=1610722074]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48870146, -3.4776297)
+shape = SubResource("BoxShape3D_ke76d")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Background assets/Tarakan walls" unique_id=909189787]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.0138922, 0.48870146, 0.0223701)
+shape = SubResource("BoxShape3D_rn4ej")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Background assets/Tarakan walls" unique_id=1083681752]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.9755154, 0.48870146, 0.022370458)
+shape = SubResource("BoxShape3D_ke76d")
+
+[node name="room" parent="Background assets" unique_id=1683976877 instance=ExtResource("16_2t4po")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.040615737, -0.26951176, -0.69477427)
+
+[node name="PlayerController" parent="." unique_id=458364125 node_paths=PackedStringArray("game_manager", "pawn") instance=ExtResource("2_njjhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1933107, 0.64182544, -3.30721)
+game_manager = NodePath("../GameManager")
+speed = 3.0
+pawn = NodePath("../Pawn")
+
+[node name="Pawn" parent="." unique_id=542977680 instance=ExtResource("3_lnsab")]
+transform = Transform3D(-0.9996691, 0, 0.025723308, 0, 1, 0, -0.025723308, 0, -0.9996691, 0.75634074, 0.7288184, -1.7351394)
+collision_mask = 17
+
+[node name="Dihlofos" parent="." unique_id=1673000272 instance=ExtResource("13_7ub60")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.67231804, 0.7040789, -2.9942229)
+
+[node name="Castrylebuben" parent="." unique_id=89131801 instance=ExtResource("14_71g7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6395004, 0.13282394, -2.9589963)

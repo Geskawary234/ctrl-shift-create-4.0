@@ -9,6 +9,6 @@ func _ready() -> void:
 	
 	
 	Global.master_bus.volume = Global.master_volume
-	Global.ambience_bus.volume = Global.music_volume
+	Global.ambience_bus.volume = Global.ambience_volume
 	Global.music_bus.volume = Global.music_volume
 	Global.foley_bus.volume = Global.sound_volume

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cdgwiwb8hatpm"]
+
+[ext_resource type="PackedScene" uid="uid://7yhvxa5qa77w" path="res://scenes/ui/tutorial.tscn" id="1_j7oij"]
+[ext_resource type="Script" uid="uid://bnwuqpd1ly040" path="res://src/tutorials/tutorial_first_day.gd" id="2_bbfu2"]
+[ext_resource type="Script" uid="uid://cd4suk3qy7kvd" path="res://Basic/src/ResourceObjects/TutorialPart.gd" id="3_ba6jx"]
+
+[sub_resource type="Resource" id="Resource_8vxfl"]
+script = ExtResource("3_ba6jx")
+step_text = "Добро пожаловать в ROOM 67! Ты бедный студент в общежитии и на тебя напали дуратские тараканы."
+speed = 50.0
+metadata/_custom_type_script = "uid://cd4suk3qy7kvd"
+
+[sub_resource type="Resource" id="Resource_ba6jx"]
+script = ExtResource("3_ba6jx")
+step_text = "Используйте [WASD] для ходьбы, [C]/[CTRL] для приседа"
+speed = 30.0
+metadata/_custom_type_script = "uid://cd4suk3qy7kvd"
+
+[node name="Tutorial_first_day" unique_id=156787920 instance=ExtResource("1_j7oij")]
+mouse_filter = 2
+script = ExtResource("2_bbfu2")
+steps = Array[ExtResource("3_ba6jx")]([SubResource("Resource_8vxfl"), SubResource("Resource_ba6jx")])
+
+[node name="TutorialInfo" parent="Control" parent_id_path=PackedInt32Array(136197617) index="1" unique_id=1644021050]
+text = "Добро пожаловать в ROOM 67! Ты бедный студент в общежитии и на тебя напали дуратские тараканы."

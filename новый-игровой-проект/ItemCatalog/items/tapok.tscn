@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://cs8vatw444k1j"]
+
+[ext_resource type="PackedScene" uid="uid://b4xfkcwd8u42x" path="res://Basic/scenes/Item/PickableItem/pickable_item_base.tscn" id="1_uf2vn"]
+[ext_resource type="Script" uid="uid://cdlh5l12431hk" path="res://src/items/pickable/tapok.gd" id="2_7s1nq"]
+[ext_resource type="Script" uid="uid://bafpw1lj87nk8" path="res://Basic/src/ResourceObjects/InventoryItem.gd" id="3_7s1nq"]
+[ext_resource type="Texture2D" uid="uid://bh4jv7vpcj2jq" path="res://assets/textures/tapok.png" id="3_8cgjp"]
+[ext_resource type="PackedScene" uid="uid://du2ddn6yu7jat" path="res://assets/models/items/tapok.glb" id="4_7s1nq"]
+
+[sub_resource type="Resource" id="Resource_8cgjp"]
+script = ExtResource("3_7s1nq")
+item_name = "Тапок"
+icon = ExtResource("3_8cgjp")
+description = "Нажимай ЛКМ и шлепай. Это еще нужно объяснять ? Да с этим даже моя бабушка бы справилась !"
+metadata/_custom_type_script = "uid://bafpw1lj87nk8"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8cgjp"]
+size = Vector3(0.45373535, 0.111816406, 0.24316406)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7s1nq"]
+height = 0.35009766
+radius = 0.44921875
+
+[sub_resource type="Animation" id="Animation_7s1nq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tapok2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-5.9604645e-08, 0.13331497, 0.5173953)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("tapok2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.02193605e-08, -1.2909677, -1.2859935)]
+}
+
+[sub_resource type="Animation" id="Animation_8cgjp"]
+resource_name = "slap"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tapok2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-5.9604645e-08, 0.13331497, 0.5173953), Vector3(-0.09514295, -0.011066407, 0.18631253), Vector3(-5.9604645e-08, 0.13331497, 0.5173953)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("tapok2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666666, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1.02193605e-08, -1.2909677, -1.2859935), Vector3(0.89461446, -1.2380313, -1.2166634), Vector3(1.02193605e-08, -1.2909677, -1.2859935)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.16666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hit_cocks"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fwyyf"]
+_data = {
+&"RESET": SubResource("Animation_7s1nq"),
+&"slap": SubResource("Animation_8cgjp")
+}
+
+[node name="Tapok" unique_id=935297416 node_paths=PackedStringArray("weapon_scene", "normal_scene") instance=ExtResource("1_uf2vn")]
+script = ExtResource("2_7s1nq")
+weapon_scene = NodePath("Handheld")
+normal_scene = NodePath("ItemModel")
+item_info = SubResource("Resource_8cgjp")
+
+[node name="ItemModel" type="Node3D" parent="." index="1" unique_id=1064815941]
+
+[node name="tapok2" parent="ItemModel" index="0" unique_id=1237465881 instance=ExtResource("4_7s1nq")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2" unique_id=1716345240]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16522217, 0.043652058, 0)
+shape = SubResource("BoxShape3D_8cgjp")
+
+[node name="Handheld" type="Node3D" parent="." index="3" unique_id=530228633]
+visible = false
+
+[node name="tapok2" parent="Handheld" index="0" unique_id=612149152 instance=ExtResource("4_7s1nq")]
+transform = Transform3D(0.0776009, 0.26506504, -0.9611028, -0.95971704, 0.2809682, -1.02193605e-08, 0.2700394, 0.9223864, 0.27619094, -5.9604645e-08, 0.13331497, 0.5173953)
+
+[node name="SlapArea" type="Area3D" parent="Handheld/tapok2" index="1" unique_id=1493989159]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -0.16029213, -0.09351392, 0.0067922175)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Handheld/tapok2/SlapArea" index="0" unique_id=893667539]
+transform = Transform3D(1.0000077, -3.799796e-07, 2.8312206e-07, -5.811453e-07, 1.0000116, -8.940697e-08, -3.9245933e-06, 1.7285347e-06, 1.0000024, -0.002729088, -0.085994795, -0.0059255958)
+shape = SubResource("CylinderShape3D_7s1nq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Handheld" index="1" unique_id=1959123319]
+libraries/ = SubResource("AnimationLibrary_fwyyf")

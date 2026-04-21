@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://bf3rvimmn78aj"]
 
 [ext_resource type="PackedScene" uid="uid://c7i7vfgk16c7" path="res://Basic/scenes/Item/draggable item/draggable_item_base.tscn" id="1_1lexh"]
-[ext_resource type="PackedScene" uid="uid://cvt74oc6km81b" path="res://ItemCatalog/other/trash bag/trash_bag_model.tscn" id="2_pjghy"]
+[ext_resource type="PackedScene" uid="uid://cwv5bs0yifq0f" path="res://assets/models/trash/trashbag.glb" id="2_1lexh"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5lfe6"]
-radius = 0.3885219
+radius = 0.31211632
 
 [node name="Trash Bag" unique_id=935297416 instance=ExtResource("1_1lexh")]
 
-[node name="trash bag" parent="." index="0" unique_id=2006004368 instance=ExtResource("2_pjghy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23885441, 0, -0.043656588)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=532730145]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0" unique_id=532730145]
 shape = SubResource("SphereShape3D_5lfe6")
+
+[node name="trashbag" parent="." index="2" unique_id=1196597306 instance=ExtResource("2_1lexh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14508943, -0.2518591, 0)

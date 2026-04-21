@@ -18,6 +18,7 @@ metadata/_custom_type_script = "uid://c7d431onisa8u"
 shape = SubResource("CapsuleShape3D_dsb46")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1096824363]
+visible = false
 mesh = SubResource("CapsuleMesh_7517i")
 
 [node name="Footsteps" type="FmodEventEmitter3D" parent="." unique_id=376470365]

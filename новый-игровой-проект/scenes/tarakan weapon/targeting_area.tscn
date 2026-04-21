@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://d1cclyjfqn6g4"]
+
+[ext_resource type="Script" uid="uid://cjl1fypfnb4tj" path="res://src/cockroach_weapons/WeaponTargetingArea.gd" id="1_vjji4"]
+
+[node name="Targeting Area" type="Area3D" unique_id=1588663535]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_vjji4")
+damage_timer = 0.1
+damage = 1.0

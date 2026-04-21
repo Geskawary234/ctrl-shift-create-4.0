@@ -2,11 +2,15 @@ extends Control
 
 @onready var player_controller: PlayerController = $"../../../.."
 
+
 @onready var slot_forward: Slot = $VBoxContainer/SlotForward
 @onready var slot_active: Slot = $VBoxContainer/SlotActive
 @onready var slot_back: Slot = $VBoxContainer/SlotBack
 @onready var item_tooltip: Label = $VBoxContainer/SlotActive/VBoxContainer/ItemTooltip
 @onready var hint: Label = $VBoxContainer/SlotActive/VBoxContainer/hint
+
+@onready var roach_infest_level_bar: ProgressBar = $ProgressBar
+@onready var days_count: Label = $"Days count"
 
 
 @onready var pointer: TextureRect = $pointer
@@ -23,12 +27,19 @@ var cursor_pos: int = 0
 
 func _ready() -> void:
 	update_inventory_ui()
+	
 
+func update_ui():
+	if player_controller.game_manager:
+		var GM : GameManager = player_controller.game_manager
+		roach_infest_level_bar.value = GM.roach_infestation_level
+		days_count.text = 'Дней пережито: '+str(GM.current_day-1)+' / '+str(GM.number_of_days)
+		days_count.text += '\nТекущий день: '+str(GM.current_day)
 
 func _process(delta: float) -> void:
 	# Debug info
 	#$Label.text = str(inventory) + "\ncursor pos " + str(cursor_pos)
-
+	update_ui()
 	# Handle scroll
 	if player_controller.mouse_wheel_input != 0:
 		cursor_pos -= player_controller.mouse_wheel_input

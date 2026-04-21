@@ -87,9 +87,6 @@ transform = Transform3D(-12.635, -5.742987e-07, 8.279486e-07, -9.951506e-07, 5.4
 [node name="FmodListener2D" type="FmodListener2D" parent="." unique_id=1995005626]
 
 [node name="BgMusic" type="FmodEventEmitter2D" parent="." unique_id=1137139769]
-event_name = "event:/Day Night Music"
-event_guid = "{838f5ce2-132e-40d6-aafd-f4cffbe9464b}"
+event_name = "event:/Menu music"
+event_guid = "{c33daee6-52f0-447a-9699-1a5e176c41eb}"
 autoplay = true
-"fmod_parameters/Parameter 2/id" = -4589912279821278861
-"fmod_parameters/Parameter 2" = 0
-"fmod_parameters/Parameter 2/variant_type" = 2

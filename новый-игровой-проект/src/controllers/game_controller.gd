@@ -1,18 +1,24 @@
 extends PlayerController
 
+@export var game_manager : GameManager
 @export var rc : RayCast3D
 
 @onready var game_ui_human: Control = $SpringArm3D/CameraPivot/Camera3D/GameUIHuman
 @onready var game_ui_tarakan: Control = $SpringArm3D/CameraPivot/Camera3D/GameUITarakan
+@onready var black_screen: Control = $SpringArm3D/CameraPivot/Camera3D/BlackScreen
+@onready var fmod_listener_3d: FmodListener3D = $FmodListener3D
+@onready var hand: Node3D = $SpringArm3D/CameraPivot/Camera3D/Hand
+
 
 func _process(delta: float) -> void:
 	super(delta)
-
 	
-
 func pawn_physics_process(delta: float) -> void:
 	super(delta)
 	if !camera.current: return
+	
+	fmod_listener_3d.global_position = pawn.global_position
+	fmod_listener_3d.global_rotation = pawn.global_rotation
 	
 	if pawn is PlayerHumanPawn:
 		human_pawn_process(delta)
@@ -25,17 +31,26 @@ func pawn_changed(old : Pawn):
 	if pawn is PlayerHumanPawn:
 		camera.position = Vector3(0,0.5,0)
 		spring_arm_len = pawn.spring_len
+		camera_mode = 0
 		speed = pawn.speed
+		hand.show()
+		hand.set_process(true)
+		hand.set_physics_process(true)
 		game_ui_human.show()
 		game_ui_tarakan.hide()
 	elif pawn is PlayerTarakanPawn:
 		camera.position = Vector3.ZERO
 		spring_arm_len = pawn.spring_len
+		camera_mode = 1
 		speed = pawn.speed
+		hand.hide()
+		hand.set_process(false)
+		hand.set_physics_process(false)
 		game_ui_human.hide()
 		game_ui_tarakan.show()
 		
 		pawn.AddRune.connect(func(): $SpringArm3D/CameraPivot/Camera3D/GameUITarakan.runes += 1)
+	
 	
 	initial_cam_position = camera.position
 	
@@ -71,7 +86,20 @@ func human_pawn_process(delta : float):
 			game_ui_human.equipped_item.main()
 
 	if col:
-		if col is DraggableItem:
+		if col is Bed:
+			game_ui_human.pointer.texture = game_ui_human.HOLD
+			
+			if col.bed_cooldown<=0:
+				game_ui_human.pointer_hint.text = 'Кровать, нажмите [E] чтобы проспать до вечера'
+				
+				if Input.is_action_just_pressed('interact'):
+					black_screen.activate()
+					Global.GM.go_to_sleep()
+				
+			else:
+				game_ui_human.pointer_hint.text = 'Кровать, чтобы проспать до вечера осталось подождать ' + str(col.bed_cooldown) + ' секунд.'
+		
+		elif col is DraggableItem:
 			game_ui_human.pointer.texture = game_ui_human.HOLD
 			game_ui_human.pointer_hint.text = 'Удерживайте [ЛКМ] для перетягивания'
 		elif col is PickableItem:

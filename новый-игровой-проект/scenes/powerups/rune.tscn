@@ -12,7 +12,7 @@ uv1_offset = Vector3(0.495, 0.535, 0)
 uv1_triplanar = true
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kv2n4"]
-height = 0.23986816
+height = 0.5097656
 radius = 0.10498047
 
 [node name="Rune" type="Node3D" unique_id=1798234083]
@@ -32,7 +32,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03302002, 0)
 shape = SubResource("CylinderShape3D_kv2n4")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1288978946]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.5814836, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.25894266, 0)
 light_color = Color(1, 1, 0, 1)
 shadow_enabled = true
 spot_range = 1.0141578

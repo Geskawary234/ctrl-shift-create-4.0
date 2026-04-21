@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bioepdycxblsd"]
+
+[ext_resource type="PackedScene" uid="uid://7yhvxa5qa77w" path="res://scenes/ui/tutorial.tscn" id="1_b411y"]
+[ext_resource type="Script" uid="uid://cd4suk3qy7kvd" path="res://Basic/src/ResourceObjects/TutorialPart.gd" id="2_jbcq3"]
+
+[sub_resource type="Resource" id="Resource_l8e5b"]
+script = ExtResource("2_jbcq3")
+step_text = "Вот и настал час икс! Ты выпустил своего кибер-таракана с миниганами чтобы порешать скотов! Найди щель тараканов и устрой им разнос!"
+metadata/_custom_type_script = "uid://cd4suk3qy7kvd"
+
+[node name="TarakanTutorial" unique_id=1970928923 instance=ExtResource("1_b411y")]
+steps = Array[ExtResource("2_jbcq3")]([SubResource("Resource_l8e5b")])
+
+[node name="TutorialName" parent="Control/Panel" parent_id_path=PackedInt32Array(1000018944) index="0" unique_id=1556630717]
+text = "Геноцид"

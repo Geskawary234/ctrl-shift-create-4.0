@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bjru75pukn7kg"]
+
+[ext_resource type="PackedScene" uid="uid://7yhvxa5qa77w" path="res://scenes/ui/tutorial.tscn" id="1_yfsqq"]
+[ext_resource type="Script" uid="uid://cd4suk3qy7kvd" path="res://Basic/src/ResourceObjects/TutorialPart.gd" id="2_8evpw"]
+
+[sub_resource type="Resource" id="Resource_y1pfq"]
+script = ExtResource("2_8evpw")
+step_text = "Возьми любой предмет в инвентарь со стола и начни убивать тварей!"
+speed = 50.0
+metadata/_custom_type_script = "uid://cd4suk3qy7kvd"
+
+[node name="Tutorial_kill_roaches" unique_id=1970928923 instance=ExtResource("1_yfsqq")]
+current_step = 0
+steps = Array[ExtResource("2_8evpw")]([SubResource("Resource_y1pfq")])
+
+[node name="TutorialName" parent="Control/Panel" parent_id_path=PackedInt32Array(1000018944) index="0" unique_id=1556630717]
+text = "Убивай тараканов!"
+
+[node name="TutorialInfo" parent="Control" parent_id_path=PackedInt32Array(136197617) index="1" unique_id=1644021050]
+text = "Возьми любой предмет в инвентарь со стола и начни убивать тварей!"

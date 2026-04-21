@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://biykcb7apjw21"]
+
+[ext_resource type="PackedScene" uid="uid://cx8v5q34v07lc" path="res://scenes/ui/ending.tscn" id="1_2ak3l"]
+[ext_resource type="Texture2D" uid="uid://bo2f2puf28plm" path="res://assets/textures/comix/Bad ending.png" id="2_qigdm"]
+
+[node name="Control" unique_id=1281229887 instance=ExtResource("1_2ak3l")]
+
+[node name="TextureRect" parent="." index="0" unique_id=1044105035]
+texture = ExtResource("2_qigdm")
+
+[node name="FmodEventEmitter2D" parent="." index="4" unique_id=835857610]
+event_name = "event:/BadEnd"
+event_guid = "{8f08d820-a906-4448-b4da-525acda06f6d}"

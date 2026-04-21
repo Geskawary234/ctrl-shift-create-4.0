@@ -4,7 +4,7 @@ extends Controller
 var alert_level : float    # alert level from 0 to 100, when it reaches
 						   # 100, cockroach gets into attacking state
 @onready var alert_others_area: Area3D = $"../AlertOthersArea"
-@onready var fmod_emitter: FmodEventEmitter3D = $"../FmodEventEmitter3D"
+@onready var fmod_emitter: FmodEventEmitter3D = $"../Roach"
 @onready var model_ap: AnimationPlayer = $"../cocroch".get_node('AnimationPlayer')
 
 
@@ -20,7 +20,7 @@ var attack_speed : float = 0.4
 var attack_timer : float = 0
 
 #other
-var speed : float = 0.5
+var speed : float = 0.4
 var state : States 
 enum States {
 	Idle,
@@ -153,7 +153,7 @@ func think(delta_accum : float):
 			
 			if d.length()<=0.05:
 				if attack_timer<=0:
-					target.health -= 1
+					target.take_damage(1)
 					attack_timer = attack_speed
 			
 			attack_timer -= delta_accum

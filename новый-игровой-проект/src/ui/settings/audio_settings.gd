@@ -4,6 +4,8 @@ extends Control
 @onready var master: HSlider = $VBoxContainer/Master
 @onready var sfx: HSlider = $VBoxContainer/Sfx
 @onready var music: HSlider = $VBoxContainer/Music
+@onready var ambience: HSlider = $VBoxContainer/Ambience
+
 
 var minimum_db : float = -50
 
@@ -19,15 +21,17 @@ func _ready() -> void:
 	ambience_bus = Global.ambience_bus
 	foley_bus = Global.foley_bus
 	music_bus = Global.music_bus
-	
+
 	
 	master.value = master_bus.volume * 100
 	sfx.value = foley_bus.volume * 100
 	music.value = music_bus.volume * 100
+	ambience.value = ambience_bus.volume * 100
 	
 	master.value_changed.connect(master_changed)
 	sfx.value_changed.connect(sfx_changed)
 	music.value_changed.connect(music_changed)
+	ambience.value_changed.connect(ambience_changed)
 
 func master_changed(v : float):	
 	#change_volume(0,v)
@@ -40,9 +44,11 @@ func sfx_changed(v : float):
 
 func music_changed(v : float):
 	music_bus.volume = v/100
-	ambience_bus.volume = v/100
-	
 	Global.music_volume = v/100
+
+func ambience_changed(v : float):
+	ambience_bus.volume = v/100
+	Global.ambience_volume = v/100
 
 func change_volume(bus_index : int, slider_val : float):
 	var vol : float = minimum_db * (1 - (slider_val/100))
