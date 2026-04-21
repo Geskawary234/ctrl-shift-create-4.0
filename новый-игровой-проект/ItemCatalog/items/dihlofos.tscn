@@ -40,18 +40,18 @@ points = PackedVector3Array(0, -0.6975, -1.06, -0.103966355, -0.6975, -1.0550195
 height = 0.53027344
 radius = 0.10058594
 
-[node name="Dihlofos" unique_id=935297416 node_paths=PackedStringArray("weapon_scene", "normal_scene") instance=ExtResource("1_j8432")]
+[node name="Dihlofos" unique_id=935297416 node_paths=PackedStringArray("in_hands_scene", "normal_scene") instance=ExtResource("1_j8432")]
 script = ExtResource("2_iqvoe")
-weapon_scene = NodePath("Dihlofos 2")
+in_hands_scene = NodePath("Dihlofos 2")
 normal_scene = NodePath("dihlofoz")
 item_info = SubResource("Resource_pyicr")
 
 [node name="dihlofoz" parent="." index="0" unique_id=535256913 instance=ExtResource("5_t6ajw")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.14250237, 0)
-visible = false
 
 [node name="Dihlofos 2" parent="." index="1" unique_id=220323770 instance=ExtResource("5_t6ajw")]
 transform = Transform3D(5.7620454e-08, 0, 1, 0, 1, 0, -1, 0, 5.7620454e-08, 0, -0.12313518, 0)
+visible = false
 
 [node name="Node3D" type="CPUParticles3D" parent="Dihlofos 2" index="1" unique_id=1527492400]
 transform = Transform3D(-6.3381522e-09, 0, 0.14500003, 0, 0.14499998, 0, -0.14500003, 0, -6.3381522e-09, 0.032976117, 0.2602343, -7.943152e-06)
@@ -85,11 +85,3 @@ shape = SubResource("ConvexPolygonShape3D_pyicr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2" unique_id=637344022]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15887451, 0)
 shape = SubResource("CylinderShape3D_pyicr")
-
-[node name="FmodEventEmitter3D" type="FmodEventEmitter3D" parent="." index="3" unique_id=484933482]
-event_name = "event:/GAS"
-event_guid = "{74c51cdf-bf11-44bb-87eb-dda26af9a439}"
-"fmod_parameters/Parameter 3/id" = -1522818097161509043
-"fmod_parameters/Parameter 3" = 0
-"fmod_parameters/Parameter 3/variant_type" = 2
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.012242556, 0)

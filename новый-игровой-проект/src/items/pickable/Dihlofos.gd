@@ -1,12 +1,11 @@
-extends ItemWeapon
+extends UsableItem
 
 
 var stop_time : float = 2
 @onready var emmiter: CPUParticles3D = $"Dihlofos 2/Node3D"
 @onready var detect_roaches: Area3D = $"Dihlofos 2/DetectRoaches"
-@onready var fmod_event_emitter_3d: FmodEventEmitter3D = $FmodEventEmitter3D
 
-
+@onready var spray_event : FmodEvent = FmodServer.create_event_instance('event:/GAS')
 
 func _ready() -> void:
 	super()
@@ -16,7 +15,7 @@ func main():
 	emmiter.emitting = true
 	t = stop_time
 	
-	fmod_event_emitter_3d.play()
+	spray_event.start()
 
 func _process(delta: float) -> void:
 	if t<=0:
@@ -29,8 +28,10 @@ func _process(delta: float) -> void:
 		for i in detect_roaches.get_overlapping_bodies():
 			i.die()
 	else:
-		fmod_event_emitter_3d.stop()
-	
-	
+		spray_event.stop(0)
+
+func thrown_func():
+	super()
+	spray_event.stop(0)
 		
 	

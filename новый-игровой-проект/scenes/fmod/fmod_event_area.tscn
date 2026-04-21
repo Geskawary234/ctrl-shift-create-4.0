@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b02nq5xu51aya"]
+
+[ext_resource type="Script" uid="uid://dux7i4tbclaxi" path="res://src/FMOD/fmod_sound_area.gd" id="1_x0ta3"]
+
+[node name="FMODEventArea" type="Area3D" unique_id=317583767]
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("1_x0ta3")
+metadata/_custom_type_script = "uid://dux7i4tbclaxi"

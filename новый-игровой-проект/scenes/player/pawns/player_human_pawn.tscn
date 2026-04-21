@@ -15,6 +15,7 @@ script = ExtResource("1_g6npg")
 metadata/_custom_type_script = "uid://c7d431onisa8u"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=219744406]
+visible = false
 shape = SubResource("CapsuleShape3D_dsb46")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1096824363]

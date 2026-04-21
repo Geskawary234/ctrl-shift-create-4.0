@@ -1,14 +1,13 @@
 [gd_scene format=3 uid="uid://c3ujlv30r8egx"]
 
 [ext_resource type="Script" uid="uid://dkvt360m1ut8t" path="res://src/entities/pawns/tarakan_pawn.gd" id="1_fsfg4"]
+[ext_resource type="PhysicsMaterial" uid="uid://mleklhpl6kxc" path="res://assets/TarakanPhysicsMaterial.tres" id="1_x37ky"]
 [ext_resource type="PackedScene" uid="uid://cu51knig8absp" path="res://assets/models/tarakan/cocroch.glb" id="2_388hn"]
 [ext_resource type="Script" uid="uid://5kxmhexva6rp" path="res://src/entities/ai controllers/ai_controller_tarakan.gd" id="3_388hn"]
 [ext_resource type="Texture2D" uid="uid://1ct17ufk8t6s" path="res://assets/textures/tarakan ai/lamp bg.png" id="4_x37ky"]
 [ext_resource type="Texture2D" uid="uid://bungnb5ysbywl" path="res://assets/textures/tarakan ai/lamp front.png" id="5_y8f67"]
 [ext_resource type="Texture2D" uid="uid://bpo4c1bk10xfp" path="res://assets/textures/tarakan ai/alerted.png" id="6_whr1p"]
 [ext_resource type="Texture2D" uid="uid://dfp47qkyeawh4" path="res://assets/textures/tarakan ai/cockroach language.png" id="7_388hn"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cmv3r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vtver"]
 radius = 0.010253906
@@ -49,7 +48,7 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 mass = 0.002
-physics_material_override = SubResource("PhysicsMaterial_cmv3r")
+physics_material_override = ExtResource("1_x37ky")
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_fsfg4")

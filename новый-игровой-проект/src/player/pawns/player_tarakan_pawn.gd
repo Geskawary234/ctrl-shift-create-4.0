@@ -21,7 +21,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	for b in alert_area.get_overlapping_bodies():
 		b.emit_signal('increase_level',delta * 3/global_position.distance_to(b.global_position),self)
-
+	
 func _physics_process(delta: float) -> void:
 	if linear_velocity.length()>0.01:
 		ap.play('Your_Cock')
@@ -32,6 +32,5 @@ func take_damage(damage : float):
 	if health - damage > 0:
 		health -= damage
 	else:
-		print('fsfwfwf')
 		die.emit()
 	

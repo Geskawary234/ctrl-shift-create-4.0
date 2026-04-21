@@ -5,7 +5,8 @@ class_name CutsceneCamera
 
 @export var disable_cutscene : bool = false
 
-		
+func _ready() -> void:
+	if disable_cutscene: queue_free()
 	
 func cutscene():
 	if disable_cutscene:

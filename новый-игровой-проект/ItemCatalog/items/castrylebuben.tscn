@@ -145,9 +145,9 @@ orientation = 2
 height = 0.33251953
 radius = 0.44091797
 
-[node name="Castrylebuben" unique_id=935297416 node_paths=PackedStringArray("weapon_scene", "normal_scene") instance=ExtResource("1_dfujh")]
+[node name="Castrylebuben" unique_id=935297416 node_paths=PackedStringArray("in_hands_scene", "normal_scene") instance=ExtResource("1_dfujh")]
 script = ExtResource("2_ewkbg")
-weapon_scene = NodePath("CastrylaModel")
+in_hands_scene = NodePath("CastrylaModel")
 normal_scene = NodePath("ModelItem")
 item_info = SubResource("Resource_314t6")
 

@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://cmykm7lxk12wu"]
+
+[ext_resource type="PackedScene" uid="uid://b4xfkcwd8u42x" path="res://Basic/scenes/Item/PickableItem/pickable_item_base.tscn" id="1_0jske"]
+[ext_resource type="Script" uid="uid://djq8tgvxxl4hr" path="res://src/items/pickable/beer.gd" id="2_3q87j"]
+[ext_resource type="PackedScene" uid="uid://umt0igarcqi0" path="res://assets/models/trash/trash items/beer.glb" id="2_kib3q"]
+[ext_resource type="Script" uid="uid://bafpw1lj87nk8" path="res://Basic/src/ResourceObjects/InventoryItem.gd" id="3_3q87j"]
+
+[sub_resource type="Resource" id="Resource_il3o4"]
+script = ExtResource("3_3q87j")
+item_name = "Пивас"
+description = "Я должен тебе пиво!
+Эх, не холодное конечно, но я бы выпил!"
+metadata/_custom_type_script = "uid://bafpw1lj87nk8"
+
+[sub_resource type="Animation" id="Animation_uc3es"]
+resource_name = "DrinkBeer"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.56, 1.51, 1.69, 1.89, 2.2666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.13970836, 0, 0.45617008), Vector3(-0.4018016, 0.18209286, 0.4284901), Vector3(-0.4018016, 0.45602685, 0.5992286), Vector3(-0.27212775, 0.2181645, 0.51509523), Vector3(-0.12804586, 0.050871253, 0.4216138), Vector3(-0.13970836, 0, 0.45617008)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.26, 0.56, 1.51, 1.8666667, 2.2666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.7283097, -0.6507984, 0), Vector3(1.568667, 0, 0), Vector3(2.4027598, 0, 0), Vector3(0.7283097, -0.6507984, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"decrease_beer_level"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_fhgyv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.13970836, 0, 0.45617008)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3q87j"]
+_data = {
+&"DrinkBeer": SubResource("Animation_uc3es"),
+&"RESET": SubResource("Animation_fhgyv")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3q87j"]
+bg_color = Color(1, 0.9026667, 0.26999998, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3q87j"]
+height = 0.40039063
+radius = 0.060546875
+
+[node name="Beer" unique_id=935297416 node_paths=PackedStringArray("in_hands_scene", "normal_scene") instance=ExtResource("1_0jske")]
+mass = 0.5
+script = ExtResource("2_3q87j")
+in_hands_scene = NodePath("beer2")
+normal_scene = NodePath("beer")
+item_info = SubResource("Resource_il3o4")
+
+[node name="ObjectThrow" parent="." index="0" unique_id=565301884]
+event_name = "event:/Bottle bring"
+event_guid = "{08b58b41-ed40-4df0-8631-b3e6491ddaa6}"
+
+[node name="beer" parent="." index="1" unique_id=439719141 instance=ExtResource("2_kib3q")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="beer2" parent="." index="2" unique_id=716464748 instance=ExtResource("2_kib3q")]
+transform = Transform3D(1.4999999, 0, 0, 0, 1.4999999, 0, 0, 0, 1.5000001, -0.13970836, 0, 0.45617008)
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="beer2" index="1" unique_id=1334129066]
+libraries/ = SubResource("AnimationLibrary_3q87j")
+
+[node name="BeerOverlay" type="Control" parent="beer2" index="2" unique_id=1757122250]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="beer2/BeerOverlay" index="0" unique_id=1508866401]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -194.0
+offset_top = -316.0
+offset_right = -89.0
+offset_bottom = -39.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/fill = SubResource("StyleBoxFlat_3q87j")
+max_value = 3.0
+step = 1.0
+value = 3.0
+fill_mode = 3
+show_percentage = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="3" unique_id=873051669]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21044922, 0)
+shape = SubResource("CylinderShape3D_3q87j")

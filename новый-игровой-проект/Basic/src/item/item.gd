@@ -14,6 +14,8 @@ var sound_cooldown : float = 0.5
 
 var cooldown_timer : float = 1
 func play_sound():
+	if linear_velocity.length()<0.1: return
+	
 	if cooldown_timer<=0:
 		object_throw.play_one_shot()
 		cooldown_timer = sound_cooldown

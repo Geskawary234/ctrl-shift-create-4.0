@@ -65,6 +65,7 @@ var can_use_item : bool = true
 func human_pawn_process(delta : float):
 	camera_shake(delta)
 	can_use_item = true
+	game_ui_human.item_name.text = ''
 	
 	if Input.is_action_pressed('crouch'):
 		pawn.col_shape.height = lerp(pawn.col_shape.height,1.0,delta * 2)
@@ -78,14 +79,14 @@ func human_pawn_process(delta : float):
 	var col : Variant
 	if rc.is_colliding():
 		col = rc.get_collider()
-		if col is Item:
-			can_use_item = false
 	
-	if Input.is_action_just_pressed('lmb') and game_ui_human.equipped and can_use_item:
-		if game_ui_human.equipped_item is ItemWeapon:
+	if Input.is_action_just_pressed('Use') and game_ui_human.equipped:
+		if game_ui_human.equipped_item is UsableItem:
 			game_ui_human.equipped_item.main()
 
+	
 	if col:
+		
 		if col is Bed:
 			game_ui_human.pointer.texture = game_ui_human.HOLD
 			
@@ -94,22 +95,23 @@ func human_pawn_process(delta : float):
 				
 				if Input.is_action_just_pressed('interact'):
 					black_screen.activate()
-					Global.GM.go_to_sleep()
+					#Global.GM.go_to_sleep()
 				
 			else:
 				game_ui_human.pointer_hint.text = 'Кровать, чтобы проспать до вечера осталось подождать ' + str(col.bed_cooldown) + ' секунд.'
 		
 		elif col is DraggableItem:
 			game_ui_human.pointer.texture = game_ui_human.HOLD
-			game_ui_human.pointer_hint.text = 'Удерживайте [ЛКМ] для перетягивания'
+			game_ui_human.pointer_hint.text = 'Удерживайте [ПКМ] чтобы двигать'
 		elif col is PickableItem:
 			game_ui_human.pointer.texture = game_ui_human.STORE_IN_INVETORY
 			game_ui_human.pointer_hint.text = 'Нажмите [E] чтобы поднять'
+			game_ui_human.item_name.text = col.item_info.item_name
 		else:
 			game_ui_human.pointer.texture = null
-			game_ui_human.pointer_hint.text = ''
+			
 		
-		if Input.is_action_pressed('lmb'):
+		if Input.is_action_pressed('grab'):
 			if !dragg_item:
 				if col is DraggableItem:
 					dragg_item = rc.get_collider()
@@ -120,7 +122,7 @@ func human_pawn_process(delta : float):
 		if !dragg_item:
 			game_ui_human.pointer.texture = null
 	
-	if Input.is_action_just_released('lmb'):
+	if Input.is_action_just_released('grab'):
 		if dragg_item:
 			dragg_item.gravity_scale = 1
 		dragg_item = null		

@@ -26,6 +26,6 @@ func _process(delta: float) -> void:
 	for i in objects_in_bin.keys():
 		objects_in_bin[i] -= delta
 		objects_in_bin[i] = clamp(objects_in_bin[i],0,INF)
-	print(objects_in_bin)
+
 			
 			

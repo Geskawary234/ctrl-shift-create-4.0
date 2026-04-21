@@ -57,17 +57,6 @@ offset_right = -9.0
 offset_bottom = 28.0
 text = "Общий"
 
-[node name="Ambience" type="HSlider" parent="AudioSettings/VBoxContainer" unique_id=589937684]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="AudioSettings/VBoxContainer/Ambience" unique_id=678150689]
-layout_mode = 0
-offset_left = -147.0
-offset_top = -17.0
-offset_right = -4.0
-offset_bottom = 28.0
-text = "Эмбиент"
-
 [node name="Sfx" type="HSlider" parent="AudioSettings/VBoxContainer" unique_id=907712662]
 layout_mode = 2
 

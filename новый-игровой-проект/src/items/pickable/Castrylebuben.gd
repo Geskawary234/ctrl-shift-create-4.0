@@ -1,4 +1,4 @@
-extends ItemWeapon
+extends UsableItem
 
 @onready var ap: AnimationPlayer = $CastrylaModel/AnimationPlayer
 @onready var reload_text: Label3D = $CastrylaModel/Label3D

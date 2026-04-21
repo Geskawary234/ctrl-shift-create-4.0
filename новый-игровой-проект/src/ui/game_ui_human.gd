@@ -15,6 +15,8 @@ extends Control
 
 @onready var pointer: TextureRect = $pointer
 @onready var pointer_hint: Label = $pointer/Hint
+@onready var item_name: Label = $"pointer/Item name"
+
 
 const HOLD = preload("uid://7f3m0w3xd6dr")
 const STORE_IN_INVETORY = preload("uid://dfygsb65ofhau")
@@ -40,16 +42,35 @@ func _process(delta: float) -> void:
 	# Debug info
 	#$Label.text = str(inventory) + "\ncursor pos " + str(cursor_pos)
 	update_ui()
+	#update_current_item_ui()
 	# Handle scroll
 	if player_controller.mouse_wheel_input != 0:
 		cursor_pos -= player_controller.mouse_wheel_input
-		cursor_pos = clamp(cursor_pos, 0, max(inventory.size() - 1, 0))
+		
+		if cursor_pos > inventory.size() - 1:
+			cursor_pos = 0
+		elif cursor_pos < 0:
+			cursor_pos = inventory.size() - 1
+		
+		#cursor_pos = clamp(cursor_pos, 0, max(inventory.size() - 1, 0))
 		update_inventory_ui()
 		equip_item()
 	
 	if Input.is_action_just_pressed('throw_item_from_inventory'):
 		throw_current_item()
 
+func update_current_item_ui():
+	if equipped:
+		var inf := equipped_item.item_info
+		if inf not in inventory:
+			inventory[inf] = [equipped_item]
+		else:
+			if equipped_item not in inventory[inf]:
+				inventory[inf].append(equipped_item)
+			
+		slot_active.icon = inf.icon
+		slot_active.count = len(inventory[inf])
+		item_tooltip.text = str(inf.item_name)
 
 func found_item(item: PickableItem) -> void:
 	
@@ -67,7 +88,6 @@ func found_item(item: PickableItem) -> void:
 	item.set_physics_process(false)
 	item.hide()
 	
-	player_controller.pawn.add_collision_exception_with(item)
 	item.reparent(hand)
 	item.position = Vector3.ZERO
 	item.rotation = Vector3.ZERO
@@ -146,18 +166,19 @@ func throw_current_item():
 	# Spawn item in world
 	var spawn_pos : Vector3
 	if player_controller.rc.is_colliding():
-		spawn_pos = player_controller.rc.get_collision_point() + player_controller.rc.get_collision_normal() * 0.2
+		var n : Vector3 = player_controller.rc.get_collision_normal()
+		spawn_pos = player_controller.rc.get_collision_point() + n * 0.2
+	
 	else:
 		spawn_pos = player_controller.camera.global_position-player_controller.camera.global_basis.z
 	
 	throw_away_item.global_position = spawn_pos
+	throw_away_item.global_rotation = Vector3.ZERO
 	
-	player_controller.pawn.remove_collision_exception_with(throw_away_item)
 	throw_away_item.freeze = false
 	
 	
-	if throw_away_item is ItemWeapon:
-		throw_away_item.uneqquiped.emit()
+	throw_away_item.thrown.emit()
 	#GameServer.spawn(load(item.scene),spawn_pos,get_tree().current_scene)
 	
 	update_inventory_ui()
@@ -170,6 +191,8 @@ var equipped_item_index : int
 func equip_item():
 	if equipped:
 		if equipped_item_index != cursor_pos:
+
+			equipped_item.in_inventory.emit()
 			equipped_item.hide()
 			equipped_item.set_process(false)
 			equipped_item.set_physics_process(false)
@@ -202,8 +225,8 @@ func equip_item():
 	equipped_item_index = cursor_pos
 	equipped_item.freeze = true
 	
-	if equipped_item is ItemWeapon:
-		equipped_item.eqquiped.emit()
+	
+	equipped_item.eqquiped.emit()
 	
 	
 

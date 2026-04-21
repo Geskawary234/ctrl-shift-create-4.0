@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cdrwegb4kspn"]
 
+[ext_resource type="PackedScene" uid="uid://csgtfqosgi8yl" path="res://scenes/fmod_bank_manager.tscn" id="1_7y2ik"]
 [ext_resource type="PackedScene" uid="uid://csinxkwqir5pj" path="res://scenes/player/pawns/player_human_pawn.tscn" id="1_ry45r"]
 [ext_resource type="PackedScene" uid="uid://b55rysp664v8q" path="res://scenes/controllers/player_controller.tscn" id="2_eig8f"]
 [ext_resource type="PackedScene" uid="uid://cmgx01rh0rx35" path="res://scenes/objects/trash_bin.tscn" id="5_dsb46"]
@@ -10,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://cuedytqi7hu8b" path="res://ItemCatalog/dorm/table_1.tscn" id="8_mm0ke"]
 [ext_resource type="PackedScene" uid="uid://5b5ngrg31r5n" path="res://ItemCatalog/items/castrylebuben.tscn" id="9_ymr3d"]
 [ext_resource type="PackedScene" uid="uid://bf3rvimmn78aj" path="res://ItemCatalog/other/trash_bag.tscn" id="10_5fw7c"]
+[ext_resource type="PackedScene" uid="uid://8gxm78e2cgdv" path="res://ItemCatalog/items/broom.tscn" id="12_vxaqg"]
+[ext_resource type="PackedScene" uid="uid://cmykm7lxk12wu" path="res://ItemCatalog/items/trash/beer.tscn" id="13_x2dcf"]
+[ext_resource type="PackedScene" uid="uid://b02nq5xu51aya" path="res://scenes/fmod/fmod_event_area.tscn" id="14_rj716"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eig8f"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -26,6 +30,8 @@ glow_enabled = true
 
 [node name="Node3D" type="Node3D" unique_id=592294767]
 
+[node name="FmodBankManager" parent="." unique_id=737683508 instance=ExtResource("1_7y2ik")]
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1200151711]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
@@ -36,7 +42,7 @@ environment = SubResource("Environment_ry45r")
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1083037514]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 use_collision = true
-size = Vector3(10, 1, 10)
+size = Vector3(25, 1, 25)
 
 [node name="Pawn" parent="." unique_id=542977680 instance=ExtResource("1_ry45r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -81,3 +87,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6063817, 0.40661415, 1.1220
 
 [node name="Trash Bag" parent="." unique_id=1570949886 instance=ExtResource("10_5fw7c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7488283, 0.46742564, 2.4707546)
+
+[node name="Broom" parent="." unique_id=1554656072 instance=ExtResource("12_vxaqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.48955286, 1.102729, 0.8604002)
+
+[node name="Beer" parent="." unique_id=1515414297 instance=ExtResource("13_x2dcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0245011, 0.9651814, 2.9539006)
+
+[node name="FMODEventArea" parent="." unique_id=1166524282 instance=ExtResource("14_rj716")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2598915, 0, 2.0844378)

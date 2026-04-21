@@ -1,28 +1,30 @@
 extends PickableItem
-class_name ItemWeapon
+class_name UsableItem
 
 
-signal eqquiped
-signal uneqquiped
 
-@export var weapon_scene : Node
+@export var in_hands_scene : Node
 @export var normal_scene : Node
 
 func _ready() -> void:
-	normal_scene.show()
-	weapon_scene.hide()
-	
+	super()
 	eqquiped.connect(func():
-		weapon_scene.show()
-		normal_scene.hide()
-		set_collision_layer_value(5,false)
+		if in_hands_scene and normal_scene:
+			in_hands_scene.show()
+			normal_scene.hide()
+		equip()
 	)
 	
-	uneqquiped.connect(func():
-		weapon_scene.hide()
-		normal_scene.show()
-		set_collision_layer_value(5,true)
+	thrown.connect(func():
+		if in_hands_scene and normal_scene:
+			in_hands_scene.hide()
+			normal_scene.show()
+		thrown_func()
 		)
 	
+	thrown.emit()
+
+
+
 func main():
 	pass

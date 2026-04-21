@@ -25,6 +25,3 @@ func _ready() -> void:
 	
 	await get_tree().create_timer(9,false).timeout
 	Global.intro_played = true
-
-func _process(delta: float) -> void:
-	$BgMusic.volume = Global.music_volume

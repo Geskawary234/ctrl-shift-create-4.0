@@ -95,9 +95,9 @@ _data = {
 &"slap": SubResource("Animation_8cgjp")
 }
 
-[node name="Tapok" unique_id=935297416 node_paths=PackedStringArray("weapon_scene", "normal_scene") instance=ExtResource("1_uf2vn")]
+[node name="Tapok" unique_id=935297416 node_paths=PackedStringArray("in_hands_scene", "normal_scene") instance=ExtResource("1_uf2vn")]
 script = ExtResource("2_7s1nq")
-weapon_scene = NodePath("Handheld")
+in_hands_scene = NodePath("Handheld")
 normal_scene = NodePath("ItemModel")
 item_info = SubResource("Resource_8cgjp")
 
@@ -113,7 +113,7 @@ shape = SubResource("BoxShape3D_8cgjp")
 visible = false
 
 [node name="tapok2" parent="Handheld" index="0" unique_id=612149152 instance=ExtResource("4_7s1nq")]
-transform = Transform3D(0.0776009, 0.26506504, -0.9611028, -0.95971704, 0.2809682, -1.02193605e-08, 0.2700394, 0.9223864, 0.27619094, -5.9604645e-08, 0.13331497, 0.5173953)
+transform = Transform3D(0.0776009, 0.265065, -0.9611028, -0.95971704, 0.28096816, -1.02193605e-08, 0.2700394, 0.92238635, 0.27619094, -5.9604645e-08, 0.13331497, 0.5173953)
 
 [node name="SlapArea" type="Area3D" parent="Handheld/tapok2" index="1" unique_id=1493989159]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -0.16029213, -0.09351392, 0.0067922175)

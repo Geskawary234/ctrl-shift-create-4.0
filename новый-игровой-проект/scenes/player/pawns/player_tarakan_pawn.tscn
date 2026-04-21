@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://ccmwkukm8wn52" path="res://src/player/pawns/player_tarakan_pawn.gd" id="1_qodcx"]
 [ext_resource type="PhysicsMaterial" uid="uid://mleklhpl6kxc" path="res://assets/TarakanPhysicsMaterial.tres" id="1_ud0og"]
 [ext_resource type="PackedScene" uid="uid://nuupdwstf4f7" path="res://assets/models/cyber tarakan/cyber_cocroach_run_anim.glb" id="3_ud0og"]
-[ext_resource type="PackedScene" uid="uid://h4go4mc2ale1" path="res://scenes/tarakan weapon/minigun.tscn" id="4_8ct2h"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_imhu7"]
 radius = 0.0068359375
@@ -56,9 +55,3 @@ surface_material_override/0 = SubResource("StandardMaterial3D_8ct2h")
 
 [node name="Weapons" type="Node3D" parent="." unique_id=1855743063]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.016805772, 0.010741919)
-
-[node name="Minigun" parent="Weapons" unique_id=1891481190 instance=ExtResource("4_8ct2h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0040441547, -0.022754269, -0.015251732)
-
-[node name="Minigun2" parent="Weapons" unique_id=106637092 instance=ExtResource("4_8ct2h")]
-transform = Transform3D(-1, -8.940697e-08, 0, 8.940697e-08, -1, 0, 0, 0, 1, 0.006815736, 0.009723851, -0.015251732)

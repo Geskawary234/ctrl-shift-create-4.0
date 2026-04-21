@@ -1,4 +1,4 @@
-extends ItemWeapon
+extends UsableItem
 
 @onready var ap: AnimationPlayer = $Handheld/AnimationPlayer
 @onready var slap_area: Area3D = $Handheld/tapok2/SlapArea

@@ -39,7 +39,7 @@ enum datetime {
 	set(v):
 		time_of_the_day = v
 
-
+'''
 func _ready() -> void:
 	Global.GM = self
 	
@@ -55,7 +55,7 @@ func _ready() -> void:
 		
 	start_camera.cutscene()
 	
-	new_day()
+	new_day()'''
 	
 
 
