@@ -3,6 +3,17 @@
 [ext_resource type="Theme" uid="uid://dclvd56sbfv6j" path="res://assets/ui_theme.tres" id="1_8wfqe"]
 [ext_resource type="Script" uid="uid://do7f82v4q8n2q" path="res://src/ui/settings/audio_settings.gd" id="2_7pacj"]
 [ext_resource type="Script" uid="uid://cljot5ukkqis1" path="res://src/ui/settings/settings.gd" id="2_h175o"]
+[ext_resource type="Script" uid="uid://mgwaxcy4qrk7" path="res://src/ui/settings/graphics_settings.gd" id="4_ptynm"]
+
+[sub_resource type="DPITexture" id="DPITexture_h175o"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\"><rect width=\"30\" height=\"14\" x=\"1\" y=\"1\" fill=\"#fff\" fill-opacity=\".75\" rx=\"7\"/><circle cx=\"24\" cy=\"8\" r=\"5\" fill=\"#1a1a1a\"/></svg>
+"
+base_scale = 3.0
+
+[sub_resource type="DPITexture" id="DPITexture_ptynm"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\"><g fill-opacity=\".5\"><rect width=\"30\" height=\"14\" x=\"1\" y=\"1\" fill=\"#1a1a1a\" rx=\"7\"/><circle cx=\"8\" cy=\"8\" r=\"5\" fill=\"#fff\"/></g></svg>
+"
+base_scale = 3.0
 
 [node name="Settings" type="Control" unique_id=111502333]
 layout_mode = 3
@@ -92,6 +103,52 @@ offset_bottom = 98.0
 grow_horizontal = 2
 text = "Настройки звука"
 
+[node name="GraphicsSettings" type="Control" parent="." unique_id=178087974]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 665.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_ptynm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GraphicsSettings" unique_id=624918579]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -276.5
+offset_top = -278.0
+offset_right = 276.5
+offset_bottom = 278.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="SSR" type="CheckButton" parent="GraphicsSettings/VBoxContainer" unique_id=1295344344]
+layout_mode = 2
+theme_override_font_sizes/font_size = 68
+theme_override_icons/checked = SubResource("DPITexture_h175o")
+theme_override_icons/unchecked = SubResource("DPITexture_ptynm")
+text = "SSR"
+
+[node name="SSIL" type="CheckButton" parent="GraphicsSettings/VBoxContainer" unique_id=1655088315]
+layout_mode = 2
+theme_override_font_sizes/font_size = 68
+theme_override_icons/checked = SubResource("DPITexture_h175o")
+theme_override_icons/unchecked = SubResource("DPITexture_ptynm")
+text = "SSIL"
+
+[node name="SSAO" type="CheckButton" parent="GraphicsSettings/VBoxContainer" unique_id=1370855639]
+layout_mode = 2
+theme_override_font_sizes/font_size = 68
+theme_override_icons/checked = SubResource("DPITexture_h175o")
+theme_override_icons/unchecked = SubResource("DPITexture_ptynm")
+text = "SSAO"
+
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1939381324]
 layout_mode = 1
 anchors_preset = 9
@@ -101,8 +158,7 @@ offset_right = 595.0
 grow_vertical = 2
 alignment = 1
 
-[node name="Графика" type="Button" parent="VBoxContainer" unique_id=139350432]
-visible = false
+[node name="GraphicsSettingsBTN" type="Button" parent="VBoxContainer" unique_id=139350432]
 custom_minimum_size = Vector2(0, 92.6)
 layout_mode = 2
 text = "Графика"

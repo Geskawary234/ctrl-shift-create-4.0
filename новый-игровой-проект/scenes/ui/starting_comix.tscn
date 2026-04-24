@@ -13,6 +13,43 @@
 [ext_resource type="Texture2D" uid="uid://djcb8y1k0khqe" path="res://assets/textures/comix/comix frame 9.jpg" id="10_h34cp"]
 [ext_resource type="PackedScene" uid="uid://csgtfqosgi8yl" path="res://scenes/fmod_bank_manager.tscn" id="11_0twso"]
 
+[sub_resource type="Animation" id="Animation_qh7tj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gcgsk"]
+resource_name = "blink"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ac37r"]
+_data = {
+&"RESET": SubResource("Animation_qh7tj"),
+&"blink": SubResource("Animation_gcgsk")
+}
+
 [node name="StartingComix" type="Control" unique_id=2039766179]
 layout_mode = 3
 anchors_preset = 15
@@ -40,6 +77,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -109.0
 grow_horizontal = 2
 grow_vertical = 2
 stretch_mode = 5
@@ -59,3 +97,22 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 48
 text = "Продолжить"
+
+[node name="SkipHint" type="Label" parent="." unique_id=1318907992]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -313.0
+offset_top = -75.0
+offset_right = 313.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 48
+text = "нажмите [SPACE] чтобы пропустить"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SkipHint" unique_id=1246292816]
+libraries/ = SubResource("AnimationLibrary_ac37r")

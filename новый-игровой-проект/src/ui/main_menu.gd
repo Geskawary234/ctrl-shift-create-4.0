@@ -57,11 +57,19 @@ func _ready() -> void:
 	
 	play_btn.pressed.connect(
 		func():
+			play_btn.disabled = true
+			quit_btn.disabled = true
+			settings_btn.disabled = true
+			
+			
 			var t := create_tween()
 			t.set_parallel(true)
 			t.tween_property(bg_music,'volume',0,0.5)
 			t.tween_property(black_screen,'modulate',Color.WHITE,1)
 			await t.finished
+			
+			
+			
 			add_child(STARTING_COMIX.instantiate())
 			
 			)

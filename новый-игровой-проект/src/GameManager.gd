@@ -69,11 +69,13 @@ func play_knocking():
 func add_infestation_level(amount : float):
 	roach_infestation_level += amount
 	roach_infestation_level = clamp(roach_infestation_level,0,100)
-	
+	'''
 	if roach_infestation_level>=100:
 		get_tree().change_scene_to_file('res://scenes/ui/bad ending.tscn')
-	if roach_infestation_level<=10:
-		get_tree().change_scene_to_file('res://scenes/ui/good ending.tscn')
+	
+	
+	if roach_infestation_level<=0:
+		get_tree().change_scene_to_file('res://scenes/ui/good ending.tscn')'''
 	
 
 
@@ -99,7 +101,8 @@ func new_day(first_day : bool = false):
 const RUNE = preload("uid://cbkgchds18sb7")
 @onready var smart_tarakan_spawns: Node = $"../Background assets/nest/SmartTarakanSpawns"
 func new_night():
-	for i in get_tree().get_nodes_in_group('CockroachBG') + get_tree().get_nodes_in_group('TarakanItem'):
+	# + get_tree().get_nodes_in_group('TarakanItem')
+	for i in get_tree().get_nodes_in_group('CockroachBG'):
 		i.queue_free()
 				
 	smart_tarakan_spawner.spawn(int(roach_infestation_level/8),1.0)
@@ -162,7 +165,14 @@ func sleep():
 			get_away_pawn(tarakan_pawn,Vector3(0,5,0))
 			
 			new_day()
-			current_day += 1
+			
+			if current_day+1 >= number_of_days:
+				if roach_infestation_level>=50:
+					get_tree().change_scene_to_file('res://scenes/ui/bad ending.tscn')
+				else:
+					get_tree().change_scene_to_file('res://scenes/ui/good ending.tscn')
+			else:
+				current_day += 1
 			
 			
 	

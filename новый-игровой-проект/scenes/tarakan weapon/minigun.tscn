@@ -50,6 +50,7 @@ omni_range = 0.061765175
 [node name="FmodEventEmitter3D" type="FmodEventEmitter3D" parent="Targeting Area" index="2" unique_id=269220853]
 event_name = "event:/Mini Gun"
 event_guid = "{1e9e9ec2-befd-47f0-9ab0-45e658f939af}"
+volume = 0.5
 "fmod_parameters/Parameter 3/id" = -1522818097161509043
 "fmod_parameters/Parameter 3" = 1
 "fmod_parameters/Parameter 3/variant_type" = 2

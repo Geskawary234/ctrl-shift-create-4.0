@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://b5j30knkg7314" path="res://src/FMOD/cave_music_area.gd" id="3_4ecoa"]
 [ext_resource type="PackedScene" uid="uid://csinxkwqir5pj" path="res://scenes/player/pawns/player_human_pawn.tscn" id="3_lnsab"]
 [ext_resource type="PackedScene" uid="uid://cuedytqi7hu8b" path="res://ItemCatalog/dorm/table_1.tscn" id="4_mwn28"]
+[ext_resource type="Script" uid="uid://7q73esfngfmg" path="res://src/WorldEnvironmentManager.gd" id="5_8ahg6"]
 [ext_resource type="PackedScene" uid="uid://bllaaaa886q81" path="res://ItemCatalog/dorm/laptop.tscn" id="5_8r01v"]
 [ext_resource type="Script" uid="uid://dva11qswodypc" path="res://src/objects/Spawner.gd" id="6_4ecoa"]
 [ext_resource type="PackedScene" uid="uid://dfsbrgkdhvwqp" path="res://ItemCatalog/dorm/chair.tscn" id="6_ubjbs"]
@@ -22,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://5b5ngrg31r5n" path="res://ItemCatalog/items/castrylebuben.tscn" id="14_71g7k"]
 [ext_resource type="PackedScene" uid="uid://dx00v7u0y4ojl" path="res://scenes/building/dorm_room.tscn" id="16_2t4po"]
 [ext_resource type="PackedScene" uid="uid://h4kseaa5acjh" path="res://scenes/objects/hole.tscn" id="17_t3v3j"]
+[ext_resource type="Script" uid="uid://dexliram5kybh" path="res://src/objects/out_of_bounds_area.gd" id="19_71g7k"]
 [ext_resource type="Texture2D" uid="uid://da50ygiwro4dq" path="res://assets/textures/city background.png" id="23_tayly"]
 [ext_resource type="PackedScene" uid="uid://cs8vatw444k1j" path="res://ItemCatalog/items/tapok.tscn" id="24_dawqo"]
 [ext_resource type="PackedScene" uid="uid://dl4mgekouahnk" path="res://ItemCatalog/dorm/tumba.tscn" id="26_r0oww"]
@@ -47,9 +49,6 @@ ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.3
 tonemap_mode = 2
-ssr_enabled = true
-ssao_enabled = true
-ssil_enabled = true
 glow_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.01
@@ -67,9 +66,15 @@ size = Vector3(6.7841797, 4.5492554, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ke76d"]
 size = Vector3(8.37915, 4.5492554, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ahg6"]
+size = Vector3(10.642578, 1, 9.38623)
+
 [sub_resource type="FogMaterial" id="FogMaterial_7ub60"]
 density = 5.2419
 albedo = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2t4po"]
+size = Vector3(10.642578, 1, 9.38623)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dawqo"]
 size = Vector2(2, 4.155)
@@ -138,6 +143,7 @@ shape = SubResource("BoxShape3D_dawqo")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2102947191]
 environment = SubResource("Environment_d7p0r")
+script = ExtResource("5_8ahg6")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=491288852]
 transform = Transform3D(-0.9914814, 0.05192693, 0.11944927, 0.076105535, 0.9752137, 0.20776498, -0.10569996, 0.2150859, -0.97085816, 0, 0, 0)
@@ -243,6 +249,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.040615737, -0.26951176, -0.
 [node name="TeleportToRoom" type="Node3D" parent="Background assets/room" unique_id=141312731]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.040615737, 0.26951176, 0.69477427)
 
+[node name="OutOfBoundsArea" type="Area3D" parent="Background assets/room" unique_id=450004411 node_paths=PackedStringArray("teleport_to")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.040615737, -1.3633502, 0.69477427)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("19_71g7k")
+teleport_to = NodePath("../TeleportToRoom")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Background assets/room/OutOfBoundsArea" unique_id=1224776450]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7492676)
+shape = SubResource("BoxShape3D_8ahg6")
+debug_color = Color(0, 0.6459465, 0.25567958, 0.41960785)
+
 [node name="nest" parent="Background assets" unique_id=1319243216 instance=ExtResource("28_x3tw2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0518832, 0.9565535, 13.1982565)
 
@@ -294,6 +312,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1617532, 0.8153219, 14.4950
 script = ExtResource("6_4ecoa")
 scene = ExtResource("8_7ub60")
 metadata/_custom_type_script = "uid://dva11qswodypc"
+
+[node name="OutOfBoundsArea" type="Area3D" parent="Background assets/nest" unique_id=1226366970 node_paths=PackedStringArray("teleport_to")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7833989, -1.3633502, 0.6947746)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("19_71g7k")
+teleport_to = NodePath("../teleportToCave")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Background assets/nest/OutOfBoundsArea" unique_id=846050032]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7492676)
+shape = SubResource("BoxShape3D_2t4po")
+debug_color = Color(0, 0.6459465, 0.25567958, 0.41960785)
 
 [node name="Sprite3D" type="Sprite3D" parent="Background assets" unique_id=260071107]
 transform = Transform3D(2.505, 0, 0, 0, 2.505, 0, 0, 0, 2.505, -0.16350508, 0.6138683, -9.602189)

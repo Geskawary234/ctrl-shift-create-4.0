@@ -16,6 +16,13 @@ var master_volume : float = 1
 var music_volume : float = 1
 var sound_volume : float = 1
 
+signal GraphicsChanged
+var graphics_settings : Dictionary[String,bool] = {
+	'ssr' : true,
+	'ssao' : true,
+	'ssil' : true
+}
+
 
 func _init() -> void:
 	var data = load_settings()
@@ -23,6 +30,13 @@ func _init() -> void:
 		master_volume = data['master']
 		music_volume = data['music']
 		sound_volume = data['sound']
+		
+
+		for s in graphics_settings.keys():
+			if s in data:
+				graphics_settings[s] = data[s]
+		
+		
 	
 	
 	#TarakanUpgraded.connect(func(v): print(v))
@@ -34,8 +48,13 @@ func save_settings():
 		var data = {
 			'music' : music_volume,
 			'sound' : sound_volume,
-			'master' : master_volume
+			'master' : master_volume,
 		}
+		
+		for s in graphics_settings.keys():
+			data[s] = graphics_settings[s]
+		
+		
 		file.store_string(JSON.stringify(data))
 		file.close()
 

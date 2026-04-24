@@ -6,11 +6,13 @@ extends Control
 
 @onready var frame: TextureRect = $Frame
 @onready var next_button: Button = $NextButton
+@onready var skip_hint_anim : AnimationPlayer = $SkipHint/AnimationPlayer
 
 
 var comix_music : FmodEvent
 func _ready() -> void:
 	frame.modulate = Color.TRANSPARENT
+	$SkipHint.modulate = Color.TRANSPARENT
 	next_button.hide()
 	next_button.pressed.connect(func(): get_tree().change_scene_to_file('res://scenes/game_map.tscn'))
 	
@@ -24,10 +26,15 @@ func _ready() -> void:
 	t.tween_property(comix_music,'volume',1,3)
 	await t.finished
 	
-	
-	
 	play_comix()
 
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		skip_hint_anim.play('blink')
+		
+		if event.keycode == 32:
+			get_tree().change_scene_to_file('res://scenes/game_map.tscn')
 
 func play_comix():
 	#await get_tree().create_timer(0.5,false)
