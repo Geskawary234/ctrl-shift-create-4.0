@@ -27,6 +27,8 @@ extends Node3D
 
 func _ready() -> void:
 	$Area3D.body_entered.connect(player_entered)
+	if !Engine.is_editor_hint():
+		rune_type = randi_range(0,5)
 
 func player_entered(b):
 	b.AddRune.emit()

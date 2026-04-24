@@ -11,6 +11,9 @@ var deployment_anim : String = 'Animation'
 				
 		if deployed:
 			$AnimationPlayer.play(deployment_anim)
+			#$"Targeting Area".active = true
 		else:
 			$AnimationPlayer.play(deployment_anim,-1,-1,true)
+			#$"Targeting Area".active = false
 				
+@export var targeting_area : Area3D

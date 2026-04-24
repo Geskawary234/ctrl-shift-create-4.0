@@ -28,6 +28,7 @@ func _ready() -> void:
 	sfx.value_changed.connect(sfx_changed)
 	music.value_changed.connect(music_changed)
 	
+	
 func master_changed(v : float):	
 	#change_volume(0,v)
 	master_bus.volume = v/100

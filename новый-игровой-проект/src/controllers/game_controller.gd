@@ -2,6 +2,8 @@ extends PlayerController
 
 @export var game_manager : GameManager
 @export var rc : RayCast3D
+@onready var controller_body: StaticBody3D = $SpringArm3D/CameraPivot/Camera3D/ControllerBody
+
 
 @onready var game_ui_human: Control = $SpringArm3D/CameraPivot/Camera3D/GameUIHuman
 @onready var game_ui_tarakan: Control = $SpringArm3D/CameraPivot/Camera3D/GameUITarakan
@@ -12,7 +14,6 @@ extends PlayerController
 
 func _process(delta: float) -> void:
 	super(delta)
-	
 func pawn_physics_process(delta: float) -> void:
 	super(delta)
 	if !camera.current: return
@@ -49,7 +50,7 @@ func pawn_changed(old : Pawn):
 		game_ui_human.hide()
 		game_ui_tarakan.show()
 		
-		pawn.AddRune.connect(func(): $SpringArm3D/CameraPivot/Camera3D/GameUITarakan.runes += 1)
+		pawn.AddRune.connect(func(): game_ui_tarakan.runes += 1)
 	
 	
 	initial_cam_position = camera.position
@@ -61,11 +62,11 @@ func tarakan_pawn_process(delta : float):
 
 var dragg_item : DraggableItem
 var item_held_pos : Vector3
-var can_use_item : bool = true
+var item_held_distance : float
 func human_pawn_process(delta : float):
 	camera_shake(delta)
-	can_use_item = true
-	game_ui_human.item_name.text = ''
+	game_ui_human.roach_infest_level_bar.value = Global.GM.roach_infestation_level
+	
 	
 	if Input.is_action_pressed('crouch'):
 		pawn.col_shape.height = lerp(pawn.col_shape.height,1.0,delta * 2)
@@ -94,8 +95,8 @@ func human_pawn_process(delta : float):
 				game_ui_human.pointer_hint.text = 'Кровать, нажмите [E] чтобы проспать до вечера'
 				
 				if Input.is_action_just_pressed('interact'):
-					black_screen.activate()
-					#Global.GM.go_to_sleep()
+					#black_screen.activate()
+					Global.GM.sleep()
 				
 			else:
 				game_ui_human.pointer_hint.text = 'Кровать, чтобы проспать до вечера осталось подождать ' + str(col.bed_cooldown) + ' секунд.'
@@ -109,14 +110,18 @@ func human_pawn_process(delta : float):
 			game_ui_human.item_name.text = col.item_info.item_name
 		else:
 			game_ui_human.pointer.texture = null
+			game_ui_human.item_name.text = ''
+			game_ui_human.pointer_hint.text = ''
 			
 		
 		if Input.is_action_pressed('grab'):
 			if !dragg_item:
 				if col is DraggableItem:
+					var col_point := rc.get_collision_point()
 					dragg_item = rc.get_collider()
 					dragg_item.gravity_scale = 0
-					item_held_pos = dragg_item.to_local(rc.get_collision_point())
+					item_held_pos = dragg_item.to_local(col_point)
+					item_held_distance = col_point.distance_to(camera.global_position)
 	else:
 		game_ui_human.pointer_hint.text = ''
 		if !dragg_item:
@@ -139,9 +144,9 @@ func human_pawn_process(delta : float):
 
 
 var damping := 1000
-var power := 10
+var power := 25
 func process_dragg_item(delta : float):
-	var target_position : = -camera.global_basis.z*2 + camera.global_position
+	var target_position : = -camera.global_basis.z*item_held_distance + camera.global_position
 	var to_target = target_position - dragg_item.to_global(item_held_pos)
 		
 	if dragg_item is DraggableItem:

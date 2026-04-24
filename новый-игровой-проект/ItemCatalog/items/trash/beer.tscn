@@ -7,9 +7,9 @@
 
 [sub_resource type="Resource" id="Resource_il3o4"]
 script = ExtResource("3_3q87j")
-item_name = "Пивас"
+item_name = "Квас"
 description = "Я должен тебе пиво!
-Эх, не холодное конечно, но я бы выпил!"
+Эх, не холодный конечно, но я бы выпил!"
 metadata/_custom_type_script = "uid://bafpw1lj87nk8"
 
 [sub_resource type="Animation" id="Animation_uc3es"]
@@ -122,6 +122,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="beer2/BeerOverlay" index="0" unique_id=1508866401]
 layout_mode = 1
@@ -130,9 +131,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -194.0
+offset_left = -361.0
 offset_top = -316.0
-offset_right = -89.0
+offset_right = -256.0
 offset_bottom = -39.0
 grow_horizontal = 0
 grow_vertical = 0

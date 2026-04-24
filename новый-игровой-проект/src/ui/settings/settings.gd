@@ -15,6 +15,7 @@ func _ready() -> void:
 	
 	$VBoxContainer/Back.pressed.connect(
 		func():
+		Global.save_settings()
 		hide()
 		pause_menu.show()
 		

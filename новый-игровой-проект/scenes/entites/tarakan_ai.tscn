@@ -41,9 +41,9 @@ bg_color = Color(0.60446364, 0.6044638, 0.60446364, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x37ky"]
 bg_color = Color(1, 0.28627452, 0, 1)
 
-[node name="Tarakan" type="RigidBody3D" unique_id=174570234]
+[node name="Tarakan" type="RigidBody3D" unique_id=174570234 groups=["SmartRoach"]]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 23
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true

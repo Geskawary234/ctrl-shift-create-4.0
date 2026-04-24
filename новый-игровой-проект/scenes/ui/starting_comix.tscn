@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://md8kbdyejjtl"]
+
+[ext_resource type="Script" uid="uid://bnrk0dqydl76j" path="res://src/ui/comix_player.gd" id="1_khjds"]
+[ext_resource type="Theme" uid="uid://dclvd56sbfv6j" path="res://assets/ui_theme.tres" id="1_qh7tj"]
+[ext_resource type="Texture2D" uid="uid://ckyjswe8kw3ub" path="res://assets/textures/comix/comix frame 1.jpg" id="2_c8cvs"]
+[ext_resource type="Texture2D" uid="uid://bbhtrkbgsi7gv" path="res://assets/textures/comix/comix frame 2.jpg" id="3_0twso"]
+[ext_resource type="Texture2D" uid="uid://cpbidqbhiqdfv" path="res://assets/textures/comix/comix frame 3.jpg" id="4_qh7tj"]
+[ext_resource type="Texture2D" uid="uid://jw6xoqw1gptm" path="res://assets/textures/comix/comix frame 4.jpg" id="5_gcgsk"]
+[ext_resource type="Texture2D" uid="uid://bjaq6et0thnni" path="res://assets/textures/comix/comix frame 5.jpg" id="6_ac37r"]
+[ext_resource type="Texture2D" uid="uid://dq7reace224i8" path="res://assets/textures/comix/comix frame 6.jpg" id="7_16hmb"]
+[ext_resource type="Texture2D" uid="uid://dil4gkfu6k5to" path="res://assets/textures/comix/comix frame 7.jpg" id="8_vc652"]
+[ext_resource type="Texture2D" uid="uid://ciiw1732p3afl" path="res://assets/textures/comix/comix frame 8.jpg" id="9_dd33n"]
+[ext_resource type="Texture2D" uid="uid://djcb8y1k0khqe" path="res://assets/textures/comix/comix frame 9.jpg" id="10_h34cp"]
+[ext_resource type="PackedScene" uid="uid://csgtfqosgi8yl" path="res://scenes/fmod_bank_manager.tscn" id="11_0twso"]
+
+[node name="StartingComix" type="Control" unique_id=2039766179]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_qh7tj")
+script = ExtResource("1_khjds")
+frames = Array[Texture2D]([ExtResource("2_c8cvs"), ExtResource("3_0twso"), ExtResource("4_qh7tj"), ExtResource("5_gcgsk"), ExtResource("6_ac37r"), ExtResource("7_16hmb"), ExtResource("8_vc652"), ExtResource("9_dd33n"), ExtResource("10_h34cp")])
+
+[node name="FmodBankManager" parent="." unique_id=737683508 instance=ExtResource("11_0twso")]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1356968827]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Frame" type="TextureRect" parent="." unique_id=312362344]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 5
+
+[node name="NextButton" type="Button" parent="." unique_id=1156672516]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -474.0
+offset_top = -178.0
+offset_right = -68.0
+offset_bottom = -52.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 48
+text = "Продолжить"

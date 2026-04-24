@@ -6,7 +6,6 @@ class_name FmodEventArea
 @export var restart_after_leaving : bool = false
 
 var event : FmodEvent
-
 func _ready():
 	event = FmodServer.create_event_instance(fmod_event_path)
 	event.volume = volume
@@ -20,6 +19,13 @@ func _ready():
 
 	#event.start()
 	#event.set_paused(true)
+'''
+func _process(delta: float) -> void:
+	var bds : Array = get_overlapping_bodies()
+	print(bds,' ',playing)
+	if len(bds)<=0 and playing:
+		exited(StaticBody3D.new())'''
+
 
 func entered(_b):
 	if restart_after_leaving:
@@ -33,4 +39,5 @@ func exited(_b):
 		event.stop(0)
 	else:
 		event.paused = true
+
 	

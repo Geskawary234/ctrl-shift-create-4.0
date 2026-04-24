@@ -29,6 +29,7 @@ func take_damage(dmg : float, attacker : Pawn):
 
 func die():
 	FmodServer.play_one_shot('event:/RoachDead')
+	Global.GM.add_infestation_level(-3)
 
 	queue_free()
 	

@@ -1,4 +1,4 @@
-extends Node3D
+extends DraggableItem
 
 var objects_in_bin : Dictionary[Variant,float]
 

@@ -15,7 +15,7 @@ uv1_triplanar = true
 height = 0.5097656
 radius = 0.10498047
 
-[node name="Rune" type="Node3D" unique_id=1798234083]
+[node name="Rune" type="Node3D" unique_id=1798234083 groups=["Runes"]]
 script = ExtResource("1_kv2n4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1242251695]

@@ -2,8 +2,6 @@
 
 [ext_resource type="Script" uid="uid://un0trsvxdnxr" path="res://src/objects/hole.gd" id="1_lbocp"]
 [ext_resource type="Texture2D" uid="uid://bc5xarlps746k" path="res://assets/textures/objects/hole.png" id="1_lhvvt"]
-[ext_resource type="Script" uid="uid://cbw2quvldnfjm" path="res://src/debug/spawner_Testetr.gd" id="2_jd7o4"]
-[ext_resource type="PackedScene" uid="uid://bwloayysdnh25" path="res://scenes/entites/cockroach_bg.tscn" id="3_jd7o4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lhvvt"]
 size = Vector3(0.11279297, 0.15332031, 0.13378906)
@@ -13,13 +11,10 @@ script = ExtResource("1_lbocp")
 
 [node name="Decal" type="Decal" parent="." unique_id=435714951]
 transform = Transform3D(-4.371138e-08, 0.99999994, -4.3711385e-08, 0, -4.371139e-08, -1, -0.99999994, -4.371138e-08, -1.9106857e-15, 0, 0.022531271, 0)
-size = Vector3(0.12695313, 0.19152637, 0.11717773)
+size = Vector3(0.12695313, 0.041015625, 0.11717773)
 texture_albedo = ExtResource("1_lhvvt")
-
-[node name="CockSpawner" type="Node3D" parent="Decal" unique_id=728057674]
-transform = Transform3D(1, 8.742278e-08, -8.742278e-08, 8.742278e-08, -4.371138e-08, 1, 8.742278e-08, -1, -4.371139e-08, 0, 0.057562828, 0.043341666)
-script = ExtResource("2_jd7o4")
-spawn_scene = ExtResource("3_jd7o4")
+upper_fade = 4.8321857e-05
+lower_fade = 1e-05
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Decal" unique_id=1018931890]
 transform = Transform3D(1, 0, -3.8213705e-15, 0, 1, -1.0658141e-14, -4.2351647e-22, 7.1054274e-15, 1, -2.461341e-09, 0.05630892, 0.028715624)

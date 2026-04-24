@@ -12,11 +12,12 @@ icon = ExtResource("2_2ts7l")
 metadata/_custom_type_script = "uid://bafpw1lj87nk8"
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_2ts7l"]
-height = 0.048034668
-radius = 0.15478516
+height = 0.039108276
+radius = 0.08251953
 
-[node name="DeadTarakan" unique_id=935297416 instance=ExtResource("1_0246s")]
-mass = 0.01
+[node name="DeadTarakan" unique_id=935297416 groups=["TarakanItem"] instance=ExtResource("1_0246s")]
+collision_mask = 17
+mass = 0.002
 continuous_cd = true
 item_info = SubResource("Resource_r1itl")
 
@@ -24,5 +25,10 @@ item_info = SubResource("Resource_r1itl")
 transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, 0.0002873242, 0.019387279, 0.022518113)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=811211025]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0004930347, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01858233, 0)
 shape = SubResource("CylinderShape3D_2ts7l")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="3" unique_id=1600951585]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03979761, 0)
+light_energy = 0.01
+omni_range = 0.16400924

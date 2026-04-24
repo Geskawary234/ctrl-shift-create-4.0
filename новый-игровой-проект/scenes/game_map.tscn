@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b3d3225npkml2"]
 
+[ext_resource type="Script" uid="uid://cynm5seosyll4" path="res://src/GameManager.gd" id="1_dawqo"]
 [ext_resource type="PackedScene" uid="uid://csgtfqosgi8yl" path="res://scenes/fmod_bank_manager.tscn" id="1_ohl2k"]
 [ext_resource type="PackedScene" uid="uid://b55rysp664v8q" path="res://scenes/controllers/player_controller.tscn" id="2_njjhs"]
 [ext_resource type="PackedScene" uid="uid://b02nq5xu51aya" path="res://scenes/fmod/fmod_event_area.tscn" id="2_tayly"]
@@ -7,8 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://csinxkwqir5pj" path="res://scenes/player/pawns/player_human_pawn.tscn" id="3_lnsab"]
 [ext_resource type="PackedScene" uid="uid://cuedytqi7hu8b" path="res://ItemCatalog/dorm/table_1.tscn" id="4_mwn28"]
 [ext_resource type="PackedScene" uid="uid://bllaaaa886q81" path="res://ItemCatalog/dorm/laptop.tscn" id="5_8r01v"]
+[ext_resource type="Script" uid="uid://dva11qswodypc" path="res://src/objects/Spawner.gd" id="6_4ecoa"]
 [ext_resource type="PackedScene" uid="uid://dfsbrgkdhvwqp" path="res://ItemCatalog/dorm/chair.tscn" id="6_ubjbs"]
+[ext_resource type="PackedScene" uid="uid://bwloayysdnh25" path="res://scenes/entites/cockroach_bg.tscn" id="7_r0oww"]
 [ext_resource type="PackedScene" uid="uid://b3uu3ber28k3f" path="res://ItemCatalog/dorm/fridge.tscn" id="7_tayly"]
+[ext_resource type="PackedScene" uid="uid://c3ujlv30r8egx" path="res://scenes/entites/tarakan_ai.tscn" id="8_7ub60"]
 [ext_resource type="PackedScene" uid="uid://ctvs4agrpmp07" path="res://ItemCatalog/dorm/table_2.tscn" id="8_dawqo"]
 [ext_resource type="PackedScene" uid="uid://cdq5m407smmqp" path="res://ItemCatalog/dorm/wcapboard.tscn" id="9_4ecoa"]
 [ext_resource type="PackedScene" uid="uid://cfwcsk2evqt3e" path="res://ItemCatalog/dorm/capboardB.tscn" id="10_r0oww"]
@@ -18,10 +22,16 @@
 [ext_resource type="PackedScene" uid="uid://5b5ngrg31r5n" path="res://ItemCatalog/items/castrylebuben.tscn" id="14_71g7k"]
 [ext_resource type="PackedScene" uid="uid://dx00v7u0y4ojl" path="res://scenes/building/dorm_room.tscn" id="16_2t4po"]
 [ext_resource type="PackedScene" uid="uid://h4kseaa5acjh" path="res://scenes/objects/hole.tscn" id="17_t3v3j"]
+[ext_resource type="Texture2D" uid="uid://da50ygiwro4dq" path="res://assets/textures/city background.png" id="23_tayly"]
 [ext_resource type="PackedScene" uid="uid://cs8vatw444k1j" path="res://ItemCatalog/items/tapok.tscn" id="24_dawqo"]
 [ext_resource type="PackedScene" uid="uid://dl4mgekouahnk" path="res://ItemCatalog/dorm/tumba.tscn" id="26_r0oww"]
+[ext_resource type="PackedScene" uid="uid://8gxm78e2cgdv" path="res://ItemCatalog/items/broom.tscn" id="28_7ub60"]
+[ext_resource type="PackedScene" uid="uid://ngku7byw60b5" path="res://scenes/player/pawns/player_tarakan_pawn.tscn" id="28_71g7k"]
 [ext_resource type="PackedScene" uid="uid://ct1va7n2a5egv" path="res://scenes/building/nest.res" id="28_x3tw2"]
 [ext_resource type="PackedScene" uid="uid://cmykm7lxk12wu" path="res://ItemCatalog/items/trash/beer.tscn" id="32_2t4po"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dawqo"]
+radius = 0.63916016
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tayly"]
 size = Vector3(5.8967285, 5.7158203, 9.522156)
@@ -61,7 +71,20 @@ size = Vector3(8.37915, 4.5492554, 1)
 density = 5.2419
 albedo = Color(0, 0, 0, 1)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_dawqo"]
+size = Vector2(2, 4.155)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4ecoa"]
+size = Vector2(9.165, 6.09)
+
 [node name="Node3D" type="Node3D" unique_id=744744297]
+
+[node name="GM" type="Node" parent="." unique_id=510363175 node_paths=PackedStringArray("player_controller", "human_pawn", "tarakan_pawn")]
+script = ExtResource("1_dawqo")
+player_controller = NodePath("../PlayerController")
+human_pawn = NodePath("../HumanPawn")
+tarakan_pawn = NodePath("../PlayerTarakan")
+roach_infestation_level = 75.0
 
 [node name="FmodBankManager" parent="." unique_id=737683508 instance=ExtResource("1_ohl2k")]
 
@@ -70,13 +93,19 @@ albedo = Color(0, 0, 0, 1)
 [node name="KnockKnock" type="FmodEventEmitter3D" parent="FmodBankManager/Sounds" unique_id=269774747]
 event_name = "event:/knock knock"
 event_guid = "{c437f310-d65e-42cc-ae6e-709db95010eb}"
-allow_fadeout = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6135572, 2.923451)
+
+[node name="Area3D" type="Area3D" parent="FmodBankManager/Sounds/KnockKnock" unique_id=2073639586]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FmodBankManager/Sounds/KnockKnock/Area3D" unique_id=1053149733]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06506348, -0.2590332)
+shape = SubResource("CylinderShape3D_dawqo")
 
 [node name="DoorDialog" type="FmodEventEmitter3D" parent="FmodBankManager/Sounds" unique_id=882850051]
 event_name = "event:/Dialog_Komenda"
 event_guid = "{9904c156-e5e5-4113-b82a-f078b9644dba}"
-allow_fadeout = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.063363)
 
 [node name="HomeMusic" parent="FmodBankManager/Sounds" unique_id=1166524282 instance=ExtResource("2_tayly")]
@@ -114,18 +143,30 @@ environment = SubResource("Environment_d7p0r")
 transform = Transform3D(-0.9914814, 0.05192693, 0.11944927, 0.076105535, 0.9752137, 0.20776498, -0.10569996, 0.2150859, -0.97085816, 0, 0, 0)
 light_volumetric_fog_energy = 4.734
 shadow_enabled = true
-shadow_bias = 0.001
+shadow_blur = 0.75
 
 [node name="HoleTrajectory" type="Path3D" parent="." unique_id=2049882899]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3181937, -0.22349116, 2.2848687)
 curve = SubResource("Curve3D_d7p0r")
 
 [node name="HolePosition" type="PathFollow3D" parent="HoleTrajectory" unique_id=2040600383]
-transform = Transform3D(-4.3711335e-08, 0, 0.9999988, 0, 1, 0, -0.9999988, 0, -4.3711335e-08, -1.2236168, 0, 0)
-progress = 7.1086965
+transform = Transform3D(-4.3711307e-08, 0, 0.9999981, 0, 1, 0, -0.9999981, 0, -4.3711307e-08, -1.2907275, 0, 0)
+progress = 7.173151
 
 [node name="Hole" parent="HoleTrajectory/HolePosition" unique_id=1478599438 node_paths=PackedStringArray("teleport_to") instance=ExtResource("17_t3v3j")]
-teleport_to = NodePath("../../../Background assets/nest/teleportTo")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021877559, 0, -4.440892e-16)
+teleport_to = NodePath("../../../Background assets/nest/teleportToCave")
+
+[node name="TarakanSpawner" type="Marker3D" parent="HoleTrajectory/HolePosition/Hole" unique_id=670762607]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04348477, -0.026624553, 0)
+script = ExtResource("6_4ecoa")
+scene = ExtResource("7_r0oww")
+
+[node name="SmartTarakanSpawner" type="Marker3D" parent="HoleTrajectory/HolePosition/Hole" unique_id=117939237]
+transform = Transform3D(1, 0, -7.1054274e-15, 0, 1, 0, 7.1054274e-15, 0, 1, 0.2591865, -0.024515525, 0)
+script = ExtResource("6_4ecoa")
+scene = ExtResource("8_7ub60")
+metadata/_custom_type_script = "uid://dva11qswodypc"
 
 [node name="Background assets" type="Node3D" parent="." unique_id=295615932]
 
@@ -135,7 +176,7 @@ teleport_to = NodePath("../../../Background assets/nest/teleportTo")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.046351016, -0.26360452, -3.1139677)
 
 [node name="Laptop" parent="Background assets/Furniture" unique_id=345442934 instance=ExtResource("5_8r01v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13752934, 0.7008526, -2.8439355)
+transform = Transform3D(0.96323293, 0, -0.26866764, 0, 1, 0, 0.26866764, 0, 0.96323293, 0.04370463, 0.7008526, -3.0929081)
 
 [node name="Chair" parent="Background assets/Furniture" unique_id=930817039 instance=ExtResource("6_ubjbs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20809704, -0.10700989, -2.4040968)
@@ -199,10 +240,13 @@ shape = SubResource("BoxShape3D_ke76d")
 [node name="room" parent="Background assets" unique_id=1683976877 instance=ExtResource("16_2t4po")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.040615737, -0.26951176, -0.69477427)
 
+[node name="TeleportToRoom" type="Node3D" parent="Background assets/room" unique_id=141312731]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.040615737, 0.26951176, 0.69477427)
+
 [node name="nest" parent="Background assets" unique_id=1319243216 instance=ExtResource("28_x3tw2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0518832, 0.9565535, 13.1982565)
 
-[node name="teleportTo" type="Node3D" parent="Background assets/nest" unique_id=1626452495]
+[node name="teleportToCave" type="Node3D" parent="Background assets/nest" unique_id=1626452495]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.479362, -0.06807178, -0.3454008)
 
 [node name="FogVolume" type="FogVolume" parent="Background assets/nest" unique_id=1185462439]
@@ -210,34 +254,107 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1695652, -0.11957842, 0.017
 size = Vector3(8.719238, 3.6739502, 4.368866)
 material = SubResource("FogMaterial_7ub60")
 
-[node name="PlayerController" parent="." unique_id=458364125 node_paths=PackedStringArray("pawn") instance=ExtResource("2_njjhs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1933107, 0.64182544, -3.30721)
-speed = 3.0
-pawn = NodePath("../HumanPawn")
+[node name="Hole" parent="Background assets/nest" unique_id=434761365 node_paths=PackedStringArray("teleport_to") instance=ExtResource("17_t3v3j")]
+transform = Transform3D(1, 0, 0, 0, 0.99439716, -0.10570871, 0, 0.10570871, 0.99439716, -0.8609737, -0.122811794, -0.3741808)
+teleport_to = NodePath("../../room/TeleportToRoom")
+
+[node name="RuneSpawns" type="Node" parent="Background assets/nest" unique_id=1529165458]
+
+[node name="Node3D" type="Node3D" parent="Background assets/nest/RuneSpawns" unique_id=15133626]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17596579, 0.8950101, 12.102102)
+
+[node name="Node3D2" type="Node3D" parent="Background assets/nest/RuneSpawns" unique_id=732338417]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1168826, 0.8810361, 12.451758)
+
+[node name="Node3D3" type="Node3D" parent="Background assets/nest/RuneSpawns" unique_id=429861539]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4775934, 0.8810361, 14.377749)
+
+[node name="SmartTarakanSpawns" type="Node" parent="Background assets/nest" unique_id=585170778]
+
+[node name="Node3D" type="Marker3D" parent="Background assets/nest/SmartTarakanSpawns" unique_id=129036484]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3864986, 0.760929, 12.715851)
+script = ExtResource("6_4ecoa")
+scene = ExtResource("8_7ub60")
+metadata/_custom_type_script = "uid://dva11qswodypc"
+
+[node name="Node3D2" type="Marker3D" parent="Background assets/nest/SmartTarakanSpawns" unique_id=1080292522]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.74128735, 0.760929, 13.762239)
+script = ExtResource("6_4ecoa")
+scene = ExtResource("8_7ub60")
+metadata/_custom_type_script = "uid://dva11qswodypc"
+
+[node name="Node3D3" type="Marker3D" parent="Background assets/nest/SmartTarakanSpawns" unique_id=1950188753]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1335673, 0.7801261, 12.785246)
+script = ExtResource("6_4ecoa")
+scene = ExtResource("8_7ub60")
+metadata/_custom_type_script = "uid://dva11qswodypc"
+
+[node name="Node3D4" type="Marker3D" parent="Background assets/nest/SmartTarakanSpawns" unique_id=1265266814]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1617532, 0.8153219, 14.4950695)
+script = ExtResource("6_4ecoa")
+scene = ExtResource("8_7ub60")
+metadata/_custom_type_script = "uid://dva11qswodypc"
+
+[node name="Sprite3D" type="Sprite3D" parent="Background assets" unique_id=260071107]
+transform = Transform3D(2.505, 0, 0, 0, 2.505, 0, 0, 0, 2.505, -0.16350508, 0.6138683, -9.602189)
+visible = false
+custom_aabb = AABB(-23.015, -9.4, 0, 27.435, 17.41, 0)
+ignore_occlusion_culling = true
+texture = ExtResource("23_tayly")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Background assets" unique_id=2098141900]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.6170793, 1.1027641, -4.333332)
+mesh = SubResource("PlaneMesh_dawqo")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Background assets" unique_id=1750612267]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.2595048, 1.1027641, -4.333332)
+mesh = SubResource("PlaneMesh_dawqo")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Background assets" unique_id=1748829417]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8231609, 2.7064044, -0.33547616)
+mesh = SubResource("PlaneMesh_4ecoa")
 
 [node name="Items" type="Node" parent="." unique_id=470024185]
 
 [node name="Dihlofos" parent="Items" unique_id=1673000272 instance=ExtResource("13_7ub60")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.67231804, 1.0094882, -2.9942229)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.67231804, 0.77364874, -2.9942229)
 
 [node name="Castrylebuben" parent="Items" unique_id=89131801 instance=ExtResource("14_71g7k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6395004, 0.13282394, -2.9589963)
 
 [node name="Tapok" parent="Items" unique_id=1343610777 instance=ExtResource("24_dawqo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0868013, 0.6748719, -2.8384316)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3804502, -0.16319555, -0.89116555)
 
-[node name="Tumba" parent="Items" unique_id=935297416 instance=ExtResource("26_r0oww")]
+[node name="Tapok2" parent="Items" unique_id=935297416 instance=ExtResource("24_dawqo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3804502, -0.16319555, -1.1418083)
+
+[node name="Tumba" parent="Items" unique_id=392521443 instance=ExtResource("26_r0oww")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.71227455, -0.2695117, -2.9751883)
 
 [node name="Tumba2" parent="Items" unique_id=1023042955 instance=ExtResource("26_r0oww")]
 transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -1.5622878, -0.2695117, 0.38058314)
 
-[node name="Beer" parent="Items" unique_id=1414693621 instance=ExtResource("32_2t4po")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5222682, 0.628024, -2.7228146)
+[node name="Beer" parent="Items" unique_id=1955878095 instance=ExtResource("32_2t4po")]
+transform = Transform3D(-0.9084863, 0, 0.41791463, 0, 1, 0, -0.41791463, 0, -0.9084863, -1.8056767, 0.7232377, 0.04944414)
 
-[node name="Beer2" parent="Items" unique_id=560304677 instance=ExtResource("32_2t4po")]
-transform = Transform3D(-0.1975034, 0, 0.9803022, 0, 1, 0, -0.9803022, 0, -0.1975034, 0.64337707, 0.628024, -2.79267)
+[node name="Beer2" parent="Items" unique_id=445809712 instance=ExtResource("32_2t4po")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8346806, 0.72323775, 0.18390104)
+
+[node name="Beer3" parent="Items" unique_id=1898638384 instance=ExtResource("32_2t4po")]
+transform = Transform3D(-0.99193436, 0, -0.12675303, 0, 1, 0, 0.12675303, 0, -0.99193436, -1.7104919, 0.72323775, 0.10239044)
+
+[node name="Broom" parent="Items" unique_id=2074831006 instance=ExtResource("28_7ub60")]
+transform = Transform3D(0.9763338, 0.21626921, 0, -0.21626921, 0.9763338, 0, 0, 0, 1, 1.8976834, -0.1197418, 1.5930165)
+
+[node name="PlayerController" parent="." unique_id=458364125 node_paths=PackedStringArray("game_manager", "pawn") instance=ExtResource("2_njjhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1933107, 0.64182544, -3.30721)
+game_manager = NodePath("../GM")
+speed = 3.0
+pawn = NodePath("../HumanPawn")
 
 [node name="HumanPawn" parent="." unique_id=542977680 instance=ExtResource("3_lnsab")]
 transform = Transform3D(-0.9996691, 0, 0.025723308, 0, 1, 0, -0.025723308, 0, -0.9996691, 0.73215604, 0.86011815, -0.79522634)
 collision_mask = 17
+
+[node name="PlayerTarakan" parent="." unique_id=1044468272 instance=ExtResource("28_71g7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9863372, 6.7109303, -1.6190643)

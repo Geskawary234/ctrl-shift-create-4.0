@@ -17,9 +17,71 @@ size = Vector3(0.13085938, 0.17810059, 0.55859375)
 height = 1.4194336
 radius = 0.022460938
 
+[sub_resource type="Animation" id="Animation_kbira"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("broom2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("broom2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0014278889, -2.3841858e-07, -0.026640415)]
+}
+
+[sub_resource type="Animation" id="Animation_uc3es"]
+resource_name = "clean"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("broom2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.43333334, 0.83333325),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0014278889, -2.3841858e-07, -0.026640415), Vector3(-1.0345621, 0.24500394, 0.025977008), Vector3(0.0014278889, -2.3841858e-07, -0.026640415)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("broom2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.43333334, 0.83333325),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.33862486, 0.19170018, -1.5482522), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6mdcw"]
+_data = {
+&"RESET": SubResource("Animation_kbira"),
+&"clean": SubResource("Animation_uc3es")
+}
+
 [node name="Broom" unique_id=935297416 node_paths=PackedStringArray("in_hands_scene", "normal_scene") instance=ExtResource("1_3yra2")]
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, 1, 0)
 script = ExtResource("2_6mdcw")
-in_hands_scene = NodePath("broom2")
+in_hands_scene = NodePath("Node3D")
 normal_scene = NodePath("broom2")
 item_info = SubResource("Resource_s7iic")
 
@@ -34,9 +96,12 @@ shape = SubResource("BoxShape3D_6mdcw")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0008933246, 0.79715395, -0.026799724)
 shape = SubResource("CylinderShape3D_s7iic")
 
-[node name="Node3D" type="Node3D" parent="." index="4" unique_id=1929700750]
-transform = Transform3D(-0.9659258, -0.25881913, 0, 0.25881913, -0.9659258, 0, 0, 0, 1, 0.57899576, 0.37166548, -0.054224253)
+[node name="Node3D" type="Node3D" parent="." index="4" unique_id=1509977550]
+transform = Transform3D(0.26504582, 0.071018845, 0.9616169, 0.25881913, -0.9659258, 0, 0.92885053, 0.24888484, -0.27439564, 0.058110148, 0.37166548, 0.31670338)
 visible = false
 
-[node name="broom2" parent="Node3D" index="0" unique_id=1309673384 instance=ExtResource("2_fp2kc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0014278889, -2.3841858e-07, -0.026640415)
+[node name="broom2" parent="Node3D" index="0" unique_id=271670473 instance=ExtResource("2_fp2kc")]
+transform = Transform3D(1.0000002, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0.0014278889, -2.3841858e-07, -0.026640415)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node3D" index="1" unique_id=75420345]
+libraries/ = SubResource("AnimationLibrary_6mdcw")

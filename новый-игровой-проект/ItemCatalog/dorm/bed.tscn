@@ -5,10 +5,22 @@
 [ext_resource type="Script" uid="uid://h13sl8p8ulo6" path="res://src/objects/bed_sleepable.gd" id="2_u2weh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b10mx"]
-size = Vector3(0.072021484, 1, 1)
+size = Vector3(0.039794922, 0.79956055, 0.892334)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2pyn5"]
+size = Vector3(0.039794922, 0.79956055, 2.3776855)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lrdpp"]
+size = Vector3(0.024291992, 0.4567871, 0.8935547)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u2weh"]
-size = Vector3(2.437378, 0.5213623, 1)
+size = Vector3(2.3798523, 0.3300171, 0.90527344)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8lr8o"]
+size = Vector3(0.6530762, 0.13702393, 0.4086914)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_updhi"]
+size = Vector3(1.296875, 1.5479736, 2.8076172)
 
 [node name="Bed" unique_id=935297416 instance=ExtResource("1_0w2t7")]
 mass = 40.0
@@ -19,19 +31,35 @@ bed_cooldown = 30.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9071362, 0, 1.8180214)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=188430144]
-transform = Transform3D(3.5762787e-07, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, 3.5762787e-07, -0.0521854, 0.29892364, -1.0879965)
+transform = Transform3D(3.5762787e-07, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, 3.5762787e-07, -0.05218541, 0.39059845, -1.1041098)
 shape = SubResource("BoxShape3D_b10mx")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="2" unique_id=950554970]
-transform = Transform3D(3.5762787e-07, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, 3.5762787e-07, -0.0521854, 0.43205208, 1.2332175)
-shape = SubResource("BoxShape3D_b10mx")
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="." index="2" unique_id=1878229928]
+transform = Transform3D(-0.9999999, 0, -3.1391642e-07, 0, 1, 0, 3.1391642e-07, 0, -0.9999999, 0.38245332, 0.39059845, 0.078320265)
+shape = SubResource("BoxShape3D_2pyn5")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="." index="3" unique_id=35492156]
-transform = Transform3D(3.5762787e-07, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, 3.5762787e-07, -0.052185826, 0.42564338, 0.050539374)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="3" unique_id=950554970]
+transform = Transform3D(3.5762787e-07, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, 3.5762787e-07, -0.052185398, 0.21054143, 1.2654163)
+shape = SubResource("BoxShape3D_lrdpp")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." index="4" unique_id=35492156]
+transform = Transform3D(3.5762787e-07, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, 3.5762787e-07, -0.048767854, 0.32997078, 0.06761396)
 shape = SubResource("BoxShape3D_u2weh")
 
-[node name="Label3D" type="Label3D" parent="." index="4" unique_id=173720185]
+[node name="Label3D" type="Label3D" parent="." index="5" unique_id=173720185]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.98332393, 0)
 visible = false
 billboard = 1
 text = "Спа"
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="." index="7" unique_id=1725221212]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06945801, 0.5409536, -0.8106798)
+shape = SubResource("BoxShape3D_8lr8o")
+
+[node name="EndNightShift" type="Area3D" parent="." index="8" unique_id=1885473343]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EndNightShift" index="0" unique_id=1351635899]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27398682, 0)
+shape = SubResource("BoxShape3D_updhi")

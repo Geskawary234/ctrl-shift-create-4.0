@@ -18,3 +18,8 @@ shape = SubResource("CylinderShape3D_or774")
 
 [node name="cocroch" parent="." unique_id=1989749768 instance=ExtResource("2_or774")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0037223464, 0.0065406635, -0.003055416)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=930997062]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03979761, 0)
+light_energy = 0.01
+omni_range = 0.16400924

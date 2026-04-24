@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bb4d3qmq28qes" path="res://scenes/ui/settings.tscn" id="3_ub4dc"]
 [ext_resource type="Script" uid="uid://34oq5bctftxf" path="res://src/ui/game_ui_tarakan.gd" id="5_2iugi"]
 [ext_resource type="PackedScene" uid="uid://cbhqwatgn35mo" path="res://scenes/ui/item_info_panel.tscn" id="6_44cuw"]
+[ext_resource type="PackedScene" uid="uid://dtsjoii7sv852" path="res://scenes/ui/upgrades/tarakan upgrades menu.tscn" id="7_08plt"]
 [ext_resource type="Script" uid="uid://berewscxd250k" path="res://src/ui/black_screen.gd" id="10_kvy6k"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_65r03"]
@@ -43,6 +44,7 @@ collision_mask = 17
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4136425, -0.31445116, -0.92181695)
 
 [node name="GameUIHuman" type="Control" parent="SpringArm3D/CameraPivot/Camera3D" index="2" unique_id=1244215861]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -153,14 +155,14 @@ offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="SpringArm3D/CameraPivot/Camera3D/GameUIHuman" index="3" unique_id=572264833]
+[node name="RoachInfestationLevel" type="ProgressBar" parent="SpringArm3D/CameraPivot/Camera3D/GameUIHuman" index="3" unique_id=572264833]
 layout_mode = 1
 offset_left = 100.0
 offset_top = 68.0
 offset_right = 640.0
 offset_bottom = 123.0
 
-[node name="Label" type="Label" parent="SpringArm3D/CameraPivot/Camera3D/GameUIHuman/ProgressBar" index="0" unique_id=300798495]
+[node name="Label" type="Label" parent="SpringArm3D/CameraPivot/Camera3D/GameUIHuman/RoachInfestationLevel" index="0" unique_id=300798495]
 layout_mode = 0
 offset_left = -3.0
 offset_top = -36.0
@@ -179,7 +181,6 @@ theme_override_font_sizes/font_size = 29
 text = "Дней пережито"
 
 [node name="GameUITarakan" type="Control" parent="SpringArm3D/CameraPivot/Camera3D" index="3" unique_id=703751507]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -211,6 +212,28 @@ offset_top = 130.0
 offset_right = 187.0
 offset_bottom = 160.0
 text = "Рун найдено: "
+
+[node name="Upgrades" parent="SpringArm3D/CameraPivot/Camera3D/GameUITarakan" index="2" unique_id=19362031 node_paths=PackedStringArray("pause_manager", "pause_menu") instance=ExtResource("7_08plt")]
+visible = false
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+pause_manager = NodePath("../../../../../PauseManager")
+pause_menu = NodePath("../../PauseMenu")
+
+[node name="BedHint" type="Label" parent="SpringArm3D/CameraPivot/Camera3D/GameUITarakan" index="3" unique_id=1906156935]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -52.0
+offset_right = 41.0
+offset_bottom = -22.0
+grow_vertical = 0
+text = "Чтобы закончить ночную вылазку, подойдите к кровати и нажмите [E]"
 
 [node name="ItemInfoPanel" parent="SpringArm3D/CameraPivot/Camera3D" index="4" unique_id=1701949197 node_paths=PackedStringArray("pause_manager") instance=ExtResource("6_44cuw")]
 process_mode = 3
@@ -248,15 +271,15 @@ visible = false
 pause_manager = NodePath("../../../../PauseManager")
 settings_ui = NodePath("../Settings")
 
+[node name="ControllerBody" type="StaticBody3D" parent="SpringArm3D/CameraPivot/Camera3D" index="8" unique_id=1303829716]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpringArm3D/CameraPivot/Camera3D/ControllerBody" index="0" unique_id=825905994]
+shape = SubResource("SphereShape3D_kvy6k")
+
 [node name="PauseManager" type="Node" parent="." index="1" unique_id=612787171]
 process_mode = 3
 script = ExtResource("3_deed6")
 
 [node name="FmodListener3D" type="FmodListener3D" parent="." index="2" unique_id=418568817]
-
-[node name="ControllerBody" type="StaticBody3D" parent="." index="3" unique_id=1303829716]
-collision_layer = 32
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ControllerBody" index="0" unique_id=825905994]
-shape = SubResource("SphereShape3D_kvy6k")

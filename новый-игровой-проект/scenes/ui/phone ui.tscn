@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://5w52wyrryo66"]
+
+[ext_resource type="Texture2D" uid="uid://c4au5gmmlj4cy" path="res://assets/textures/ui/phone/phone background.jpg" id="1_7veyr"]
+[ext_resource type="Texture2D" uid="uid://dlhqheu356ub7" path="res://assets/textures/ui/phone/poco x3 bg.png" id="2_6rui6"]
+[ext_resource type="Texture2D" uid="uid://bdigbdn6uegq0" path="res://assets/textures/ui/phone/poco x3 fg.png" id="3_csnvj"]
+
+[node name="Control" type="Control" unique_id=347114501]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PocoX3" type="Control" parent="." unique_id=214303891]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 122.0
+offset_top = -202.0
+offset_right = 445.0
+offset_bottom = 440.0
+grow_vertical = 0
+
+[node name="Control" type="Control" parent="PocoX3" unique_id=356103255]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 19.0
+offset_right = -17.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PocoX3/Control" unique_id=234352285]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_7veyr")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Bg" type="TextureRect" parent="PocoX3" unique_id=12044568]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_6rui6")
+
+[node name="Fg" type="TextureRect" parent="PocoX3" unique_id=1182835418]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_csnvj")

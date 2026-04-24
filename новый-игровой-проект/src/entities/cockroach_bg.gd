@@ -10,7 +10,7 @@ var a : float = 0
 var overwhelmed : float = 0
 func _physics_process(delta: float) -> void:
 	if overwhelmed<=0:
-		velocity = -global_basis.z * 3
+		velocity = -global_basis.z * 2
 	else:
 		velocity = Vector3.ZERO
 		overwhelmed -= delta
@@ -35,6 +35,6 @@ func _physics_process(delta: float) -> void:
 	
 const DEAD_TARAKAN = preload("uid://p7nrccetqxew")
 func die():
-	Global.GM.human_tarakan_kill_count += 1
+	Global.GM.tarakan_killed.emit()
 	GameServer.spawn(DEAD_TARAKAN,global_position,get_tree().current_scene)
 	queue_free()

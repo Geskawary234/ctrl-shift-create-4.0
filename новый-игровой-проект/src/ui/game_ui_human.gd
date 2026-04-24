@@ -9,7 +9,7 @@ extends Control
 @onready var item_tooltip: Label = $VBoxContainer/SlotActive/VBoxContainer/ItemTooltip
 @onready var hint: Label = $VBoxContainer/SlotActive/VBoxContainer/hint
 
-@onready var roach_infest_level_bar: ProgressBar = $ProgressBar
+@onready var roach_infest_level_bar: ProgressBar = $RoachInfestationLevel
 @onready var days_count: Label = $"Days count"
 
 

@@ -4,12 +4,14 @@ extends Area3D
 @export var damage_timer : float
 @export var light : Light3D
 
-
 var dmg_tmr : float = 0
 
 
 @onready var sfx: FmodEventEmitter3D = $FmodEventEmitter3D
 func _process(delta: float) -> void:
+	
+	if !active: return
+	
 	if dmg_tmr<=0:
 		var bds = get_overlapping_bodies()
 		if len(bds)>0:
@@ -17,7 +19,7 @@ func _process(delta: float) -> void:
 			sfx.play(false)
 		for i in bds:
 			if i is TarakanPawn:
-				i.take_damage(1,Global.GM.tarakan_pawn)
+				i.take_damage(5,Global.GM.tarakan_pawn)
 		
 		dmg_tmr = damage_timer
 	else:
