@@ -4,6 +4,8 @@ class_name PlayerTarakanPawn
 @export var spring_len : float = 0.2
 @export var speed : float = 0.5
 @export var _health : float = 10
+@export var look_light : Light3D
+
 @onready var alert_area: Area3D = $AlertArea
 
 @onready var ap : AnimationPlayer = $Model.get_node('AnimationPlayer')

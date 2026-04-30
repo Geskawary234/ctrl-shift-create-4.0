@@ -19,7 +19,7 @@ emission_enabled = true
 emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 8.0
 
-[node name="PlayerTarakan" type="RigidBody3D" unique_id=1044468272]
+[node name="PlayerTarakan" type="RigidBody3D" unique_id=1044468272 node_paths=PackedStringArray("look_light")]
 collision_layer = 2
 collision_mask = 21
 mass = 0.002
@@ -27,6 +27,7 @@ physics_material_override = ExtResource("1_ud0og")
 continuous_cd = true
 script = ExtResource("1_qodcx")
 _health = 25.0
+look_light = NodePath("SpotLight3D")
 metadata/_custom_type_script = "uid://c7d431onisa8u"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1508185200]
@@ -62,3 +63,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00763919, -0.023434775, -0
 
 [node name="Minigun2" parent="Weapons" unique_id=1346114806 instance=ExtResource("4_8ct2h")]
 transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 0.0077038854, 0.00929304, -0.012973616)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="." unique_id=1724190920]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.22757424, -9.947586e-09)
+spot_range = 0.25273874
+spot_angle = 20.90866

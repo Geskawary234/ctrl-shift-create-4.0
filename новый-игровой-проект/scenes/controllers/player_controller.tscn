@@ -30,7 +30,9 @@ allow_mode_change = false
 collision_mask = 17
 shape = SubResource("SphereShape3D_65r03")
 
-[node name="Camera3D" parent="SpringArm3D/CameraPivot" parent_id_path=PackedInt32Array(482518540) index="0" unique_id=1714195361]
+[node name="FmodListener3D" type="FmodListener3D" parent="SpringArm3D/CameraPivot" parent_id_path=PackedInt32Array(482518540) index="0" unique_id=418568817]
+
+[node name="Camera3D" parent="SpringArm3D/CameraPivot" parent_id_path=PackedInt32Array(482518540) index="1" unique_id=1714195361]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 near = 0.001
 
@@ -43,7 +45,14 @@ collision_mask = 17
 [node name="Hand" type="Node3D" parent="SpringArm3D/CameraPivot/Camera3D" index="1" unique_id=1334154316]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4136425, -0.31445116, -0.92181695)
 
-[node name="GameUIHuman" type="Control" parent="SpringArm3D/CameraPivot/Camera3D" index="2" unique_id=1244215861]
+[node name="ControllerBody" type="StaticBody3D" parent="SpringArm3D/CameraPivot/Camera3D" index="2" unique_id=1303829716]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpringArm3D/CameraPivot/Camera3D/ControllerBody" index="0" unique_id=825905994]
+shape = SubResource("SphereShape3D_kvy6k")
+
+[node name="GameUIHuman" type="Control" parent="SpringArm3D/CameraPivot/Camera3D" index="3" unique_id=1244215861]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -180,7 +189,7 @@ offset_bottom = 266.0
 theme_override_font_sizes/font_size = 29
 text = "Дней пережито"
 
-[node name="GameUITarakan" type="Control" parent="SpringArm3D/CameraPivot/Camera3D" index="3" unique_id=703751507]
+[node name="GameUITarakan" type="Control" parent="SpringArm3D/CameraPivot/Camera3D" index="4" unique_id=703751507]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -235,12 +244,12 @@ offset_bottom = -22.0
 grow_vertical = 0
 text = "Чтобы закончить ночную вылазку, подойдите к кровати и нажмите [E]"
 
-[node name="ItemInfoPanel" parent="SpringArm3D/CameraPivot/Camera3D" index="4" unique_id=1701949197 node_paths=PackedStringArray("pause_manager") instance=ExtResource("6_44cuw")]
+[node name="ItemInfoPanel" parent="SpringArm3D/CameraPivot/Camera3D" index="5" unique_id=1701949197 node_paths=PackedStringArray("pause_manager") instance=ExtResource("6_44cuw")]
 process_mode = 3
 visible = false
 pause_manager = NodePath("../../../../PauseManager")
 
-[node name="BlackScreen" type="Control" parent="SpringArm3D/CameraPivot/Camera3D" index="5" unique_id=627774785]
+[node name="BlackScreen" type="Control" parent="SpringArm3D/CameraPivot/Camera3D" index="6" unique_id=627774785]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -260,26 +269,34 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
-[node name="Settings" parent="SpringArm3D/CameraPivot/Camera3D" index="6" unique_id=111502333 node_paths=PackedStringArray("pause_menu") instance=ExtResource("3_ub4dc")]
+[node name="Settings" parent="SpringArm3D/CameraPivot/Camera3D" index="7" unique_id=111502333 node_paths=PackedStringArray("pause_menu") instance=ExtResource("3_ub4dc")]
 process_mode = 2
 visible = false
 pause_menu = NodePath("../PauseMenu")
 
-[node name="PauseMenu" parent="SpringArm3D/CameraPivot/Camera3D" index="7" unique_id=118265961 node_paths=PackedStringArray("pause_manager", "settings_ui") instance=ExtResource("2_4hcn1")]
+[node name="PauseMenu" parent="SpringArm3D/CameraPivot/Camera3D" index="8" unique_id=118265961 node_paths=PackedStringArray("pause_manager", "settings_ui") instance=ExtResource("2_4hcn1")]
 process_mode = 2
 visible = false
 pause_manager = NodePath("../../../../PauseManager")
 settings_ui = NodePath("../Settings")
 
-[node name="ControllerBody" type="StaticBody3D" parent="SpringArm3D/CameraPivot/Camera3D" index="8" unique_id=1303829716]
-collision_layer = 32
-collision_mask = 0
+[node name="Debug info" type="Control" parent="SpringArm3D/CameraPivot/Camera3D" index="9" unique_id=722273792]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SpringArm3D/CameraPivot/Camera3D/ControllerBody" index="0" unique_id=825905994]
-shape = SubResource("SphereShape3D_kvy6k")
+[node name="FPS" type="Label" parent="SpringArm3D/CameraPivot/Camera3D/Debug info" index="0" unique_id=1122742883]
+layout_mode = 1
+offset_left = 48.0
+offset_top = 237.0
+offset_right = 106.0
+offset_bottom = 284.0
+theme_override_font_sizes/font_size = 34
 
 [node name="PauseManager" type="Node" parent="." index="1" unique_id=612787171]
 process_mode = 3
 script = ExtResource("3_deed6")
-
-[node name="FmodListener3D" type="FmodListener3D" parent="." index="2" unique_id=418568817]

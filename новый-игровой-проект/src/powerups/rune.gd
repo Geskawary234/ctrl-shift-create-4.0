@@ -12,8 +12,8 @@ extends Node3D
 			preload("res://assets/textures/runes/rune5.jpg"),
 			preload('res://assets/textures/runes/rune6.jpg')
 		]
-		var rune_1_scale : Vector3 = Vector3(0.13,0.21,0.13)
-		var other_runes_scale : Vector3 = Vector3(0.2,0.16,0.13)
+		var rune_1_scale : Vector3 = Vector3(0.13,0.21,0.13)/2
+		var other_runes_scale : Vector3 = Vector3(0.2,0.16,0.13)/2
 		
 		rune_type = v
 		var mat : StandardMaterial3D = $MeshInstance3D.get_active_material(0)

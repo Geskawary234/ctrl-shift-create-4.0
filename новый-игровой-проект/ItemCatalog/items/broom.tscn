@@ -17,6 +17,9 @@ size = Vector3(0.13085938, 0.17810059, 0.55859375)
 height = 1.4194336
 radius = 0.022460938
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_s7iic"]
+size = Vector3(0.2890625, 0.2652588, 0.5119629)
+
 [sub_resource type="Animation" id="Animation_kbira"]
 length = 0.001
 tracks/0/type = "value"
@@ -53,10 +56,10 @@ tracks/0/path = NodePath("broom2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.43333334, 0.83333325),
+"times": PackedFloat32Array(0, 0.4333, 0.83333325),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0.0014278889, -2.3841858e-07, -0.026640415), Vector3(-1.0345621, 0.24500394, 0.025977008), Vector3(0.0014278889, -2.3841858e-07, -0.026640415)]
+"values": [Vector3(0.0014278889, -2.3841858e-07, -0.026640415), Vector3(-1.2422267, 0.2404746, 0.067902915), Vector3(0.0014278889, -2.3841858e-07, -0.026640415)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -98,10 +101,17 @@ shape = SubResource("CylinderShape3D_s7iic")
 
 [node name="Node3D" type="Node3D" parent="." index="4" unique_id=1509977550]
 transform = Transform3D(0.26504582, 0.071018845, 0.9616169, 0.25881913, -0.9659258, 0, 0.92885053, 0.24888484, -0.27439564, 0.058110148, 0.37166548, 0.31670338)
-visible = false
 
 [node name="broom2" parent="Node3D" index="0" unique_id=271670473 instance=ExtResource("2_fp2kc")]
 transform = Transform3D(1.0000002, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0.0014278889, -2.3841858e-07, -0.026640415)
+
+[node name="Area3D" type="Area3D" parent="Node3D/broom2" index="1" unique_id=1632719728]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/broom2/Area3D" index="0" unique_id=1211446787]
+transform = Transform3D(1.0000014, 5.9604645e-08, -1.4202669e-07, -1.3113022e-06, 1, -2.7334318e-07, -1.14087015e-08, 9.313226e-10, 1, -7.4505806e-08, 0.04229772, 0)
+shape = SubResource("BoxShape3D_s7iic")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node3D" index="1" unique_id=75420345]
 libraries/ = SubResource("AnimationLibrary_6mdcw")

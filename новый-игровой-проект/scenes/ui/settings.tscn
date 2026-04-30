@@ -149,6 +149,13 @@ theme_override_icons/checked = SubResource("DPITexture_h175o")
 theme_override_icons/unchecked = SubResource("DPITexture_ptynm")
 text = "SSAO"
 
+[node name="VolumetricFog" type="CheckButton" parent="GraphicsSettings/VBoxContainer" unique_id=1012866568]
+layout_mode = 2
+theme_override_font_sizes/font_size = 68
+theme_override_icons/checked = SubResource("DPITexture_h175o")
+theme_override_icons/unchecked = SubResource("DPITexture_ptynm")
+text = "Объемный туман"
+
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1939381324]
 layout_mode = 1
 anchors_preset = 9

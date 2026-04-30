@@ -33,7 +33,8 @@ enum datetime {
 func _ready() -> void:
 	Global.GM = self
 	
-	play_knocking()
+	#play_knocking()
+	#knock_stop_area.monitoring = true
 	
 	knock_stop_area.body_entered.connect(
 		func(b):
@@ -57,7 +58,6 @@ func _ready() -> void:
 
 
 func play_knocking():
-	
 	if knock_stop_area.monitoring:
 		knock_knock.play_one_shot()
 		await get_tree().create_timer(randf_range(2,10),false).timeout

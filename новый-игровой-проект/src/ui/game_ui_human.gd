@@ -39,6 +39,7 @@ func update_ui():
 		days_count.text += '\nТекущий день: '+str(GM.current_day)
 
 func _process(delta: float) -> void:
+	
 	# Debug info
 	#$Label.text = str(inventory) + "\ncursor pos " + str(cursor_pos)
 	update_ui()

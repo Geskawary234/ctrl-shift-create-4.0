@@ -103,6 +103,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6135572, 2.923451)
 [node name="Area3D" type="Area3D" parent="FmodBankManager/Sounds/KnockKnock" unique_id=2073639586]
 collision_layer = 0
 collision_mask = 2
+monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FmodBankManager/Sounds/KnockKnock/Area3D" unique_id=1053149733]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06506348, -0.2590332)
@@ -124,7 +125,7 @@ shape = SubResource("BoxShape3D_tayly")
 debug_color = Color(0.99226695, 0, 0.26071143, 0.41960785)
 
 [node name="CaveAmbience" parent="FmodBankManager/Sounds" unique_id=1627282096 instance=ExtResource("2_tayly")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.640869)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50.71343)
 fmod_event_path = "event:/Cave Ambience"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FmodBankManager/Sounds/CaveAmbience" unique_id=1723971635]
@@ -132,7 +133,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8862915, 1.651123, 0)
 shape = SubResource("BoxShape3D_dawqo")
 
 [node name="CaveMusic" parent="FmodBankManager/Sounds" unique_id=317583767 instance=ExtResource("2_tayly")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.640869)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50.71343)
 script = ExtResource("3_4ecoa")
 fmod_event_path = "event:/Cave Music"
 volume = 0.8
@@ -262,7 +263,7 @@ shape = SubResource("BoxShape3D_8ahg6")
 debug_color = Color(0, 0.6459465, 0.25567958, 0.41960785)
 
 [node name="nest" parent="Background assets" unique_id=1319243216 instance=ExtResource("28_x3tw2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0518832, 0.9565535, 13.1982565)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0518832, 0.9565535, 50.270817)
 
 [node name="teleportToCave" type="Node3D" parent="Background assets/nest" unique_id=1626452495]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.479362, -0.06807178, -0.3454008)
@@ -276,39 +277,41 @@ material = SubResource("FogMaterial_7ub60")
 transform = Transform3D(1, 0, 0, 0, 0.99439716, -0.10570871, 0, 0.10570871, 0.99439716, -0.8609737, -0.122811794, -0.3741808)
 teleport_to = NodePath("../../room/TeleportToRoom")
 
-[node name="RuneSpawns" type="Node" parent="Background assets/nest" unique_id=1529165458]
+[node name="RuneSpawns" type="Node3D" parent="Background assets/nest" unique_id=356691955]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.606727, -0.72060955, -12.976234)
 
 [node name="Node3D" type="Node3D" parent="Background assets/nest/RuneSpawns" unique_id=15133626]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17596579, 0.8950101, 12.102102)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.645829, 0.5530688, 11.911949)
 
 [node name="Node3D2" type="Node3D" parent="Background assets/nest/RuneSpawns" unique_id=732338417]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1168826, 0.8810361, 12.451758)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5246964, 0.48148674, 12.293312)
 
 [node name="Node3D3" type="Node3D" parent="Background assets/nest/RuneSpawns" unique_id=429861539]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4775934, 0.8810361, 14.377749)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9520283, 0.5103705, 14.137573)
 
-[node name="SmartTarakanSpawns" type="Node" parent="Background assets/nest" unique_id=585170778]
+[node name="SmartTarakanSpawns" type="Node3D" parent="Background assets/nest" unique_id=2085022908]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.606727, -0.72060955, -12.976234)
 
 [node name="Node3D" type="Marker3D" parent="Background assets/nest/SmartTarakanSpawns" unique_id=129036484]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3864986, 0.760929, 12.715851)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009300947, 0.54515094, 12.496559)
 script = ExtResource("6_4ecoa")
 scene = ExtResource("8_7ub60")
 metadata/_custom_type_script = "uid://dva11qswodypc"
 
 [node name="Node3D2" type="Marker3D" parent="Background assets/nest/SmartTarakanSpawns" unique_id=1080292522]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.74128735, 0.760929, 13.762239)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2670116, 0.47816515, 13.596355)
 script = ExtResource("6_4ecoa")
 scene = ExtResource("8_7ub60")
 metadata/_custom_type_script = "uid://dva11qswodypc"
 
 [node name="Node3D3" type="Marker3D" parent="Background assets/nest/SmartTarakanSpawns" unique_id=1950188753]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1335673, 0.7801261, 12.785246)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.41239, 0.6413966, 14.183346)
 script = ExtResource("6_4ecoa")
 scene = ExtResource("8_7ub60")
 metadata/_custom_type_script = "uid://dva11qswodypc"
 
 [node name="Node3D4" type="Marker3D" parent="Background assets/nest/SmartTarakanSpawns" unique_id=1265266814]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1617532, 0.8153219, 14.4950695)
+transform = Transform3D(0.56811666, 0, -0.82294804, 0, 1, 0, 0.82294804, 0, 0.56811666, 3.8395529, 0.6391402, 12.436108)
 script = ExtResource("6_4ecoa")
 scene = ExtResource("8_7ub60")
 metadata/_custom_type_script = "uid://dva11qswodypc"

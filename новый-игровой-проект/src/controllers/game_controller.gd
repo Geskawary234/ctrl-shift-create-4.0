@@ -8,18 +8,24 @@ extends PlayerController
 @onready var game_ui_human: Control = $SpringArm3D/CameraPivot/Camera3D/GameUIHuman
 @onready var game_ui_tarakan: Control = $SpringArm3D/CameraPivot/Camera3D/GameUITarakan
 @onready var black_screen: Control = $SpringArm3D/CameraPivot/Camera3D/BlackScreen
-@onready var fmod_listener_3d: FmodListener3D = $FmodListener3D
 @onready var hand: Node3D = $SpringArm3D/CameraPivot/Camera3D/Hand
+
+@onready var fps_debug_label: Label = $"SpringArm3D/CameraPivot/Camera3D/Debug info/FPS"
+
+@onready var fmod_listener_3d: FmodListener3D = $SpringArm3D/CameraPivot/FmodListener3D
 
 
 func _process(delta: float) -> void:
 	super(delta)
+	
+	
+	fmod_listener_3d.global_position = camera.global_position
+	fmod_listener_3d.global_rotation = camera.global_rotation
+	fps_debug_label.text = 'FPS: '+str(Engine.get_frames_per_second())
+	
 func pawn_physics_process(delta: float) -> void:
 	super(delta)
 	if !camera.current: return
-	
-	fmod_listener_3d.global_position = pawn.global_position
-	fmod_listener_3d.global_rotation = pawn.global_rotation
 	
 	if pawn is PlayerHumanPawn:
 		human_pawn_process(delta)
@@ -40,7 +46,7 @@ func pawn_changed(old : Pawn):
 		game_ui_human.show()
 		game_ui_tarakan.hide()
 	elif pawn is PlayerTarakanPawn:
-		camera.position = Vector3.ZERO
+		camera.position = Vector3(0,0.05,0)
 		spring_arm_len = pawn.spring_len
 		camera_mode = 1
 		speed = pawn.speed
@@ -57,7 +63,7 @@ func pawn_changed(old : Pawn):
 	
 
 func tarakan_pawn_process(delta : float):
-	pass
+	pawn.look_light.look_at(-camera.global_basis.z + pawn.global_position)
 
 
 var dragg_item : DraggableItem

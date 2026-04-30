@@ -14,13 +14,14 @@ var music_bus : FmodBus
 
 var master_volume : float = 1
 var music_volume : float = 1
-var sound_volume : float = 1
+var sound_volume : float = 0.8
 
 signal GraphicsChanged
 var graphics_settings : Dictionary[String,bool] = {
 	'ssr' : true,
 	'ssao' : true,
-	'ssil' : true
+	'ssil' : true,
+	'volumetric_fog' : true
 }
 
 
