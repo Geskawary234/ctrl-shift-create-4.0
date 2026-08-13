@@ -5,9 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://b55rysp664v8q" path="res://scenes/controllers/player_controller.tscn" id="3_imhu7"]
 [ext_resource type="PackedScene" uid="uid://cbkgchds18sb7" path="res://scenes/powerups/rune.tscn" id="4_imhu7"]
 [ext_resource type="PackedScene" uid="uid://c3ujlv30r8egx" path="res://scenes/entites/tarakan_ai.tscn" id="5_cmv3r"]
-[ext_resource type="PackedScene" uid="uid://b02nq5xu51aya" path="res://scenes/fmod/fmod_event_area.tscn" id="6_7428w"]
-[ext_resource type="PackedScene" uid="uid://ct1va7n2a5egv" path="res://scenes/building/nest.res" id="6_t0nxx"]
-[ext_resource type="Script" uid="uid://b5j30knkg7314" path="res://src/FMOD/cave_music_area.gd" id="7_bswem"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b1wyh"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -24,13 +21,6 @@ glow_enabled = true
 volumetric_fog_density = 0.2077
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_cmv3r"]
-
-[sub_resource type="FogMaterial" id="FogMaterial_t0nxx"]
-density = 5.2419
-albedo = Color(0, 0, 0, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_yrcod"]
-size = Vector3(13.788208, 4.302246, 7.909912)
 
 [node name="Node3D" type="Node3D" unique_id=220640549]
 
@@ -65,145 +55,388 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9305137, 0.81856805, -1.038
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.030696869, 0.09556103, -0.59631383)
 rune_type = 4
 
-[node name="nest" parent="." unique_id=1319243216 instance=ExtResource("6_t0nxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3589691, 0.9565535, -0.7536594)
+[node name="Node" type="Node" parent="." unique_id=788614692]
 
-[node name="FogVolume" type="FogVolume" parent="nest" unique_id=221101925]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1695652, -0.11957842, 0.017364204)
-size = Vector3(8.719238, 3.6739502, 4.368866)
-material = SubResource("FogMaterial_t0nxx")
+[node name="Tarakan" parent="Node" unique_id=174570234 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25316346, 0.0021560425, -2.4613585)
 
-[node name="CaveAmbience" parent="nest" unique_id=317583767 instance=ExtResource("6_7428w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0778136, 0)
-fmod_event_path = "event:/Cave Ambience"
+[node name="Tarakan2" parent="Node" unique_id=548295164 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20299324, 0.0021560425, -2.4613585)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="nest/CaveAmbience" unique_id=482634272]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8862915, 1.651123, 0)
-shape = SubResource("BoxShape3D_yrcod")
+[node name="Tarakan3" parent="Node" unique_id=1203631430 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13692322, 0.0021560425, -2.4613585)
 
-[node name="CaveMusic" parent="nest" unique_id=260099005 instance=ExtResource("6_7428w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0778136, 0)
-script = ExtResource("7_bswem")
-fmod_event_path = "event:/Cave Music"
-volume = 0.8
+[node name="Tarakan4" parent="Node" unique_id=281265437 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0729727, 0.0021560425, -2.4613585)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="nest/CaveMusic" unique_id=713529215]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8862915, 1.651123, 0)
-shape = SubResource("BoxShape3D_yrcod")
+[node name="Tarakan5" parent="Node" unique_id=222379961 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0045045614, 0.0021560425, -2.4613585)
 
-[node name="Tarakan" parent="." unique_id=174570234 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42894912, 0.09805232, -1.806689)
+[node name="Tarakan6" parent="Node" unique_id=354491601 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07126874, 0.0021560425, -2.4613585)
 
-[node name="Tarakan2" parent="." unique_id=1387203846 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7381816, 0.09996188, -1.9573226)
+[node name="Tarakan7" parent="Node" unique_id=2113522333 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15350737, 0.0021560425, -2.4613585)
 
-[node name="Tarakan3" parent="." unique_id=225073561 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22893476, 0.056310356, -1.3631568)
+[node name="Tarakan8" parent="Node" unique_id=1549486956 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21220182, 0.0021560425, -2.4613585)
 
-[node name="Tarakan4" parent="." unique_id=2019079548 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50647664, 0.041611373, -2.6394525)
+[node name="Tarakan9" parent="Node" unique_id=988650624 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3230847, 0.0021560425, -2.4613585)
 
-[node name="Tarakan5" parent="." unique_id=656380926 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26147032, 0.11163491, -2.8278604)
+[node name="Tarakan10" parent="Node" unique_id=1848707770 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41775388, 0.0021560425, -2.4613585)
 
-[node name="Tarakan6" parent="." unique_id=1011382330 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3628857, 0.07983875, -2.8516474)
+[node name="Tarakan11" parent="Node" unique_id=1180892624 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49529487, 0.0021560425, -2.4613585)
 
-[node name="Tarakan7" parent="." unique_id=1047982723 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.83507633, 0.12730181, -2.1708727)
+[node name="Tarakan12" parent="Node" unique_id=1444183405 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5647252, 0.0021560425, -2.4613585)
 
-[node name="Tarakan9" parent="." unique_id=648712021 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.83507633, 0.13736743, -2.0967736)
+[node name="Tarakan13" parent="Node" unique_id=2026515004 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6729258, 0.0021560425, -2.4613585)
 
-[node name="Tarakan10" parent="." unique_id=384000057 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.83507633, 0.13633251, -2.0304651)
+[node name="Tarakan14" parent="Node" unique_id=1984421469 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.763287, 0.0021560425, -2.4613585)
 
-[node name="Tarakan11" parent="." unique_id=1274233382 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.83507633, 0.15932679, -1.9081736)
+[node name="Tarakan15" parent="Node" unique_id=1393403796 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8374626, 0.0021560425, -2.4613585)
 
-[node name="Tarakan12" parent="." unique_id=919716069 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.83507633, 0.17217058, -2.0410457)
+[node name="Tarakan16" parent="Node" unique_id=2127351997 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89290684, 0.0021560425, -2.4613585)
 
-[node name="Tarakan13" parent="." unique_id=1493557252 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.83507633, 0.17260706, -1.9632883)
+[node name="Tarakan17" parent="Node" unique_id=202325221 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25316346, 0.0021560425, -2.3731663)
 
-[node name="Tarakan8" parent="." unique_id=1976891603 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.64949036, 0.08287889, -0.97545147)
+[node name="Tarakan18" parent="Node" unique_id=2084234314 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20299324, 0.0021560425, -2.3731663)
 
-[node name="Tarakan14" parent="." unique_id=702136856 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2781315, 0.10952923, -1.806689)
+[node name="Tarakan19" parent="Node" unique_id=1996891593 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13692322, 0.0021560425, -2.3731663)
 
-[node name="Tarakan15" parent="." unique_id=829777888 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.58736396, 0.11143878, -1.9573226)
+[node name="Tarakan20" parent="Node" unique_id=1106958799 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0729727, 0.0021560425, -2.3731663)
 
-[node name="Tarakan16" parent="." unique_id=196114594 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37975237, 0.06778726, -1.3631568)
+[node name="Tarakan21" parent="Node" unique_id=693243373 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0045045614, 0.0021560425, -2.3731663)
 
-[node name="Tarakan17" parent="." unique_id=1238613471 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35565904, 0.053088278, -2.6394525)
+[node name="Tarakan22" parent="Node" unique_id=1007724166 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07126874, 0.0021560425, -2.3731663)
 
-[node name="Tarakan18" parent="." unique_id=874489910 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.110652715, 0.123111814, -2.8278604)
+[node name="Tarakan23" parent="Node" unique_id=398500846 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15350737, 0.0021560425, -2.3731663)
 
-[node name="Tarakan19" parent="." unique_id=1636069446 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21206811, 0.09131566, -2.8516474)
+[node name="Tarakan24" parent="Node" unique_id=249828501 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21220182, 0.0021560425, -2.3731663)
 
-[node name="Tarakan20" parent="." unique_id=139933888 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6842587, 0.13877872, -2.1708727)
+[node name="Tarakan25" parent="Node" unique_id=592101016 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3230847, 0.0021560425, -2.3731663)
 
-[node name="Tarakan21" parent="." unique_id=264220945 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6842587, 0.14884433, -2.0967736)
+[node name="Tarakan26" parent="Node" unique_id=1457666365 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41775388, 0.0021560425, -2.3731663)
 
-[node name="Tarakan22" parent="." unique_id=925079898 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6842587, 0.14780942, -2.0304651)
+[node name="Tarakan27" parent="Node" unique_id=2018801926 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49529487, 0.0021560425, -2.3731663)
 
-[node name="Tarakan23" parent="." unique_id=302279429 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6842587, 0.1708037, -1.9081736)
+[node name="Tarakan28" parent="Node" unique_id=2113834260 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5647252, 0.0021560425, -2.3731663)
 
-[node name="Tarakan24" parent="." unique_id=943998942 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6842587, 0.18364748, -2.0410457)
+[node name="Tarakan29" parent="Node" unique_id=753030237 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6729258, 0.0021560425, -2.3731663)
 
-[node name="Tarakan25" parent="." unique_id=179691518 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6842587, 0.18408397, -1.9632883)
+[node name="Tarakan30" parent="Node" unique_id=303440794 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.763287, 0.0021560425, -2.3731663)
 
-[node name="Tarakan26" parent="." unique_id=306702746 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.800308, 0.09435579, -0.97545147)
+[node name="Tarakan31" parent="Node" unique_id=1747860901 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8374626, 0.0021560425, -2.3731663)
 
-[node name="Tarakan27" parent="." unique_id=695644836 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09384227, 0.102610484, -1.806689)
+[node name="Tarakan32" parent="Node" unique_id=1593747677 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89290684, 0.0021560425, -2.3731663)
 
-[node name="Tarakan28" parent="." unique_id=1506380336 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4030747, 0.10452004, -1.9573226)
+[node name="Tarakan33" parent="Node" unique_id=1837926620 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25316346, 0.0021560425, -2.2310827)
 
-[node name="Tarakan29" parent="." unique_id=878419026 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5640416, 0.060868517, -1.3631568)
+[node name="Tarakan34" parent="Node" unique_id=445475069 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20299324, 0.0021560425, -2.2310827)
 
-[node name="Tarakan30" parent="." unique_id=488934367 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17136979, 0.046169534, -2.6394525)
+[node name="Tarakan35" parent="Node" unique_id=1748916723 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13692322, 0.0021560425, -2.2310827)
 
-[node name="Tarakan31" parent="." unique_id=880439762 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07363653, 0.11619307, -2.8278604)
+[node name="Tarakan36" parent="Node" unique_id=729571324 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0729727, 0.0021560425, -2.2310827)
 
-[node name="Tarakan32" parent="." unique_id=854724759 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027778864, 0.08439691, -2.8516474)
+[node name="Tarakan37" parent="Node" unique_id=732578043 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0045045614, 0.0021560425, -2.2310827)
 
-[node name="Tarakan33" parent="." unique_id=1323413839 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49996945, 0.13185997, -2.1708727)
+[node name="Tarakan38" parent="Node" unique_id=1162287890 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07126874, 0.0021560425, -2.2310827)
 
-[node name="Tarakan34" parent="." unique_id=15886616 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49996945, 0.14192559, -2.0967736)
+[node name="Tarakan39" parent="Node" unique_id=1493815904 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15350737, 0.0021560425, -2.2310827)
 
-[node name="Tarakan35" parent="." unique_id=2119914004 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49996945, 0.14089067, -2.0304651)
+[node name="Tarakan40" parent="Node" unique_id=1986621540 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21220182, 0.0021560425, -2.2310827)
 
-[node name="Tarakan36" parent="." unique_id=841753805 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49996945, 0.16388495, -1.9081736)
+[node name="Tarakan41" parent="Node" unique_id=528773469 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3230847, 0.0021560425, -2.2310827)
 
-[node name="Tarakan37" parent="." unique_id=1206266187 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49996945, 0.17672874, -2.0410457)
+[node name="Tarakan42" parent="Node" unique_id=48042851 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41775388, 0.0021560425, -2.2310827)
 
-[node name="Tarakan38" parent="." unique_id=1472180638 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49996945, 0.17716523, -1.9632883)
+[node name="Tarakan43" parent="Node" unique_id=63403334 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49529487, 0.0021560425, -2.2310827)
 
-[node name="Tarakan39" parent="." unique_id=1913716349 instance=ExtResource("5_cmv3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9845972, 0.08743705, -0.97545147)
+[node name="Tarakan44" parent="Node" unique_id=1310303308 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5647252, 0.0021560425, -2.2310827)
+
+[node name="Tarakan45" parent="Node" unique_id=1727541565 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6729258, 0.0021560425, -2.2310827)
+
+[node name="Tarakan46" parent="Node" unique_id=328602863 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.763287, 0.0021560425, -2.2310827)
+
+[node name="Tarakan47" parent="Node" unique_id=119453275 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8374626, 0.0021560425, -2.2310827)
+
+[node name="Tarakan48" parent="Node" unique_id=918615743 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89290684, 0.0021560425, -2.2310827)
+
+[node name="Tarakan49" parent="Node" unique_id=589852591 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25316346, 0.0021560425, -2.1074016)
+
+[node name="Tarakan50" parent="Node" unique_id=1196630646 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20299324, 0.0021560425, -2.1074016)
+
+[node name="Tarakan51" parent="Node" unique_id=330034103 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13692322, 0.0021560425, -2.1074016)
+
+[node name="Tarakan52" parent="Node" unique_id=1187318888 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0729727, 0.0021560425, -2.1074016)
+
+[node name="Tarakan53" parent="Node" unique_id=2090281239 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0045045614, 0.0021560425, -2.1074016)
+
+[node name="Tarakan54" parent="Node" unique_id=1901040028 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07126874, 0.0021560425, -2.1074016)
+
+[node name="Tarakan55" parent="Node" unique_id=1064461934 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15350737, 0.0021560425, -2.1074016)
+
+[node name="Tarakan56" parent="Node" unique_id=590372751 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21220182, 0.0021560425, -2.1074016)
+
+[node name="Tarakan57" parent="Node" unique_id=1525553161 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3230847, 0.0021560425, -2.1074016)
+
+[node name="Tarakan58" parent="Node" unique_id=312052356 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41775388, 0.0021560425, -2.1074016)
+
+[node name="Tarakan59" parent="Node" unique_id=1923950352 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49529487, 0.0021560425, -2.1074016)
+
+[node name="Tarakan60" parent="Node" unique_id=594420966 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5647252, 0.0021560425, -2.1074016)
+
+[node name="Tarakan61" parent="Node" unique_id=2092034036 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6729258, 0.0021560425, -2.1074016)
+
+[node name="Tarakan62" parent="Node" unique_id=1534870008 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.763287, 0.0021560425, -2.1074016)
+
+[node name="Tarakan63" parent="Node" unique_id=437203287 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8374626, 0.0021560425, -2.1074016)
+
+[node name="Tarakan64" parent="Node" unique_id=1105975143 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89290684, 0.0021560425, -2.1074016)
+
+[node name="Tarakan65" parent="Node" unique_id=41328567 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25316346, 0.0021560425, -1.9515952)
+
+[node name="Tarakan66" parent="Node" unique_id=763837800 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20299324, 0.0021560425, -1.9515952)
+
+[node name="Tarakan67" parent="Node" unique_id=1540302826 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13692322, 0.0021560425, -1.9515952)
+
+[node name="Tarakan68" parent="Node" unique_id=934520684 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0729727, 0.0021560425, -1.9515952)
+
+[node name="Tarakan69" parent="Node" unique_id=1583597036 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0045045614, 0.0021560425, -1.9515952)
+
+[node name="Tarakan70" parent="Node" unique_id=2082171164 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07126874, 0.0021560425, -1.9515952)
+
+[node name="Tarakan71" parent="Node" unique_id=1552619349 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15350737, 0.0021560425, -1.9515952)
+
+[node name="Tarakan72" parent="Node" unique_id=1079209821 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21220182, 0.0021560425, -1.9515952)
+
+[node name="Tarakan73" parent="Node" unique_id=754312107 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3230847, 0.0021560425, -1.9515952)
+
+[node name="Tarakan74" parent="Node" unique_id=2071902956 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41775388, 0.0021560425, -1.9515952)
+
+[node name="Tarakan75" parent="Node" unique_id=122144977 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49529487, 0.0021560425, -1.9515952)
+
+[node name="Tarakan76" parent="Node" unique_id=606922247 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5647252, 0.0021560425, -1.9515952)
+
+[node name="Tarakan77" parent="Node" unique_id=1144787996 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6729258, 0.0021560425, -1.9515952)
+
+[node name="Tarakan78" parent="Node" unique_id=616924926 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.763287, 0.0021560425, -1.9515952)
+
+[node name="Tarakan79" parent="Node" unique_id=832712376 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8374626, 0.0021560425, -1.9515952)
+
+[node name="Tarakan80" parent="Node" unique_id=174391490 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89290684, 0.0021560425, -1.9515952)
+
+[node name="Tarakan81" parent="Node" unique_id=866173307 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25316346, 0.0021560425, -1.816431)
+
+[node name="Tarakan82" parent="Node" unique_id=1500982678 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20299324, 0.0021560425, -1.816431)
+
+[node name="Tarakan83" parent="Node" unique_id=43650140 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13692322, 0.0021560425, -1.816431)
+
+[node name="Tarakan84" parent="Node" unique_id=735961742 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0729727, 0.0021560425, -1.816431)
+
+[node name="Tarakan85" parent="Node" unique_id=813387187 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0045045614, 0.0021560425, -1.816431)
+
+[node name="Tarakan86" parent="Node" unique_id=821126860 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07126874, 0.0021560425, -1.816431)
+
+[node name="Tarakan87" parent="Node" unique_id=713162171 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15350737, 0.0021560425, -1.816431)
+
+[node name="Tarakan88" parent="Node" unique_id=2127011368 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21220182, 0.0021560425, -1.816431)
+
+[node name="Tarakan89" parent="Node" unique_id=1202094406 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3230847, 0.0021560425, -1.816431)
+
+[node name="Tarakan90" parent="Node" unique_id=391943567 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41775388, 0.0021560425, -1.816431)
+
+[node name="Tarakan91" parent="Node" unique_id=1413911694 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49529487, 0.0021560425, -1.816431)
+
+[node name="Tarakan92" parent="Node" unique_id=1320908434 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5647252, 0.0021560425, -1.816431)
+
+[node name="Tarakan93" parent="Node" unique_id=527750670 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6729258, 0.0021560425, -1.816431)
+
+[node name="Tarakan94" parent="Node" unique_id=31128259 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.763287, 0.0021560425, -1.816431)
+
+[node name="Tarakan95" parent="Node" unique_id=375562493 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8374626, 0.0021560425, -1.816431)
+
+[node name="Tarakan96" parent="Node" unique_id=843858228 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89290684, 0.0021560425, -1.816431)
+
+[node name="Tarakan97" parent="Node" unique_id=1286648727 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25316346, 0.0021560425, -1.6510123)
+
+[node name="Tarakan98" parent="Node" unique_id=1711855167 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20299324, 0.0021560425, -1.6510123)
+
+[node name="Tarakan99" parent="Node" unique_id=825965721 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13692322, 0.0021560425, -1.6510123)
+
+[node name="Tarakan100" parent="Node" unique_id=2047252728 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0729727, 0.0021560425, -1.6510123)
+
+[node name="Tarakan101" parent="Node" unique_id=1985592890 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0045045614, 0.0021560425, -1.6510123)
+
+[node name="Tarakan102" parent="Node" unique_id=994326201 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07126874, 0.0021560425, -1.6510123)
+
+[node name="Tarakan103" parent="Node" unique_id=1527629584 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15350737, 0.0021560425, -1.6510123)
+
+[node name="Tarakan104" parent="Node" unique_id=651408885 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21220182, 0.0021560425, -1.6510123)
+
+[node name="Tarakan105" parent="Node" unique_id=914955705 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3230847, 0.0021560425, -1.6510123)
+
+[node name="Tarakan106" parent="Node" unique_id=1602918352 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41775388, 0.0021560425, -1.6510123)
+
+[node name="Tarakan107" parent="Node" unique_id=137720872 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49529487, 0.0021560425, -1.6510123)
+
+[node name="Tarakan108" parent="Node" unique_id=770884713 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5647252, 0.0021560425, -1.6510123)
+
+[node name="Tarakan109" parent="Node" unique_id=331001520 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6729258, 0.0021560425, -1.6510123)
+
+[node name="Tarakan110" parent="Node" unique_id=1639279903 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.763287, 0.0021560425, -1.6510123)
+
+[node name="Tarakan111" parent="Node" unique_id=1610947444 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8374626, 0.0021560425, -1.6510123)
+
+[node name="Tarakan112" parent="Node" unique_id=428346686 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89290684, 0.0021560425, -1.6510123)
+
+[node name="Tarakan113" parent="Node" unique_id=1058408497 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25316346, 0.0021560425, -1.5034294)
+
+[node name="Tarakan114" parent="Node" unique_id=1933126417 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20299324, 0.0021560425, -1.5034294)
+
+[node name="Tarakan115" parent="Node" unique_id=563691935 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13692322, 0.0021560425, -1.5034294)
+
+[node name="Tarakan116" parent="Node" unique_id=1665353499 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0729727, 0.0021560425, -1.5034294)
+
+[node name="Tarakan117" parent="Node" unique_id=151058608 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0045045614, 0.0021560425, -1.5034294)
+
+[node name="Tarakan118" parent="Node" unique_id=1273938777 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07126874, 0.0021560425, -1.5034294)
+
+[node name="Tarakan119" parent="Node" unique_id=1553333066 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15350737, 0.0021560425, -1.5034294)
+
+[node name="Tarakan120" parent="Node" unique_id=390967666 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21220182, 0.0021560425, -1.5034294)
+
+[node name="Tarakan121" parent="Node" unique_id=1448225264 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3230847, 0.0021560425, -1.5034294)
+
+[node name="Tarakan122" parent="Node" unique_id=1476422451 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41775388, 0.0021560425, -1.5034294)
+
+[node name="Tarakan123" parent="Node" unique_id=1920017888 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49529487, 0.0021560425, -1.5034294)
+
+[node name="Tarakan124" parent="Node" unique_id=1792935556 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5647252, 0.0021560425, -1.5034294)
+
+[node name="Tarakan125" parent="Node" unique_id=1139953123 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6729258, 0.0021560425, -1.5034294)
+
+[node name="Tarakan126" parent="Node" unique_id=916827261 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.763287, 0.0021560425, -1.5034294)
+
+[node name="Tarakan127" parent="Node" unique_id=217622063 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8374626, 0.0021560425, -1.5034294)
+
+[node name="Tarakan128" parent="Node" unique_id=1683788546 instance=ExtResource("5_cmv3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89290684, 0.0021560425, -1.5034294)

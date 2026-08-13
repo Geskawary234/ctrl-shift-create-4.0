@@ -33,8 +33,9 @@ enum datetime {
 func _ready() -> void:
 	Global.GM = self
 	
-	#play_knocking()
-	#knock_stop_area.monitoring = true
+	knock_stop_area.monitoring = true
+	play_knocking()
+	
 	
 	knock_stop_area.body_entered.connect(
 		func(b):

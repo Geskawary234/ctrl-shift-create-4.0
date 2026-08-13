@@ -54,7 +54,10 @@ func _ready() -> void:
 			alert_level += v
 			alert_level = clamp(alert_level,0,100)
 			if alert_level>=100:
-				Global.cave_music_area.fight.emit()
+				
+				if Global.cave_music_area:
+					Global.cave_music_area.fight.emit()
+					
 				state = States.Attacking
 				blink_alert_sprite()
 				

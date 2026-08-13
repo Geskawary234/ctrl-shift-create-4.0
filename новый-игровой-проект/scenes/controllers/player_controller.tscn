@@ -242,7 +242,8 @@ offset_top = -52.0
 offset_right = 41.0
 offset_bottom = -22.0
 grow_vertical = 0
-text = "Чтобы закончить ночную вылазку, подойдите к кровати и нажмите [E]"
+text = "Чтобы закончить ночную вылазку, подойдите к кровати и нажмите [E]
+[TAB] Для апгрейдов"
 
 [node name="ItemInfoPanel" parent="SpringArm3D/CameraPivot/Camera3D" index="5" unique_id=1701949197 node_paths=PackedStringArray("pause_manager") instance=ExtResource("6_44cuw")]
 process_mode = 3
